@@ -541,7 +541,7 @@ addthis:
 
 # 打字效果副标题.
 # 如果有符号 ‘ ，请在 ’ 前面加上 \
-subtitle: 喵喵喵喵要抱抱
+subtitle:
   enable: true
   loop: true # 是否循环
   showCursor: true # 是否显示光标
