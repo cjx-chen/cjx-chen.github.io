@@ -3,7 +3,7 @@ title: 组件库 Vant weapp 的使用
 date: 2020-08-12 19:30:10
 img: https://img-blog.csdnimg.cn/img_convert/de2eb89454a66222dcaf49f5848167d5.png
 categories: 
-- 安装配置教程
+- 安装配置步骤
 - 微信小程序
 tags:
 - 微信小程序

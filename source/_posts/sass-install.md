@@ -3,7 +3,7 @@ title: Sass 基础
 date: 2020-08-08 18:52:39
 img: https://pic1.zhimg.com/v2-13b0a4f0258c7cb20d93f505852a9a1e_1440w.jpg?source=172ae18b
 categories: 
-- 安装配置教程
+- 安装配置步骤
 - 前端
 tags:
 - Sass

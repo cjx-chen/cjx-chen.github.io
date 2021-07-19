@@ -3,7 +3,7 @@ title: Git 的安装与使用
 date: 2020-08-31 14:01:19 
 img: https://www.leixue.com/uploads/2018/12/Git.jpg!760
 categories: 
-- 安装配置教程
+- 安装配置步骤
 tags:
 - Git
 ---
