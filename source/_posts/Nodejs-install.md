@@ -1,7 +1,7 @@
 ﻿---
 title: Node.js 的安装及环境配置
 date: 2021-01-04 11:12:07
-img: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.linuxeden.com%2Fupimg%2Fallimg%2F150714%2F0S202E96-5.jpg&refer=http%3A%2F%2Fwww.linuxeden.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629296526&t=8a76facb1b9e54961f424ab244ce42a8
+img: https://pic1.zhimg.com/v2-d00adad896ef932254359b2f0cd9857e_1440w.jpg?source=172ae18b
 categories: 
 - 安装配置教程
 tags:
