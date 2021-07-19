@@ -8,10 +8,10 @@ tags:
 - Git
 ---
 
-# 目的
+##目的
 通过 git 管理 github 托管项目代码；
 
-# 下载安装
+##下载安装
  1. 官网下载：[https://git-scm.com/downloads](https://git-scm.com/downloads)
 ![](https://img-blog.csdnimg.cn/20200809124239472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 2. 双击安装
@@ -28,8 +28,8 @@ tags:
 8. 我放弃了，我全选 next 了；
 9. 检验是否安装成功：桌面鼠标右键，如有出现两个 git 单词的选项则成功；
  ![](https://img-blog.csdnimg.cn/2020080913052232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
-# 配置 Git 
-## 设置全局变量
+##配置 Git 
+###设置全局变量
 在桌面鼠标右键打开 git bush here：
 ![](https://img-blog.csdnimg.cn/20200831134900155.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70#pic_center)
 输入：
@@ -37,7 +37,7 @@ tags:
 $ git config --global user.name "your name" 
 $ git config --global user.email "your@email.com"
 ```
-## 登陆 GitHub，创建 SSHkey
+###登陆 GitHub，创建 SSHkey
 然后输入这个，创建 SSHkey：
 
 ```powershell
@@ -67,20 +67,20 @@ $ ssh -T git@github.com
 ![](https://img-blog.csdnimg.cn/20200831135234352.png#pic_center)
 好了，这就完成了本地和 GitHub 的通信配置。
 
-# Git 基本工作流程
+##Git 基本工作流程
  
  **Git 工作区域**
 ![](https://img-blog.csdnimg.cn/20200809131144379.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 **向仓库中添加文件流程**
 ![](https://img-blog.csdnimg.cn/20200809131255372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
-# Git 初始化及仓库创建和操作
+##Git 初始化及仓库创建和操作
 **基本信息设置**
 
 ```powershell
-# 1.设置用户名
+##1.设置用户名
 $ git config --global user.name '用户名'
 
-# 2. 设置用户名邮箱
+##2. 设置用户名邮箱
 $ git config --global user.email '邮箱'
 ```
 该设置在 github 仓库主页显示谁提交了该文件；
@@ -101,17 +101,17 @@ $ git init
 **向仓库添加文件**
 
 ```powershell
-# 创建 a1.php 文件 
+##创建 a1.php 文件 
 $ touch a1.php
 
 $ git status
 
-# 添加到暂存区
+##添加到暂存区
 $ git add a1.php
 
 $ git status
 
-# 将文件从暂存区提交到仓库
+##将文件从暂存区提交到仓库
 $ git commit -m 'add a1.php'
 
 $ git status
@@ -125,13 +125,13 @@ $ git status
 
 $ vi a1.php
 
-# 修改文件
+##修改文件
 $ cat a1.php
 1111
 
 $ git status
 
-# 添加到暂存区
+##添加到暂存区
 $ git add a1.php
 
 $ git status
@@ -144,45 +144,45 @@ $ git status
 **删除仓库文件**
 
 ```powershell
-# 删除文件
+##删除文件
 $ rm -rf a1.php
 
-# 从Git中删除文件
+##从Git中删除文件
 $ git rm a1.php
 
-# 提交操作
+##提交操作
 $ git commit -m '第一次通过git删除仓库文件'
 
 $ git status
 ```
 
-# Git 管理远程仓库
-## 使用远程仓库的目的
+##Git 管理远程仓库
+###使用远程仓库的目的
 作用：备份，实现代码共享集中化管理；
 
 ```powershell
 $ git status
 
-# 创建文件
+##创建文件
 $ touch a2.php
 
 $ git status
 
-# 添加到暂存区
+##添加到暂存区
 $ git add a2.php
 
 $ git status
 
-# 将文件从暂存区提交到本地仓库
+##将文件从暂存区提交到本地仓库
 $ git commit -m 'add a2.php'
 
 $ git status
 
-# 将本地仓库提交到远程仓库
+##将本地仓库提交到远程仓库
 $ git push
 ```
 
-## Git 克隆操作
+###Git 克隆操作
 
  - **目的**：将远程仓库（github对应的项目）复制到本地；
  - **代码**：
@@ -192,7 +192,7 @@ $ git clone 仓库地址
 
  仓库地址由来：
 ![](https://img-blog.csdnimg.cn/2020081012392137.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
-## 将本地仓库同步到 git 远程仓库中
+###将本地仓库同步到 git 远程仓库中
 
 ```powershell
 $ git push
@@ -204,11 +204,11 @@ $ git push
 ```powershell
 $ vi .git/config
 
-# 将 
-# [remote "origin"] 
+##将 
+##[remote "origin"] 
 #	url = https://github.com/用户名/仓库名.git 
-# 修改为:
-# [remote "origin"]
+##修改为:
+##[remote "origin"]
 #	url = https://用户名:密码@github.com/用户名/仓库名.git
 ```
 下面我用 VSCode 中的项目来做一个实例：
@@ -240,18 +240,18 @@ fatal: remote origin already exists.（报错远程起源已经存在。）
 解决办法如下：
 
 ```powershell
-# 1、先输入 
+##1、先输入 
 $ git remote rm origin
-# 2、再输入 
+##2、再输入 
 $ git remote add origin **************
 ```
 
-# Github Pages 搭建网站
-## 个人站点
-### 访问
+##Github Pages 搭建网站
+###个人站点
+#### 访问
 https://用户名.github.io
 
-### 搭建步骤
+#### 搭建步骤
 
  1. 创建个人站点 -> 新建仓库（注：仓库名称必须是`用户名.github.io`）；
 ![](https://img-blog.csdnimg.cn/20200810134029328.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
@@ -267,10 +267,10 @@ https://用户名.github.io
 ![](https://img-blog.csdnimg.cn/20200810135459734.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 不知道为啥，害；
 
-## Project Pages 项目站点
-### 访问
+###Project Pages 项目站点
+#### 访问
 https://用户名.github.io/仓库名
-### 搭建步骤
+#### 搭建步骤
 
  1. 进入项目主页，点击 settings；
  2. 在 settings 页面，点击 【Choose a theme】来自动生成主题页面：
