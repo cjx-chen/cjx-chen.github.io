@@ -228,6 +228,7 @@ githubEmojis:
 ![](https://img-blog.csdnimg.cn/20210720150551479.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 ### 初始化仓库
 1. 初始化本地仓库
+
 ```bash
 git init
 ```
@@ -272,7 +273,7 @@ git commit -m 'feat: blog init'
 ```
 
 **切换分支 myblog**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210720151105790.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
+![](https://img-blog.csdnimg.cn/20210720151105790.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 **将 myblog 分支 push 到 github 中**
 ```bash
 git push origin master:myblog
@@ -670,7 +671,7 @@ mySkills:
       background: 'linear-gradient(to right, #FFEB3B 0%, #FFF176 100%)'
       percent: 30%
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210720153013197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
+![](https://img-blog.csdnimg.cn/20210720153013197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 
 ## Hexo博客发表文章、草稿、添加分类和标签
 
