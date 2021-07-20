@@ -108,9 +108,10 @@ theme: hexo-theme-matery
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: 
-    github: git@github.com:cjx-chen/cjx-chen.github.io.git
-    coding: git@e.coding.net:jessieeeeee/jessieeeeeeblog/cjx-chen.github.io.git
+  repo: git@github.com:cjx-chen/cjx-chen.github.io.git
+  # repo:
+    # github: git@github.com:cjx-chen/cjx-chen.github.io.git
+    # coding: git@e.coding.net:jessieeeeee/jessieeeeeeblog/cjx-chen.github.io.git
   branch: master
 
 search:
