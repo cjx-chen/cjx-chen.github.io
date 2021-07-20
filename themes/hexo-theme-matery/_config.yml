@@ -133,7 +133,7 @@ logo: /medias/logo.png
 indexbtn:
   enable: true
   name: CSDN
-  icon: fab fa-copyright
+  icon: fas fa-copyright
   url: https://blog.csdn.net/Jessieeeeeee
 
 # The configurations of the second line of home banner
