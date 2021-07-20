@@ -1,7 +1,7 @@
 ---
 title: Hexo 搭建个人博客 基础配置及实操
 date: 2021-07-20 15:37:15 
-img: https://www.leixue.com/uploads/2018/12/Git.jpg!760
+img: https://pic2.zhimg.com/v2-7bbe64c2282a997092613d004f0222f2_1440w.jpg?source=172ae18b
 categories: 
 - 安装配置步骤
 tags:
