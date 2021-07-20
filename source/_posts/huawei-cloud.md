@@ -1,15 +1,13 @@
 ---
 title: 华为云服务器 登录与配置 Mysql
 date: 2021-01-09 14:56:22
-img: https://www-file.huawei.com/-/media/corporate/images/home/logo/huawei_logo.png
+img: https://img2.doubanio.com/view/note/l/public/p59551232.webp
 categories: 
 - 安装配置步骤
 tags:
 - MySQL
 - 华为云
 ---
-
-
 
 具体步骤见以下网址：
 
