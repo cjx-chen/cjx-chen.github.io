@@ -109,6 +109,7 @@ theme: hexo-theme-matery
 deploy:
   type: git
   repo: git@github.com:cjx-chen/cjx-chen.github.io.git
+  repo: git@e.coding.net:jessieeeeee/jessieeeeeeblog/cjx-chen.github.io.git
   branch: master
 
 search:
