@@ -766,3 +766,9 @@ ping 你的http://github.io域名，得到一个IP：
 ![](https://img-blog.csdnimg.cn/img_convert/016b9e67e91b05b7a7d9a3fd6a78d8ab.png)
 这样通过 http://jessieeeeee.xyz/ 就能访问到你的博客了:![](https://img-blog.csdnimg.cn/img_convert/0dae211db5a3012af1b84a0bfa21bde8.png)
 
+## 最后
+
+虽然好像是这三种方式都能打开，Github 和我自己域名上是同步更新的，但是 coding 没有，仓库那里的自动更新是每天一次的，不然就得手动更新：
+![](https://img-blog.csdnimg.cn/img_convert/978ea3d22a03d70ccfda774258a4758b.png)
+好了，时隔两三天终于挣扎完了，去做我的宫保鸡丁了...
+
