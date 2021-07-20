@@ -712,6 +712,57 @@ tags:
 ```
 我是在终端中输入 `ssh -T git@github.com` 或 `ping github.com` 后再 `push` 就好了。
 
-## 最后
-还在挣扎怎么把将 Hexo 个人博客同时部署到 GitHub 和 Coding 上，因为 Github 经常抽风，不科学上网不行（暴风哭泣，要是弄出来了我就更新...
+## 双线部署到 Coding 和 GitHub 并实现全站 HTTPS
+### 新建项目
+进入 Coding.net 官网，点击个人版登陆，没有账号就注册一个并登录，有团队的就建立一个自己的团队再从里面新建项目，并给其项目新建代码仓库，远程关联 GitHub 上个人博客仓库：
+![](https://img-blog.csdnimg.cn/img_convert/5a24686df6e4dc37837992f859082dfd.png)
+![](https://img-blog.csdnimg.cn/img_convert/a3bac0da6a1dbb461ba7caeeefacdd9f.png)
+### 配置公钥
+配置 SSH 公钥方法与 GitHub Pages 的方式差不多，点击你的头像，依次选择【个人账户设置】-【SSH公钥】-【新增公钥】
+![](https://img-blog.csdnimg.cn/img_convert/1f2142275fa9d1db6fc6fcf1d0d86027.png)
+前面部署到 GitHub Pages 的时候就已经有了一对公钥，我们直接将该公钥粘贴进去就行，公钥名称可以随便写，选中永久有效选项
+
+> 公钥储存位置一般在 C:\Users\用户名\.ssh 目录下的 id_rsa.pub 文件里，用记事本打开复制其内容即可
+
+添加公钥后，我们可以在终端输入以下命令来检查是否配置成功：
+
+```bash
+ssh -T git@git.coding.net
+```
+
+### 配置 _config.yml
+进入你的项目，在右下角有选择连接方式，选择 SSH 方式（HTTPS 方式也可以，但是这种方式有时候可能连接不上，SSH 连接不容易出问题），一键复制，然后打开你本地博客根目录的 _config.yml 文件，找到 deploy 关键字，添加 coding 地址，也就是刚刚复制的 SSH 地址：
+![](https://img-blog.csdnimg.cn/img_convert/bde6094d891251bef98826d5bbf5c64d.png)
+![](https://img-blog.csdnimg.cn/img_convert/f533d0e28f0a8acc757ead1b74b75de0.png)
+添加完成后先执行命令 `hexo clean` 清理一下缓存，然后执行命令 `hexo g -d` 将博客双线部署到 Coding Pages 和 GitHub Pages；
+
+### 网站托管
+在项目目录下点击【持续部署】->【网站托管】，按照步骤注册登录腾讯云：
+![](https://img-blog.csdnimg.cn/img_convert/f6da7639f8027ccc362e008fd8cdf9d8.png)
+最后新建部署网站，仓库地址填 GitHub 上的仓库地址：
+![](https://img-blog.csdnimg.cn/img_convert/ae81218c769114a9b43b66823bfb0775.png)
+这样就部署成果啦：
+![](https://img-blog.csdnimg.cn/img_convert/43f2d5b42a5cdacf5622a380333f3688.png)
+点击【访问】即可！
+
+## 将个人博客部署到自己的域名
+### 申请域名
+我是买了腾讯云个人的域名1年只要1块钱，买完记得实名认证；
+
+### 在仓库里添加CNAME文件并在文件中填写绑定的域名
+![](https://img-blog.csdnimg.cn/img_convert/76c09e6b98572421528bfb0a68cfd706.png)
+文件里填写的内容：要绑定的域名（不要包含Http://和www）
+
+![](https://img-blog.csdnimg.cn/img_convert/7ee980c63d49b196b0432d187a6ffe3d.png)
+### 设置
+添加CNAME文件并在文件中填写绑定的域名后应该会自动保存，看看有没有自动保存：
+![](https://img-blog.csdnimg.cn/img_convert/68530767be019dec09444475291617a9.png)
+### 添加域名解析
+ping 你的http://github.io域名，得到一个IP：
+![](https://img-blog.csdnimg.cn/img_convert/fdab653e1fc7bcfa6a93e95761a4ba1b.png)
+修改你的域名解析记录：
+![](https://img-blog.csdnimg.cn/img_convert/f5498b31060943256e1e16bf76efd5e9.png)
+添加两个记录，用得到的IP，一个主机记录为：“www”，一个为“@”，
+![](https://img-blog.csdnimg.cn/img_convert/016b9e67e91b05b7a7d9a3fd6a78d8ab.png)
+这样通过 http://jessieeeeee.xyz/ 就能访问到你的博客了:![](https://img-blog.csdnimg.cn/img_convert/0dae211db5a3012af1b84a0bfa21bde8.png)
 
