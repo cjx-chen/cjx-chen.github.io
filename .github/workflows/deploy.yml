@@ -16,11 +16,12 @@ jobs:
           CI: false
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
-        run: |
-          hexo clean
-          hexo g
-          hexo d
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: master # The branch the action should deploy to.
           FOLDER: public # The folder the action should deploy.
+      - name: Sync
+        run: |
+            hexo clean
+            hexo g
+            hexo d
