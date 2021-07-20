@@ -131,10 +131,10 @@ logo: /medias/logo.png
 #   url: https://github.com/cjx-chen
 
 indexbtn:
-enable: true
-name: CSDN
-icon: fab fa-copyright
-url: https://blog.csdn.net/Jessieeeeeee
+  enable: true
+  name: CSDN
+  icon: fab fa-copyright
+  url: https://blog.csdn.net/Jessieeeeeee
 
 # The configurations of the second line of home banner
 # icon/button will not show up if you leave the corresponding socialLink empty
