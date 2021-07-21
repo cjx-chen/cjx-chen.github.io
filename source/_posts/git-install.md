@@ -22,7 +22,8 @@ tags:
 ![](https://img-blog.csdnimg.cn/20200809125718139.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 5. 开始菜单目录名设置
 ![](https://img-blog.csdnimg.cn/20200809125801689.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
-6. ![](https://img-blog.csdnimg.cn/20200809125841852.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
+6. 
+![](https://img-blog.csdnimg.cn/20200809125841852.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 7. 选择使用命令行环境
 ![](https://img-blog.csdnimg.cn/2020080913003894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 8. 我放弃了，我全选 next 了；
@@ -73,6 +74,7 @@ $ ssh -T git@github.com
 ![](https://img-blog.csdnimg.cn/20200809131144379.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
 **向仓库中添加文件流程**
 ![](https://img-blog.csdnimg.cn/20200809131255372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70)
+
 ## Git 初始化及仓库创建和操作
 **基本信息设置**
 
@@ -87,98 +89,57 @@ $ git config --global user.email '邮箱'
 
 **初始化一个新的 Git 仓库**
 
- 1. 创建文件夹；
- ```powershell
-$ mkdir 文件名
-```
- 2. 在文件内初始化 git（创建 git 仓库）；
+在项目目录内初始化 git（创建 git 仓库）；
 ```powershell
-$ cd 文件名
+$ cd <项目文件夹>
 $ git init 
 ```
 (如果看不见 .git 则设置电脑显示隐藏文件)
 
-**向仓库添加文件**
 
-```powershell
-# 创建 a1.php 文件 
-$ touch a1.php
-
-$ git status
-
-# 添加到暂存区
-$ git add a1.php
-
-$ git status
-
-# 将文件从暂存区提交到仓库
-$ git commit -m 'add a1.php'
-
-$ git status
-```
-**修改仓库文件**
-
-```powershell
-$ ls
-
-$ git status
-
-$ vi a1.php
-
-# 修改文件
-$ cat a1.php
-1111
-
-$ git status
-
-# 添加到暂存区
-$ git add a1.php
-
-$ git status
-
-$ git commit -m '第一次通过git修改文件并提交到仓库'
-
-$ git status
-```
-
-**删除仓库文件**
-
-```powershell
-# 删除文件
-$ rm -rf a1.php
-
-# 从Git中删除文件
-$ git rm a1.php
-
-# 提交操作
-$ git commit -m '第一次通过git删除仓库文件'
-
-$ git status
-```
 
 ## Git 管理远程仓库
-### 使用远程仓库的目的
+### 使用远程仓库
 作用：备份，实现代码共享集中化管理；
 
 ```powershell
-$ git status
+# 在项目目录内初始化 git
+$ git init 
 
-# 创建文件
-$ touch a2.php
+# 将远程仓库（github对应的项目）复制到本地
+$ git clone <远程仓库地址>
 
-$ git status
+# 对项目进行修改后
+$ ...
+
+# 关联远程仓库
+$ git remote add origin <远程仓库地址>
+
+# 关联完可以查看一下关联的远程分支
+$ git remote -v
+
+# 从已有的分支创建新的分支(如从master分支),创建一个dev分支
+$ git checkout -b dev
+
+# 创建完可以查看一下,分支已经切换到dev
+$ git branch
 
 # 添加到暂存区
-$ git add a2.php
+$ git add .
 
 $ git status
 
 # 将文件从暂存区提交到本地仓库
-$ git commit -m 'add a2.php'
+$ git commit -m 'feat: 增加了xx功能'
 
 $ git status
 
+# 获取远程于本地内容同步
+$ git pull
+
 # 将本地仓库提交到远程仓库
+$ git push -u origin dev	# 将本地的dev分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了
+$ git push -u origin master # 将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了
 $ git push
 ```
 
@@ -245,6 +206,34 @@ $ git remote rm origin
 # 2、再输入 
 $ git remote add origin **************
 ```
+
+## Git 分支命名规范
+git 分支分为集成分支、功能分支和修复分支，分别命名为 develop、feature 和 hotfix，均为单数。
+- master（主分支，永远是可用的稳定版本，不能直接在该分支上开发）
+- develop（开发主分支，所有新功能以这个分支来创建自己的开发分支，该分支只做只合并操作，不能直接在该分支上开发）
+- feature-xxx（功能开发分支，在develop上创建分支，以自己开发功能模块命名，功能测试正常后合并到develop分支）
+- feature-xxx-fix(功能bug修复分支，feature分支合并之后发现bug，在develop上创建分支修复，之后合并回develop分支。PS:feature分支在申请合并之后，未合并之前还是可以提交代码的，所以feature在合并之前还可以在原分支上继续修复bug)
+- hotfix-xxx（紧急bug修改分支，在master分支上创建，修复完成后合并到 master）
+
+> 注意事项：
+一个分支尽量开发一个功能模块，不要多个功能模块在一个分支上开发。
+feature 分支在申请合并之前，最好是先 pull 一下 develop 主分支下来，看一下有没有冲突，如果有就先解决冲突后再申请合并。
+
+## Commit message 的格式
+### type
+用于说明 commit 的类别，只允许使用下面7个标识。
+
+- feat：新功能（feature）
+- fix：修补bug
+- docs：文档（documentation）
+- style： 格式（不影响代码运行的变动）
+- refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+- test：增加测试
+- chore：构建过程或辅助工具的变动
+
+> 如果type为feat和fix，则该 commit 将肯定出现在 Change log
+> 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。
+
 
 ## Github Pages 搭建网站
 ### 个人站点
