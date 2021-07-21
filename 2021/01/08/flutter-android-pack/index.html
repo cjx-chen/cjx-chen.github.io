@@ -29,7 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -429,7 +431,7 @@
 <pre><code>flutter doctor -v
 </code></pre>
 <p>这里我们要找的其实就是这个 java 地址：<br><img src="/api/project/9123846/files/24428365/imagePreview"><br>这时候你直接拷贝命令并进行输入，但这里也有个坑，就是如果文件夹中间带有空空，你需要用带引号扩上，例如：</p>
-<pre><code>D:\Program\Android\&#39;Android Studio&#39;\jre\bin\keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+<pre><code>D:\Program\Android\'Android Studio'\jre\bin\keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
 </code></pre>
 <p>但是我没有，我应该是这样：</p>
 <pre><code>C:\Users\86135\Downloads1\jre\bin\keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
@@ -459,24 +461,24 @@ storeFile=D:/key.jks
 <h2 id="配置-key-注册"><a href="#配置-key-注册" class="headerlink" title="配置 key 注册"></a>配置 key 注册</h2><p>key生成好后，需要在build.gradle文件中进行配置。这个过程其实很简单，就是粘贴复制一些东西，你是不需要知道这些文件的具体用处的。</p>
 <p>第一项：</p>
 <p>进入项目目录的 /android/app/build.gradle 文件，在 android{ 这一行前面,加入如下代码：</p>
-<pre><code>def keystorePropertiesFile = rootProject.file(&quot;key.properties&quot;)
+<pre><code>def keystorePropertiesFile = rootProject.file("key.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 </code></pre>
 <p><img src="/api/project/9123846/files/24428405/imagePreview"><br>把如下代码进行替换：<br><img src="/api/project/9123846/files/24428408/imagePreview"><br>替换成的代码：</p>
-<pre><code>signingConfigs &#123;
-    release &#123;
-        keyAlias keystoreProperties[&#39;keyAlias&#39;]
-        keyPassword keystoreProperties[&#39;keyPassword&#39;]
-        storeFile file(keystoreProperties[&#39;storeFile&#39;])
-        storePassword keystoreProperties[&#39;storePassword&#39;]
-    &#125;
-&#125;
-buildTypes &#123;
-    release &#123;
+<pre><code>signingConfigs {
+    release {
+        keyAlias keystoreProperties['keyAlias']
+        keyPassword keystoreProperties['keyPassword']
+        storeFile file(keystoreProperties['storeFile'])
+        storePassword keystoreProperties['storePassword']
+    }
+}
+buildTypes {
+    release {
         signingConfig signingConfigs.release
-    &#125;
-&#125;
+    }
+}
 </code></pre>
 <h2 id="生成-apk"><a href="#生成-apk" class="headerlink" title="生成 apk"></a>生成 apk</h2><p>直接在终端中输入 flutter build apk 就打包成功了，我们可以直接在终端输入 flutter install 让 apk 安装在虚拟机上；<br><img src="/api/project/9123846/files/24428423/imagePreview"><br>这样则是成功：<br><img src="/api/project/9123846/files/24428425/imagePreview"><br>生成成功后即可在 build -&gt; app -&gt; outputs -&gt; apk 文件夹中获取最终打包出来的 apk 文件安装试用：<br><img src="/api/project/9123846/files/24428428/imagePreview"></p>
 
@@ -776,7 +778,7 @@ buildTypes &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/01/04/Nodejs-install/">
+                <a href="/2021/01/04/nodejs-install/">
                     <div class="card-image">
                         
                         <img src="https://pic1.zhimg.com/v2-d00adad896ef932254359b2f0cd9857e_1440w.jpg?source=172ae18b" class="responsive-img" alt="Node.js 的安装及环境配置">

@@ -29,7 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -437,19 +439,19 @@
 <li>移动端分辨率及小程序自适应单位 RPX</li>
 </ul>
 <p>先把多余的东西删掉<br><img src="https://img-blog.csdnimg.cn/20200530130429651.png"><br>再重新新建 app.js 、app.json、app.wxss 文件<br><img src="https://img-blog.csdnimg.cn/20200530130540918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"><br>再在 pages 文件里新建一个 welcome 目录，把文件建全<br><img src="https://img-blog.csdnimg.cn/20200530130757627.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"><br>打开 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html">微信开放文档</a> ，点击框架，查看小程序的配置<br><img src="https://img-blog.csdnimg.cn/20200530131445860.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"><br>将红框的代码复制到 app.json 中，再针对自己创建的目录进行修改：</p>
-<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"pages"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"pages/welcome/welcome"</span><span class="token punctuation">]</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>打开 welcome.json，因为 json 文件不能为空，所以加上一个花括号，或者可以删除 json 文件：</p>
-<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
 
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>再打开 welcome.js 文件，加入以下代码：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token function">Page</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>最后在 welcome.wxml 文件中加入以下代码：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span><span class="token punctuation">></span></span>
@@ -469,61 +471,61 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>下面我们尝试将样式的代码都转移到 welcome.wxss 文件中：</p>
-<pre class=" language-css"><code class="language-css"><span class="token number">.</span>container&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.container</span></span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
   <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#b3d4db</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-page&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector">page</span><span class="token punctuation">{</span>
   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#b3d4db</span><span class="token punctuation">;</span>
   <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>user-image&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.user-image</span></span><span class="token punctuation">{</span>
   <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>rpx<span class="token punctuation">;</span>
   <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>rpx<span class="token punctuation">;</span>
   <span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token number">160</span>rpx<span class="token punctuation">;</span>
   <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">50%</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>user-name&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.user-name</span></span><span class="token punctuation">{</span>
   <span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token number">60</span>rpx<span class="token punctuation">;</span>
   <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">32</span>rpx<span class="token punctuation">;</span>
   <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>moto&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.moto</span></span><span class="token punctuation">{</span>
   <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">22</span>rpx<span class="token punctuation">;</span>
   <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
   <span class="token property">line-height</span><span class="token punctuation">:</span> <span class="token number">80</span>rpx<span class="token punctuation">;</span>
   <span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#405f80</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>moto-container&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.moto-container</span></span><span class="token punctuation">{</span>
   <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid <span class="token hexcode">#405f80</span><span class="token punctuation">;</span>
   <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">80</span>rpx<span class="token punctuation">;</span>
   <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>rpx<span class="token punctuation">;</span>
   <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
   <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
   <span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token number">200</span>rpx<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">/* flex 布局 弹性盒子模型 */</span>
 </code></pre>
 <p>再补充一下 app.wxss 文件内的代码：</p>
-<pre class=" language-css"><code class="language-css">text&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<pre class=" language-css"><code class="language-css"><span class="token selector">text</span><span class="token punctuation">{</span>
   <span class="token property">font-family</span><span class="token punctuation">:</span> MicroSoft Yahei<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>再打开 app.json 更改一下顶部状态栏的颜色：</p>
-<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"pages"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"pages/welcome/welcome"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"window"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token property">"window"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"navigationBarBackgroundColor"</span><span class="token operator">:</span> <span class="token string">"#b3d4db"</span>
-  &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>下面是 welcome.wxml 的代码：</p>
 <pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- wxml 是用来编写页面骨架的文件 --></span>

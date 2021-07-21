@@ -29,7 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -536,7 +538,7 @@ prism_plugin:
   min2read: <span class="token boolean">false</span> <span class="token comment" spellcheck="true"># 阅读时长.</span>
   readCount: <span class="token boolean">false</span> <span class="token comment" spellcheck="true"># 阅读次数.</span>
 </code></pre>
-<h4 id="添加emoji表情支持（可选的）"><a href="#添加emoji表情支持（可选的）" class="headerlink" title="添加emoji表情支持（可选的）"></a>添加emoji表情支持（可选的）</h4><p>本主题新增了对emoji表情的支持，使用到了 hexo-filter-github-emojis 的 Hexo 插件来支持 emoji表情的生成，把对应的markdown emoji语法（::,例如：:smile:）转变成会跳跃的emoji表情，安装命令如下：</p>
+<h4 id="添加emoji表情支持（可选的）"><a href="#添加emoji表情支持（可选的）" class="headerlink" title="添加emoji表情支持（可选的）"></a>添加emoji表情支持（可选的）</h4><p>本主题新增了对emoji表情的支持，使用到了 hexo-filter-github-emojis 的 Hexo 插件来支持 emoji表情的生成，把对应的markdown emoji语法（::,例如：<span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>）转变成会跳跃的emoji表情，安装命令如下：</p>
 <pre class=" language-bash"><code class="language-bash">cnpm <span class="token function">install</span> hexo-filter-github-emojis --save
 </code></pre>
 <p>在 Hexo 根目录下的 _config.yml 文件中，新增以下的配置项：</p>
@@ -602,7 +604,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          GITHUB_TOKEN: $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123; secrets.GITHUB_TOKEN &amp;#125;&amp;#125;</span>
+          GITHUB_TOKEN: <span class="token variable">${{ secrets.GITHUB_TOKEN }</span><span class="token punctuation">}</span>
           BRANCH: master <span class="token comment" spellcheck="true"># The branch the action should deploy to.</span>
           FOLDER: pub
 </code></pre>
@@ -833,9 +835,9 @@ deploy:  <span class="token comment" spellcheck="true">##和git仓库绑定有�
 </code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20210720152736190.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"></p>
 <h3 id="修改导航栏颜色"><a href="#修改导航栏颜色" class="headerlink" title="修改导航栏颜色"></a>修改导航栏颜色</h3><p>打开 themes/matery/source/css/matery.css 文件，找到bg-color这个属性，即为导航栏和底部的颜色</p>
-<pre class=" language-bash"><code class="language-bash">.bg-color <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+<pre class=" language-bash"><code class="language-bash">.bg-color <span class="token punctuation">{</span>
     background-image: linear-gradient<span class="token punctuation">(</span>to right, <span class="token comment" spellcheck="true">#8cbfb8 0%, #128c6f 100%);</span>
-<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20210720152810759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"></p>
 <blockquote>
