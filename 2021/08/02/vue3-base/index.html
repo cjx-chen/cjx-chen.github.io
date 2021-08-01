@@ -418,9 +418,9 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>在项目目录下打开终端，输入：<br><code>vue create &lt;项目名&gt;</code></p>
-<p>选择 Vue 3：<br><img src="https://img-blog.csdnimg.cn/36c10638ca614a319e330f9721cc70cb.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>项目自动创建好之后，根据提示的命令运行项目：<br><img src="https://img-blog.csdnimg.cn/cf5d4fd18acc46caa47f6cb1127cd300.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>运行完成后 Ctrl + 单击链接打开运行项目：<br><img src="https://img-blog.csdnimg.cn/bf6f737a17da447ba3a6c4db52cd1fc5.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>网页界面如下：<br><img src="https://img-blog.csdnimg.cn/3c704219879b421e9377db49044ade71.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>选择 Vue 3：<br><img src="https://img-blog.csdnimg.cn/36c10638ca614a319e330f9721cc70cb.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"></p>
+<p>项目自动创建好之后，根据提示的命令运行项目：<br><img src="https://img-blog.csdnimg.cn/cf5d4fd18acc46caa47f6cb1127cd300.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"></p>
+<p>运行完成后 Ctrl + 单击链接打开运行项目：<br><img src="https://img-blog.csdnimg.cn/bf6f737a17da447ba3a6c4db52cd1fc5.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"><br>网页界面如下：<br><img src="https://img-blog.csdnimg.cn/3c704219879b421e9377db49044ade71.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"></p>
 <h2 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h2><h3 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h3><h4 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h4><p>数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Message: {{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
@@ -708,14 +708,14 @@ export const mustUseProp = (tag: string, type: ?string, attr: string): boolean =
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>浏览器反馈：<br><img src="https://img-blog.csdnimg.cn/b8485ae83102473887e659996860dde9.png" alt="在这里插入图片描述"><br>我们这时如果在 input 框里修改 value 值后，等号后边会自动变为字符串拼接：<br><img src="https://img-blog.csdnimg.cn/d429c38bb8ec41e7b26f02c4c01913ed.png" alt="在这里插入图片描述"><br>这时，我们只需要给 <code>v-model</code> 添加一个修饰符 <code>number</code> 就可以了：</p>
+<p>浏览器反馈：<br><img src="https://img-blog.csdnimg.cn/b8485ae83102473887e659996860dde9.png"><br>我们这时如果在 input 框里修改 value 值后，等号后边会自动变为字符串拼接：<br><img src="https://img-blog.csdnimg.cn/d429c38bb8ec41e7b26f02c4c01913ed.png"><br>这时，我们只需要给 <code>v-model</code> 添加一个修饰符 <code>number</code> 就可以了：</p>
 <pre class=" language-html"><code class="language-html">&lt;input type="text" v-model.number = "v1"> 
 + 
 &lt;input type="text" v-model.number = "v2"> 
 = 
 {{v1+v2}}
 </code></pre>
-<p><img src="https://img-blog.csdnimg.cn/d724b9b848ce4968ade9c53727c905ef.png" alt="在这里插入图片描述"><br><strong>补充</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/d724b9b848ce4968ade9c53727c905ef.png"><br><strong>补充</strong></p>
 <p>修饰符是可以连用的！</p>
 <p>例如：</p>
 <pre class=" language-html"><code class="language-html">&lt;input type="text" v-model.number.lazy = "v1"> 
@@ -913,7 +913,7 @@ console.log(vm.count) // => 5
   }
 }).mount('#computed-basics')
 </code></pre>
-<p>运行结果如下：<br><img src="https://img-blog.csdnimg.cn/660dbe696deb467c8d85a421b5368639.png" alt="在这里插入图片描述"><br>这里声明了一个计算属性 <code>publishedBooksMessage</code>。</p>
+<p>运行结果如下：<br><img src="https://img-blog.csdnimg.cn/660dbe696deb467c8d85a421b5368639.png"><br>这里声明了一个计算属性 <code>publishedBooksMessage</code>。</p>
 <p>尝试更改应用程序 <code>data</code> 中 <code>books</code> 数组的值，你将看到 <code>publishedBooksMessage</code> 如何相应地更改。</p>
 <p>你可以像普通属性一样将数据绑定到模板中的计算属性。Vue 知道<code>vm.publishedBookMessage</code> 依赖于 <code>vm.author.books</code>，因此当 <code>vm.author.books</code> 发生改变时，所有依赖 <code>vm.publishedBookMessage</code> 绑定也会更新。而且最妙的是我们已经声明的方式创建了这个依赖关系：计算属性的 getter 函数没有副作用，这使得更易于测试和理解。</p>
 <h5 id="计算属性缓存-vs-方法"><a href="#计算属性缓存-vs-方法" class="headerlink" title="计算属性缓存 vs 方法"></a>计算属性缓存 vs 方法</h5><p>我们可以通过在表达式中调用方法来达到同样的效果：</p>
@@ -1000,7 +1000,7 @@ computed: {
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#watch-example'</span><span class="token punctuation">)</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 </code></pre>
-<p><img src="https://img-blog.csdnimg.cn/883ef6fe368f46f88d0b208d7c2453e8.png" alt="在这里插入图片描述"><br>在这个示例中，使用 <code>watch</code> 选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</p>
+<p><img src="https://img-blog.csdnimg.cn/883ef6fe368f46f88d0b208d7c2453e8.png"><br>在这个示例中，使用 <code>watch</code> 选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</p>
 <h5 id="计算属性-vs-侦听器"><a href="#计算属性-vs-侦听器" class="headerlink" title="计算属性 vs 侦听器"></a>计算属性 vs 侦听器</h5><p>Vue 提供了一种更通用的方式来观察和响应当前活动的实例上的数据变动：<strong>侦听属性</strong>。当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 <code>watch</code>——特别是如果你之前使用过 AngularJS。然而，通常更好的做法是使用计算属性而不是命令式的 <code>watch</code> 回调。细想一下这个例子：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ fullName }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 </code></pre>
