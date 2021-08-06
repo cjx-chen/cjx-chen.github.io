@@ -1,7 +1,7 @@
 ---
 title: Vue3 入门基础（一）
 date: 2021-08-02 02:07:50
-img: https://img-blog.csdnimg.cn/img_convert/de2eb89454a66222dcaf49f5848167d5.png
+img: https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b
 categories: 
 - 安装配置步骤
 - Vue3
