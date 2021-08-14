@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="微信小程序 页面跳转的四种方式, Blog | Jessieeeeee">
+    <meta name="keywords" content="【微信小程序】wx.login 和 wx.getUserProfile 同时使用问题, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>微信小程序 页面跳转的四种方式 | Blog | Jessieeeeee</title>
+    <title>【微信小程序】wx.login 和 wx.getUserProfile 同时使用问题 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -251,7 +251,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">微信小程序 页面跳转的四种方式</h1>
+                    <h1 class="description center-align post-title">【微信小程序】wx.login 和 wx.getUserProfile 同时使用问题</h1>
                 </div>
             </div>
         </div>
@@ -371,6 +371,10 @@
                                 <span class="chip bg-color">微信小程序</span>
                             </a>
                         
+                            <a href="/tags/API/">
+                                <span class="chip bg-color">API</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -392,7 +396,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-06
+                    2021-08-14
                 </div>
                 
 
@@ -413,75 +417,92 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="wx-navigateTo-OBJECT"><a href="#wx-navigateTo-OBJECT" class="headerlink" title="wx.navigateTo(OBJECT)"></a>wx.navigateTo(OBJECT)</h2><p>这是最普遍的一种跳转方式，其官方解释为：“保留当前页面，跳转到应用内的某个页面”类似于html中的 <code>window.location.href=" "</code></p>
-<pre class=" language-javascript"><code class="language-javascript">wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  url<span class="token punctuation">:</span> <span class="token string">'test?id=1'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在使用微信登录时，通常会在调用 <code>wx.login</code> 获取 <code>code</code> 后再通过 <code>wx.getUserProfile</code> 获取 <code>iv</code> 和 <code>encryptedData</code> （加密数据）一起发到后端进行登录验证；</p>
+<p>但是，在实际使用中如果在 <code>wx.login</code> 方法调用后再调用 <code>wx.getUserProfile</code> 会报错；</p>
+<h2 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h2><p><img src="https://img-blog.csdnimg.cn/ede8acb9f67646459cccccf61c046ade.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"><br>也就是说，不能在调用方法的回调中使用 <code>wx.getUserProfule()</code>；</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><strong>使用Promise.all()方法实现平级调用；</strong></p>
+<blockquote>
+<p><code>Promise.all()</code> 方法接收一个 <code>promise</code> 的 <code>iterable</code> 类型（注：<code>Array</code>，<code>Map</code>，<code>Set</code> 都属于ES6 的 <code>iterable</code> 类型）的输入，并且只返回一个 <code>Promise</code> 实例， 那个输入的所有<code>promise</code> 的 <code>resolve</code> 回调的结果是一个数组。这个 <code>Promise</code> 的 <code>resolve</code> 回调执行是在所有输入的 <code>promise</code> 的 <code>resolve</code> 回调都结束，或者输入的 <code>iterable</code> 里没有 <code>promise</code> 了的时候。它的 <code>reject</code> 回调执行是，只要任何一个输入的 <code>promise</code> 的 <code>reject</code> 回调执行或者输入不合法的 <code>promise</code> 就会立即抛出错误，并且 <code>reject</code> 的是第一个抛出的错误信息。</p>
+</blockquote>
+<p>简单点说就是会等到两个方法都回调成功该方法才会返回来值，返回值是一个数组。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="封装-wx-login-和-wx-getUserProfile-两个接口："><a href="#封装-wx-login-和-wx-getUserProfile-两个接口：" class="headerlink" title="封装 wx.login 和 wx.getUserProfile 两个接口："></a>封装 <code>wx.login</code> 和 <code>wx.getUserProfile</code> 两个接口：</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
+ * 使用promise封装用户信息接口
+ */</span>
+getUserInfo<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    wx<span class="token punctuation">.</span><span class="token function">getUserProfile</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      desc<span class="token punctuation">:</span> <span class="token string">'用户登录'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写</span>
+      success<span class="token punctuation">:</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      fail<span class="token punctuation">:</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+<span class="token comment" spellcheck="true">/**
+ * 使用promise封装wx.login接口
+ */</span>
+getLogin<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+   wx<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+     success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    fail<span class="token punctuation">:</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+       <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
-<p>实际效果如下：<br><img src="https://img-blog.csdnimg.cn/06cc6793b3a24847ab6bdc7ef151403d.png"><br>小程序中左上角有一个返回箭头，可返回上一个页面；</p>
-<p>也可以通过方法  <code>wx.navigateBack</code> 返回原页面；</p>
-<h2 id="wx-redirectTo-OBJECT"><a href="#wx-redirectTo-OBJECT" class="headerlink" title="wx.redirectTo(OBJECT)"></a>wx.redirectTo(OBJECT)</h2><p>关闭当前页面，跳转到应用内的某个页面。类似于html中的  <code>window.open('你所要跳转的页面');</code></p>
-<pre class=" language-javascript"><code class="language-javascript">wx<span class="token punctuation">.</span><span class="token function">redirectTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  url<span class="token punctuation">:</span> <span class="token string">'test?id=1'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
-<p>效果如下：<br><img src="https://img-blog.csdnimg.cn/94f360118a68455dac2b725a28e12d3c.png" alt="在这里插入图片描述">左上角没有返回箭头，不能返回上一个页面；</p>
-<h2 id="wx-switchTab-OBJECT"><a href="#wx-switchTab-OBJECT" class="headerlink" title="wx.switchTab(OBJECT)"></a>wx.switchTab(OBJECT)</h2><p>跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面；</p>
-<p>app.json：</p>
-<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"tabBar"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"list"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-      <span class="token property">"pagePath"</span><span class="token operator">:</span> <span class="token string">"index"</span><span class="token punctuation">,</span>
-      <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"首页"</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
-      <span class="token property">"pagePath"</span><span class="token operator">:</span> <span class="token string">"other"</span><span class="token punctuation">,</span>
-      <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"其他"</span>
-    <span class="token punctuation">}</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
+<h3 id="封装登录接口"><a href="#封装登录接口" class="headerlink" title="封装登录接口"></a>封装登录接口</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
+ * 登录接口
+ */</span>
+login<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">let</span> userRes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">let</span> loginRes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getLogin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">//使用promise.all()平级调用</span>
+  Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>userRes<span class="token punctuation">,</span>loginRes<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+   <span class="token keyword">let</span> param <span class="token operator">=</span> <span class="token punctuation">{</span>
+     code<span class="token punctuation">:</span> res<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>code<span class="token punctuation">,</span>
+     iv<span class="token punctuation">:</span> res<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>iv<span class="token punctuation">,</span>
+     encryptedData<span class="token punctuation">:</span> res<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>encryptedData
+   <span class="token punctuation">}</span>
+   <span class="token keyword">let</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+     method<span class="token punctuation">:</span> <span class="token string">"post"</span><span class="token punctuation">,</span>
+     url<span class="token punctuation">:</span> api<span class="token punctuation">.</span>apiName<span class="token punctuation">.</span>wxLogin<span class="token punctuation">,</span>
+     params<span class="token punctuation">:</span> param
+   <span class="token punctuation">}</span>
+   request<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+     wx<span class="token punctuation">.</span><span class="token function">setStorageSync</span><span class="token punctuation">(</span><span class="token string">'token'</span><span class="token punctuation">,</span> res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+     wx<span class="token punctuation">.</span><span class="token function">setStorageSync</span><span class="token punctuation">(</span><span class="token string">'hasLogin'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+     <span class="token comment" spellcheck="true">//获取用户信息</span>
+     <span class="token keyword">let</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+       method<span class="token punctuation">:</span> <span class="token string">"get"</span><span class="token punctuation">,</span>
+       url<span class="token punctuation">:</span> api<span class="token punctuation">.</span>apiName<span class="token punctuation">.</span>getUserInfo<span class="token punctuation">,</span>
+       params<span class="token punctuation">:</span> <span class="token keyword">null</span>
+     <span class="token punctuation">}</span>
+     request<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res2 <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+       wx<span class="token punctuation">.</span><span class="token function">hideLoading</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+       wx<span class="token punctuation">.</span><span class="token function">setStorageSync</span><span class="token punctuation">(</span><span class="token string">'userInfo'</span><span class="token punctuation">,</span> res2<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+       wx<span class="token punctuation">.</span><span class="token function">hideLoading</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>msg<span class="token punctuation">)</span>
+     <span class="token punctuation">}</span><span class="token punctuation">)</span>
+     <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       wx<span class="token punctuation">.</span><span class="token function">switchTab</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          url<span class="token punctuation">:</span> <span class="token string">'../../index/index'</span><span class="token punctuation">,</span>
+       <span class="token punctuation">}</span><span class="token punctuation">)</span>
+     <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">1500</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>msg<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<pre class=" language-javascript"><code class="language-javascript">wx<span class="token punctuation">.</span><span class="token function">switchTab</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  url<span class="token punctuation">:</span> <span class="token string">'/index'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
-<p><img src="https://img-blog.csdnimg.cn/7f199fc9bff741c184aafea2819bf2ff.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"><br><code>wx.navigateTo</code> 和 <code>wx.redirectTo</code> 不允许跳转到 tabbar 页面，只能用 <code>wx.switchTab</code> 跳转到 tabbar 页面；</p>
-<h2 id="wx-reLaunch-OBJECT"><a href="#wx-reLaunch-OBJECT" class="headerlink" title="wx.reLaunch(OBJECT)"></a>wx.reLaunch(OBJECT)</h2><p>关闭所有页面，打开到应用内的某个页面。</p>
-<p>跟 <code>wx.redirectTo</code> 一样左上角不会出现返回箭头，但两者却不完全相同；</p>
-<p>这里要提到小程序中的 <code>getCurrentPages()</code> 方法：</p>
-<p>在 <code>wx.navigateTo</code> 中，每跳转一个新的页面，其原始页面就会被加入堆栈，通过调用 <code>wx.navigateBack(OBJECT)</code> 可通过获取堆栈中保存的页面返回上一级或多级页面；</p>
-<p><code>wx.redirectTo</code> 方法则不会被加入堆栈，但仍可通过 <code>wx.navigateBack(OBJECT)</code> 方法返回之前堆栈中的页面；</p>
-<p><code>wx.reLaunch</code> 方法则会清空当前的堆栈。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 此处是A页面</span>
-wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  url<span class="token punctuation">:</span> <span class="token string">'B?id=1'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">// 此处是B页面</span>
-wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  url<span class="token punctuation">:</span> <span class="token string">'C?id=1'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">// 在C页面内 navigateBack，将返回b页面</span>
-wx<span class="token punctuation">.</span><span class="token function">navigateBack</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  delta<span class="token punctuation">:</span> <span class="token number">1</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 此处是B页面</span>
-wx<span class="token punctuation">.</span><span class="token function">redirectTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
- url<span class="token punctuation">:</span> <span class="token string">'C?id=1'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">// 在C页面内 navigateBack，则会返回a页面 </span>
-wx<span class="token punctuation">.</span><span class="token function">navigateBack</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
- delta<span class="token punctuation">:</span> <span class="token number">1</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 此处是B页面</span>
-wx<span class="token punctuation">.</span><span class="token function">reLaunch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
- url<span class="token punctuation">:</span> <span class="token string">'C?id=1'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">// 在C页面内 navigateBack，则无效</span>
 </code></pre>
 
                 
@@ -509,7 +530,7 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/08/06/redirect-methods/">http://cjx-chen.github.io/2021/08/06/redirect-methods/</a>
+                    <a href="http://cjx-chen.github.io/2021/08/14/wx-login-getuserprofile/">http://cjx-chen.github.io/2021/08/14/wx-login-getuserprofile/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -549,6 +570,10 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
                             
                                 <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                                     <span class="chip bg-color">微信小程序</span>
+                                </a>
+                            
+                                <a href="/tags/API/">
+                                    <span class="chip bg-color">API</span>
                                 </a>
                             
                         </div>
@@ -720,9 +745,10 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/08/14/wx-login-getuserprofile/">
                     <div class="card-image">
@@ -739,9 +765,9 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -754,6 +780,7 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -776,12 +803,12 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/06/mult-tag/">
+                <a href="/2021/08/06/redirect-methods/">
                     <div class="card-image">
                         
-                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="微信小程序 vant-weapp 实现多选标签">
+                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="微信小程序 页面跳转的四种方式">
                         
-                        <span class="card-title">微信小程序 vant-weapp 实现多选标签</span>
+                        <span class="card-title">微信小程序 页面跳转的四种方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
