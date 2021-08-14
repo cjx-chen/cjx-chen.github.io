@@ -1,5 +1,5 @@
 ---
-title: 【微信小程序报错解决方法】TypeError: Cannot read property ‘setData‘ of undefined
+title: 【微信小程序】报错解决方法 [TypeError: Cannot read property ‘setData‘ of undefined]
 date:  2021-08-14 17:51:39
 img: https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80
 categories: 
