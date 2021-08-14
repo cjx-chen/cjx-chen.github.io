@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【微信小程序】wx.login 和 wx.getUserProfile 同时使用问题, Blog | Jessieeeeee">
+    <meta name="keywords" content="【微信小程序】报错解决方法 [TypeError:Cannot read property &#39;setData&#39; of undefined], Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【微信小程序】wx.login 和 wx.getUserProfile 同时使用问题 | Blog | Jessieeeeee</title>
+    <title>【微信小程序】报错解决方法 [TypeError:Cannot read property &#39;setData&#39; of undefined] | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -251,7 +251,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【微信小程序】wx.login 和 wx.getUserProfile 同时使用问题</h1>
+                    <h1 class="description center-align post-title">【微信小程序】报错解决方法 [TypeError:Cannot read property &#39;setData&#39; of undefined]</h1>
                 </div>
             </div>
         </div>
@@ -371,8 +371,8 @@
                                 <span class="chip bg-color">微信小程序</span>
                             </a>
                         
-                            <a href="/tags/API/">
-                                <span class="chip bg-color">API</span>
+                            <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                                <span class="chip bg-color">报错解决方法</span>
                             </a>
                         
                     </div>
@@ -417,93 +417,76 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在使用微信登录时，通常会在调用 <code>wx.login</code> 获取 <code>code</code> 后再通过 <code>wx.getUserProfile</code> 获取 <code>iv</code> 和 <code>encryptedData</code> （加密数据）一起发到后端进行登录验证；</p>
-<p>但是，在实际使用中如果在 <code>wx.login</code> 方法调用后再调用 <code>wx.getUserProfile</code> 会报错；</p>
-<h2 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h2><p><img src="https://img-blog.csdnimg.cn/ede8acb9f67646459cccccf61c046ade.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"><br>也就是说，不能在调用方法的回调中使用 <code>wx.getUserProfule()</code>；</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><strong>使用Promise.all()方法实现平级调用；</strong></p>
-<blockquote>
-<p><code>Promise.all()</code> 方法接收一个 <code>promise</code> 的 <code>iterable</code> 类型（注：<code>Array</code>，<code>Map</code>，<code>Set</code> 都属于ES6 的 <code>iterable</code> 类型）的输入，并且只返回一个 <code>Promise</code> 实例， 那个输入的所有<code>promise</code> 的 <code>resolve</code> 回调的结果是一个数组。这个 <code>Promise</code> 的 <code>resolve</code> 回调执行是在所有输入的 <code>promise</code> 的 <code>resolve</code> 回调都结束，或者输入的 <code>iterable</code> 里没有 <code>promise</code> 了的时候。它的 <code>reject</code> 回调执行是，只要任何一个输入的 <code>promise</code> 的 <code>reject</code> 回调执行或者输入不合法的 <code>promise</code> 就会立即抛出错误，并且 <code>reject</code> 的是第一个抛出的错误信息。</p>
-</blockquote>
-<p>简单点说就是会等到两个方法都回调成功该方法才会返回来值，返回值是一个数组。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="封装-wx-login-和-wx-getUserProfile-两个接口："><a href="#封装-wx-login-和-wx-getUserProfile-两个接口：" class="headerlink" title="封装 wx.login 和 wx.getUserProfile 两个接口："></a>封装 <code>wx.login</code> 和 <code>wx.getUserProfile</code> 两个接口：</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
- * 使用promise封装用户信息接口
- */</span>
-getUserInfo<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    wx<span class="token punctuation">.</span><span class="token function">getUserProfile</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      desc<span class="token punctuation">:</span> <span class="token string">'用户登录'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写</span>
-      success<span class="token punctuation">:</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+                <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>自己在调用 <code>wx.getSystemInfo({})</code> 时，开发工具自动补全了代码。在 <code>success</code> 回调中按照以往的写法调用 <code>this.setData({ });</code> 时，报错：<code>TypeError: Cannot read property 'setData' of undefined</code>。</p>
+<p>相关代码如下：</p>
+<pre class=" language-javascript"><code class="language-javascript">  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面加载
+   */</span>
+  onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    wx<span class="token punctuation">.</span><span class="token function">getSystemInfo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          system_info<span class="token punctuation">:</span> res<span class="token punctuation">.</span>brand<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      fail<span class="token punctuation">:</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span>
+      fail<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">myShowError</span><span class="token punctuation">(</span><span class="token string">"获取手机系统信息"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      complete<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-<span class="token comment" spellcheck="true">/**
- * 使用promise封装wx.login接口
- */</span>
-getLogin<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
- <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-   wx<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-     success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    fail<span class="token punctuation">:</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-       <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
- <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
-<h3 id="封装登录接口"><a href="#封装登录接口" class="headerlink" title="封装登录接口"></a>封装登录接口</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
- * 登录接口
- */</span>
-login<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">let</span> userRes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token keyword">let</span> loginRes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getLogin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token comment" spellcheck="true">//使用promise.all()平级调用</span>
-  Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>userRes<span class="token punctuation">,</span>loginRes<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-   <span class="token keyword">let</span> param <span class="token operator">=</span> <span class="token punctuation">{</span>
-     code<span class="token punctuation">:</span> res<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>code<span class="token punctuation">,</span>
-     iv<span class="token punctuation">:</span> res<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>iv<span class="token punctuation">,</span>
-     encryptedData<span class="token punctuation">:</span> res<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>encryptedData
-   <span class="token punctuation">}</span>
-   <span class="token keyword">let</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
-     method<span class="token punctuation">:</span> <span class="token string">"post"</span><span class="token punctuation">,</span>
-     url<span class="token punctuation">:</span> api<span class="token punctuation">.</span>apiName<span class="token punctuation">.</span>wxLogin<span class="token punctuation">,</span>
-     params<span class="token punctuation">:</span> param
-   <span class="token punctuation">}</span>
-   request<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-     wx<span class="token punctuation">.</span><span class="token function">setStorageSync</span><span class="token punctuation">(</span><span class="token string">'token'</span><span class="token punctuation">,</span> res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
-     wx<span class="token punctuation">.</span><span class="token function">setStorageSync</span><span class="token punctuation">(</span><span class="token string">'hasLogin'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
-     <span class="token comment" spellcheck="true">//获取用户信息</span>
-     <span class="token keyword">let</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
-       method<span class="token punctuation">:</span> <span class="token string">"get"</span><span class="token punctuation">,</span>
-       url<span class="token punctuation">:</span> api<span class="token punctuation">.</span>apiName<span class="token punctuation">.</span>getUserInfo<span class="token punctuation">,</span>
-       params<span class="token punctuation">:</span> <span class="token keyword">null</span>
-     <span class="token punctuation">}</span>
-     request<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res2 <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-       wx<span class="token punctuation">.</span><span class="token function">hideLoading</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-       wx<span class="token punctuation">.</span><span class="token function">setStorageSync</span><span class="token punctuation">(</span><span class="token string">'userInfo'</span><span class="token punctuation">,</span> res2<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
-     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-       wx<span class="token punctuation">.</span><span class="token function">hideLoading</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>msg<span class="token punctuation">)</span>
-     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-     <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-       wx<span class="token punctuation">.</span><span class="token function">switchTab</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-          url<span class="token punctuation">:</span> <span class="token string">'../../index/index'</span><span class="token punctuation">,</span>
-       <span class="token punctuation">}</span><span class="token punctuation">)</span>
-     <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">1500</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>msg<span class="token punctuation">)</span>
+<p>仔细对比和之前绑定事件调用 <code>this.setData({ });</code> ，调用方式并没有什么差别。查阅资料发现要改成 <code>success: (res) =&gt; {};</code> 这种写法，而不是 <code>success: function (res) {};</code>，就可以正常使用了。</p>
+<pre class=" language-javascript"><code class="language-javascript">  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面加载
+   */</span>
+  onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    wx<span class="token punctuation">.</span><span class="token function">getSystemInfo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      success<span class="token punctuation">:</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          system_info<span class="token punctuation">:</span> res<span class="token punctuation">.</span>brand<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      fail<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">myShowError</span><span class="token punctuation">(</span><span class="token string">"获取手机系统信息"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      complete<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>将下列代码：</p>
+<pre class=" language-javascript"><code class="language-javascript">success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<p>改成以下代码：</p>
+<pre class=" language-javascript"><code class="language-javascript">success<span class="token punctuation">:</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>  <span class="token punctuation">{</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>原因：两种写法 <code>this</code> 指向不同；</p>
+<p>将下列两种情况分别运行一遍：</p>
+<pre class=" language-javascript"><code class="language-javascript">success<span class="token punctuation">:</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"(res) => { }时："</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
+<pre class=" language-javascript"><code class="language-javascript">success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"function (res)时："</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
+<p>运行结果对比分析：</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span>时：undefined
+<span class="token punctuation">(</span>res<span class="token punctuation">)</span> => <span class="token punctuation">{</span> <span class="token punctuation">}</span>时：<span class="token namespace">[object Object]</span>
+</code></pre>
+<p><code>function (res)</code> 写法时 ，<code>this</code> 是 <code>undefined</code> 未定义的。<br><code>(res) =&gt; { }</code> 写法时 <code>this</code> 是 <code>Object</code>。</p>
+<h2 id="分析总结"><a href="#分析总结" class="headerlink" title="分析总结"></a>分析总结</h2><ol>
+<li>如果函数作为对象的方法调用，<code>this</code> 指向的是这个上级对象，即调用方法的对象。</li>
+<li>如果是构造函数中的 <code>this</code>，则 <code>this</code> 指向新创建的对象本身。</li>
+</ol>
 
                 
             </div>
@@ -530,7 +513,7 @@ login<span class="token punctuation">:</span> <span class="token keyword">functi
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/08/14/wx-login-getuserprofile/">http://cjx-chen.github.io/2021/08/14/wx-login-getuserprofile/</a>
+                    <a href="http://cjx-chen.github.io/2021/08/14/wx-wrong1/">http://cjx-chen.github.io/2021/08/14/wx-wrong1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -572,8 +555,8 @@ login<span class="token punctuation">:</span> <span class="token keyword">functi
                                     <span class="chip bg-color">微信小程序</span>
                                 </a>
                             
-                                <a href="/tags/API/">
-                                    <span class="chip bg-color">API</span>
+                                <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                                    <span class="chip bg-color">报错解决方法</span>
                                 </a>
                             
                         </div>
@@ -745,10 +728,9 @@ login<span class="token punctuation">:</span> <span class="token keyword">functi
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2021/08/14/wx-login-getuserprofile/">
                     <div class="card-image">
@@ -765,9 +747,9 @@ login<span class="token punctuation">:</span> <span class="token keyword">functi
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -780,7 +762,6 @@ login<span class="token punctuation">:</span> <span class="token keyword">functi
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -803,12 +784,12 @@ login<span class="token punctuation">:</span> <span class="token keyword">functi
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/14/wx-wrong1/">
+                <a href="/2021/08/06/redirect-methods/">
                     <div class="card-image">
                         
-                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】报错解决方法 [TypeError:Cannot read property &#39;setData&#39; of undefined]">
+                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="微信小程序 页面跳转的四种方式">
                         
-                        <span class="card-title">【微信小程序】报错解决方法 [TypeError:Cannot read property &#39;setData&#39; of undefined]</span>
+                        <span class="card-title">微信小程序 页面跳转的四种方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -819,7 +800,7 @@ login<span class="token punctuation">:</span> <span class="token keyword">functi
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-06
                             </span>
                         <span class="publish-author">
                             
@@ -838,10 +819,6 @@ login<span class="token punctuation">:</span> <span class="token keyword">functi
                     
                     <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                         <span class="chip bg-color">微信小程序</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-                        <span class="chip bg-color">报错解决方法</span>
                     </a>
                     
                 </div>
