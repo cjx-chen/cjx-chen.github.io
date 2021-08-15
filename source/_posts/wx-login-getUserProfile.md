@@ -1,5 +1,5 @@
 ---
-title: 【微信小程序】wx.login 和 wx.getUserProfile 同时使用问题
+title: 【微信小程序】wx.login 和 wx.getUserProfile 平级调用问题
 date:  2021-08-14 18:17:44
 img: https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80
 categories: 
