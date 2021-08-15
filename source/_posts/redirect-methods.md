@@ -1,5 +1,5 @@
 ---
-title: 微信小程序 页面跳转的四种方式
+title: 【微信小程序】页面跳转的四种方式
 date: 2021-08-06 17:59:14
 img: https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80
 categories: 
