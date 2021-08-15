@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【微信小程序】手机号码解析失败解决方法</title>
+      <link href="/2021/08/15/wx-getphonefail/"/>
+      <url>/2021/08/15/wx-getphonefail/</url>
+      
+        <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在小程序开发中，获取用户信息、获取手机号是最常用到的功能。</p><p>但是有时可能会遇到“手机号解析失败”的问题，这个时候我们检查下代码是否是在获取手机号的回调中才调用的 <code>wx.login</code> 的方法。</p><p>官方文档说明如下：<br><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B</a><br><img src="https://img-blog.csdnimg.cn/230cf3031fea423ca3bd1ebe68688ff2.png"></p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>所有解决办法是提前调 <code>wx.login</code>，在获取手机号的回调方法中取检验登录状态，代码如下：</p><pre class=" language-javascript"><code class="language-javascript">onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>    wx<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">{</span>      success<span class="token punctuation">:</span> res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>        that<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>          code<span class="token punctuation">:</span> res<span class="token punctuation">.</span>code        <span class="token punctuation">}</span><span class="token punctuation">)</span>      <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//先登录在获取手机号</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token function">getPhoneNumber</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">let</span> encryptedData <span class="token operator">=</span> e<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>encryptedData    <span class="token keyword">let</span> iv <span class="token operator">=</span> e<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>iv    wx<span class="token punctuation">.</span><span class="token function">checkSession</span><span class="token punctuation">(</span><span class="token punctuation">{</span>      <span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">//session_key 未过期，并且在本生命周期一直有效</span>      <span class="token punctuation">}</span><span class="token punctuation">,</span>      <span class="token function">fail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// session_key 已经失效，需要重新执行登录流程</span>        wx<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">{</span>          success<span class="token punctuation">:</span> res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>            code <span class="token operator">=</span> res<span class="token punctuation">.</span>code            that<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>              code<span class="token punctuation">:</span> code            <span class="token punctuation">}</span><span class="token punctuation">)</span>          <span class="token punctuation">}</span>        <span class="token punctuation">}</span><span class="token punctuation">)</span>      <span class="token punctuation">}</span><span class="token punctuation">,</span>      <span class="token function">complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">//将code,encryptedData,iv传给后台进行解密</span>      <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">)</span>  <span class="token punctuation">}</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微信小程序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微信小程序 </tag>
+            
+            <tag> API </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【微信小程序】用户授权以及判断登录是否过期的方法</title>
       <link href="/2021/08/15/wx-loginornot/"/>
       <url>/2021/08/15/wx-loginornot/</url>
