@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【微信小程序】手机号码解析失败解决方法, Blog | Jessieeeeee">
+    <meta name="keywords" content="【微信小程序】字符超出一定长度变成省略号显示, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【微信小程序】手机号码解析失败解决方法 | Blog | Jessieeeeee</title>
+    <title>【微信小程序】字符超出一定长度变成省略号显示 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -251,7 +251,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【微信小程序】手机号码解析失败解决方法</h1>
+                    <h1 class="description center-align post-title">【微信小程序】字符超出一定长度变成省略号显示</h1>
                 </div>
             </div>
         </div>
@@ -371,10 +371,6 @@
                                 <span class="chip bg-color">微信小程序</span>
                             </a>
                         
-                            <a href="/tags/API/">
-                                <span class="chip bg-color">API</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -396,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-15
+                    2021-08-24
                 </div>
                 
 
@@ -417,43 +413,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在小程序开发中，获取用户信息、获取手机号是最常用到的功能。</p>
-<p>但是有时可能会遇到“手机号解析失败”的问题，这个时候我们检查下代码是否是在获取手机号的回调中才调用的 <code>wx.login</code> 的方法。</p>
-<p>官方文档说明如下：<br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B</a><br><img src="https://img-blog.csdnimg.cn/230cf3031fea423ca3bd1ebe68688ff2.png"></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>所有解决办法是提前调 <code>wx.login</code>，在获取手机号的回调方法中取检验登录状态，代码如下：</p>
-<pre class=" language-javascript"><code class="language-javascript">onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    wx<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      success<span class="token punctuation">:</span> res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        that<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-          code<span class="token punctuation">:</span> res<span class="token punctuation">.</span>code
-        <span class="token punctuation">}</span><span class="token punctuation">)</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//先登录在获取手机号</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token function">getPhoneNumber</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> encryptedData <span class="token operator">=</span> e<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>encryptedData
-    <span class="token keyword">let</span> iv <span class="token operator">=</span> e<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>iv
-    wx<span class="token punctuation">.</span><span class="token function">checkSession</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      <span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//session_key 未过期，并且在本生命周期一直有效</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token function">fail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// session_key 已经失效，需要重新执行登录流程</span>
-        wx<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-          success<span class="token punctuation">:</span> res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-            code <span class="token operator">=</span> res<span class="token punctuation">.</span>code
-            that<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-              code<span class="token punctuation">:</span> code
-            <span class="token punctuation">}</span><span class="token punctuation">)</span>
-          <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token function">complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//将code,encryptedData,iv传给后台进行解密</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-</code></pre>
+                <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/8f4603b9f5a543e0813df98542727928.png"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>.item-content {<br>  width: 120rpx;<br>  white-space: nowrap;<br>  overflow: hidden;<br>  text-overflow: ellipsis;<br>}</p>
+<blockquote>
+<p>宽度需要设定；</p>
+</blockquote>
 
                 
             </div>
@@ -480,7 +444,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/08/15/wx-getphonefail/">http://cjx-chen.github.io/2021/08/15/wx-getphonefail/</a>
+                    <a href="http://cjx-chen.github.io/2021/08/24/wx-ellipsis/">http://cjx-chen.github.io/2021/08/24/wx-ellipsis/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -520,10 +484,6 @@
                             
                                 <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                                     <span class="chip bg-color">微信小程序</span>
-                                </a>
-                            
-                                <a href="/tags/API/">
-                                    <span class="chip bg-color">API</span>
                                 </a>
                             
                         </div>
@@ -695,9 +655,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/08/24/wx-ellipsis/">
                     <div class="card-image">
@@ -714,9 +675,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -729,6 +690,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -747,12 +709,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/15/wx-loginornot/">
+                <a href="/2021/08/15/wx-getphonefail/">
                     <div class="card-image">
                         
-                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】用户授权以及判断登录是否过期的方法">
+                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】手机号码解析失败解决方法">
                         
-                        <span class="card-title">【微信小程序】用户授权以及判断登录是否过期的方法</span>
+                        <span class="card-title">【微信小程序】手机号码解析失败解决方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【微信小程序】字符超出一定长度变成省略号显示</title>
+      <link href="/2021/08/24/wx-ellipsis/"/>
+      <url>/2021/08/24/wx-ellipsis/</url>
+      
+        <content type="html"><![CDATA[<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/8f4603b9f5a543e0813df98542727928.png"></p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>.item-content {<br>  width: 120rpx;<br>  white-space: nowrap;<br>  overflow: hidden;<br>  text-overflow: ellipsis;<br>}</p><blockquote><p>宽度需要设定；</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微信小程序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微信小程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【微信小程序】手机号码解析失败解决方法</title>
       <link href="/2021/08/15/wx-getphonefail/"/>
       <url>/2021/08/15/wx-getphonefail/</url>
