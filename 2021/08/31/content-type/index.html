@@ -430,7 +430,7 @@ title=test&amp;sub%5B%5D=1&amp;sub%5B%5D=2&amp;sub%5B%5D=3
 <p> 首先，<code>Content-Type</code> 被指定为 <code>application/x-www-form-urlencoded</code>。其次，提交的数据按照 k<code>ey1=val1&amp;key2=val2</code> 的方式进行编码，<code>key</code> 和 <code>val</code> 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持。</p>
 <h2 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart/form-data"></a>multipart/form-data</h2><p> 这是另一种非常常见的 POST 数据提交的方式。我们在使用表单上传文件时，必须让 form 的 enctyped 等于这个值。关于处理上传请求的实战后续我会写文章来补充。</p>
 <p>来看一个请求示例：</p>
-<pre><code>POST http://192.168.2.12/index HTTP/1.1 
+<pre class=" language-html"><code class="language-html">POST http://192.168.2.12/index HTTP/1.1 
 Content-Type:multipart/form-data;
 
 boundary=--WebKitFormBoundaryrGKCBY7qhFd3TrwA 
@@ -455,25 +455,25 @@ $http<span class="token punctuation">.</span><span class="token function">post</
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 </code></pre>
 <p>最终发送的请求是：</p>
-<pre><code>POST http://www.example.com HTTP/1.1 
+<pre class=" language-html"><code class="language-html">POST http://www.example.com HTTP/1.1 
 Content-Type: application/json;charset=utf-8 
 {"title":"test","sub":"IT测试老兵"} 
 </code></pre>
 <p>这种方案，可以方便的提交复杂的结构化数据，特别适合 RESTful 的接口。各大抓包工具如 Chrome 自带的开发者工具、Firebug、Fiddler，都会以树形结构展示 JSON 数据，非常友好。</p>
 <p>但也有些服务端语言还没有支持这种方式，例如 php 就无法通过 $_POST 对象从上面的请求中获得内容。这时候，需要自己动手处理下：在请求头中 <code>Content-Type</code> 为 <code>application/json</code> 时，从 <code>php://input</code> 里获得原始输入流，再 <code>json_decode</code> 成对象。一些 php 框架已经开始这么做了。</p>
 <h2 id="text-xml"><a href="#text-xml" class="headerlink" title="text/xml"></a>text/xml</h2><p>XML-RPC（XML Remote Procedure Call）。它是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。典型的 XML-RPC 请求是这样的：</p>
-<pre><code>POST http://http://ws.webxml.com.cn/  HTTP/1.1 
+<pre class=" language-html"><code class="language-html">POST http://http://ws.webxml.com.cn/  HTTP/1.1 
 Content-Type: text/xml 
 
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
-  &lt;soap:Body&gt;
-    &lt;getSupportCityDatasetResponse xmlns="http://WebXml.com.cn/"&gt;
-      &lt;getSupportCityDatasetResult&gt;
-        &lt;xsd:schema&gt;schema&lt;/xsd:schema&gt;xml&lt;/getSupportCityDatasetResult&gt;
-    &lt;/getSupportCityDatasetResponse&gt;
-  &lt;/soap:Body&gt;
-&lt;/soap:Envelope&gt;
+<span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">soap:</span>Envelope</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsd</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>soap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.xmlsoap.org/soap/envelope/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">soap:</span>Body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>getSupportCityDatasetResponse</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://WebXml.com.cn/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>getSupportCityDatasetResult</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">xsd:</span>schema</span><span class="token punctuation">></span></span>schema<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">xsd:</span>schema</span><span class="token punctuation">></span></span>xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>getSupportCityDatasetResult</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>getSupportCityDatasetResponse</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">soap:</span>Body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">soap:</span>Envelope</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>XML-RPC 协议简单、功能够用，各种语言的实现都有。它的使用也很广泛，如 WordPress 的 XML-RPC Api，搜索引擎的 ping 服务等等。</p>
 
