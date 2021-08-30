@@ -1,0 +1,107 @@
+---
+title: Content-Type 四种常见取值
+date: 2021-08-31 01:16:28
+img: https://img2.baidu.com/it/u=3649388259,1540630197&fm=26&fmt=auto&gp=0.jpg
+categories: 
+- 前端
+tags:
+- API
+- POST
+---
+
+`Content-Type` 是指 http/https 发送信息至服务器时的内容编码类型，`ContentType` 用于表明发送数据流的类型，服务器根据编码类型使用特定的解析方式，获取数据流中的数据。
+
+在网络请求中，常用的 `Content-Type` 有如下：`text/html`, `text/plain`, `text/css`, `text/javascript`, `image/jpeg`, `image/png`, `image/gif`, `application/x-www-form-urlencoded`, `multipart/form-data`, `application/json`, `application/xml` 等。
+
+其中：`text/html`, `text/plain`, `text/css`, `text/javascript`, `image/jpeg`, `image/png`, `image/gif` 都是常见的页面资源类型。
+
+`application/x-www-form-urlencoded`, `multipart/form-data`, `application/json`, `application/xml` 这四个是ajax的请求，表单提交或上传文件的常用的资源类型。
+
+## application/x-www-form-urlencoded 
+
+最常见 POST 提交数据的方式。浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 `application/x-www-form-urlencoded` 方式提交数据。
+
+请求类似于下面这样：
+
+```
+POST http://192.168.2.12/index HTTP/1.1 
+Content-Type: application/x-www-form-urlencoded;charset=utf-8 
+title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3 
+```
+
+ 首先，`Content-Type` 被指定为 `application/x-www-form-urlencoded`。其次，提交的数据按照 k`ey1=val1&key2=val2` 的方式进行编码，`key` 和 `val` 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持。
+
+ ## multipart/form-data
+
+ 这是另一种非常常见的 POST 数据提交的方式。我们在使用表单上传文件时，必须让 form 的 enctyped 等于这个值。关于处理上传请求的实战后续我会写文章来补充。
+
+来看一个请求示例：
+
+```
+POST http://192.168.2.12/index HTTP/1.1 
+Content-Type:multipart/form-data;
+
+boundary=--WebKitFormBoundaryrGKCBY7qhFd3TrwA 
+---WebKitFormBoundaryrGKCBY7qhFd3TrwA 
+Content-Disposition: form-data; name="text" 
+title 
+---WebKitFormBoundaryrGKCBY7qhFd3TrwA 
+Content-Disposition:form-data;name="file"; filename="chrome.png" 
+Content-Type: image/png 
+PNG ... content of chrome.png ... 
+---WebKitFormBoundaryrGKCBY7qhFd3TrwA
+```
+
+上述示例中，首先生成了一个 boundary 用于分割不同的字段，为了避免与正文内容重复，boundary 很长很复杂。然后 `Content-Type` 里指明了数据是以 `mutipart/form-data` 来编码，本次请求的 boundary 是什么内容。消息主体里按照字段个数又分为多个结构类似的部分，每部分都是以 --boundary 开始，紧接着内容描述信息，然后是回车，最后是字段具体内容（文本或二进制）。
+
+如果传输的是文件，还要包含文件名和文件类型信息。消息主体最后以 --boundary-- 标示结束。这种方式一般用来上传文件，各大服务端语言对它也有着良好的支持。
+
+**上面提到的这两种 POST 数据的方式，都是浏览器原生支持的，而且现阶段原生 form 表单也只支持这两种方式。但是随着越来越多的 Web 站点，尤其是 Web/App，全部使用 Ajax 进行数据交互之后，我们完全可以定义新的数据提交方式，给开发带来更多便利。**
+
+ ## application/json
+
+application/json 关于这个 `Content-Type` 作为响应头大家应该并不会感到不陌生。实际上，现在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 JSON 字符串。由于 JSON 规范的流行，除了低版本 IE 之外的各大浏览器都原生支持 JSON.stringify，服务端语言也都有处理 JSON 的函数，使用 JSON 不会遇上什么麻烦。
+
+JSON 格式支持比键值对复杂得多的结构化数据，这一点也很有用。记得我几年前做一个项目时，需要提交的数据层次非常深，我就是把数据 JSON 序列化之后来提交的。不过当时我是把 JSON 字符串作为 `val`，仍然放在键值对里，以 `x-www-form-urlencoded` 方式提交。Google 的 AngularJS 中的 Ajax 功能，默认就是提交 JSON 字符串。
+
+例如下面这段代码：
+
+```javascript
+var data = {'title':'test', 'sub' : 'IT测试老兵'}; 
+$http.post(url, data).success(function(result) { 
+   ... 
+}); 
+```
+
+最终发送的请求是：
+
+```
+POST http://www.example.com HTTP/1.1 
+Content-Type: application/json;charset=utf-8 
+{"title":"test","sub":"IT测试老兵"} 
+```
+
+这种方案，可以方便的提交复杂的结构化数据，特别适合 RESTful 的接口。各大抓包工具如 Chrome 自带的开发者工具、Firebug、Fiddler，都会以树形结构展示 JSON 数据，非常友好。
+
+但也有些服务端语言还没有支持这种方式，例如 php 就无法通过 $_POST 对象从上面的请求中获得内容。这时候，需要自己动手处理下：在请求头中 `Content-Type` 为 `application/json` 时，从 `php://input` 里获得原始输入流，再 `json_decode` 成对象。一些 php 框架已经开始这么做了。
+
+## text/xml
+
+XML-RPC（XML Remote Procedure Call）。它是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。典型的 XML-RPC 请求是这样的：
+
+```
+POST http://http://ws.webxml.com.cn/  HTTP/1.1 
+Content-Type: text/xml 
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <getSupportCityDatasetResponse xmlns="http://WebXml.com.cn/">
+      <getSupportCityDatasetResult>
+        <xsd:schema>schema</xsd:schema>xml</getSupportCityDatasetResult>
+    </getSupportCityDatasetResponse>
+  </soap:Body>
+</soap:Envelope>
+```
+
+XML-RPC 协议简单、功能够用，各种语言的实现都有。它的使用也很广泛，如 WordPress 的 XML-RPC Api，搜索引擎的 ping 服务等等。
