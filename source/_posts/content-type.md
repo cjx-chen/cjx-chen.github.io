@@ -23,7 +23,7 @@ tags:
 
 请求类似于下面这样：
 
-```
+```html
 POST http://192.168.2.12/index HTTP/1.1 
 Content-Type: application/x-www-form-urlencoded;charset=utf-8 
 title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3 
