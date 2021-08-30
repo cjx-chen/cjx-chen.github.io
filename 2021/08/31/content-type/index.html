@@ -423,7 +423,7 @@
 <p><code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, <code>application/json</code>, <code>application/xml</code> 这四个是ajax的请求，表单提交或上传文件的常用的资源类型。</p>
 <h2 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application/x-www-form-urlencoded"></a>application/x-www-form-urlencoded</h2><p>最常见 POST 提交数据的方式。浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 <code>application/x-www-form-urlencoded</code> 方式提交数据。</p>
 <p>请求类似于下面这样：</p>
-<pre><code>POST http://192.168.2.12/index HTTP/1.1 
+<pre class=" language-html"><code class="language-html">POST http://192.168.2.12/index HTTP/1.1 
 Content-Type: application/x-www-form-urlencoded;charset=utf-8 
 title=test&amp;sub%5B%5D=1&amp;sub%5B%5D=2&amp;sub%5B%5D=3 
 </code></pre>
