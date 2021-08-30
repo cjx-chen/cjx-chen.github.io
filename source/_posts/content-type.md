@@ -37,7 +37,7 @@ title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3
 
 来看一个请求示例：
 
-```
+```html
 POST http://192.168.2.12/index HTTP/1.1 
 Content-Type:multipart/form-data;
 
@@ -75,7 +75,7 @@ $http.post(url, data).success(function(result) {
 
 最终发送的请求是：
 
-```
+```html
 POST http://www.example.com HTTP/1.1 
 Content-Type: application/json;charset=utf-8 
 {"title":"test","sub":"IT测试老兵"} 
@@ -89,7 +89,7 @@ Content-Type: application/json;charset=utf-8
 
 XML-RPC（XML Remote Procedure Call）。它是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。典型的 XML-RPC 请求是这样的：
 
-```
+```html
 POST http://http://ws.webxml.com.cn/  HTTP/1.1 
 Content-Type: text/xml 
 
