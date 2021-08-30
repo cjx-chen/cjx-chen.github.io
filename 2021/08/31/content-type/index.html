@@ -427,7 +427,7 @@
 Content-Type: application/x-www-form-urlencoded;charset=utf-8 
 title=test&amp;sub%5B%5D=1&amp;sub%5B%5D=2&amp;sub%5B%5D=3 
 </code></pre>
-<p> 首先，<code>Content-Type</code> 被指定为 <code>application/x-www-form-urlencoded</code>。其次，提交的数据按照 k<code>ey1=val1&amp;key2=val2</code> 的方式进行编码，<code>key</code> 和 <code>val</code> 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持。</p>
+<p> 首先，<code>Content-Type</code> 被指定为 <code>application/x-www-form-urlencoded</code>。其次，提交的数据按照 <code>key1=val1&amp;key2=val2</code> 的方式进行编码，<code>key</code> 和 <code>val</code> 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持。</p>
 <h2 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart/form-data"></a>multipart/form-data</h2><p> 这是另一种非常常见的 POST 数据提交的方式。我们在使用表单上传文件时，必须让 form 的 enctyped 等于这个值。关于处理上传请求的实战后续我会写文章来补充。</p>
 <p>来看一个请求示例：</p>
 <pre class=" language-html"><code class="language-html">POST http://192.168.2.12/index HTTP/1.1 
