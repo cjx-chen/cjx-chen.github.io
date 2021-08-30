@@ -29,7 +29,7 @@ Content-Type: application/x-www-form-urlencoded;charset=utf-8
 title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3 
 ```
 
- 首先，`Content-Type` 被指定为 `application/x-www-form-urlencoded`。其次，提交的数据按照 k`ey1=val1&key2=val2` 的方式进行编码，`key` 和 `val` 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持。
+ 首先，`Content-Type` 被指定为 `application/x-www-form-urlencoded`。其次，提交的数据按照 `key1=val1&key2=val2` 的方式进行编码，`key` 和 `val` 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持。
 
  ## multipart/form-data
 
