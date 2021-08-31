@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Content-Type 四种常见取值, Blog | Jessieeeeee">
+    <meta name="keywords" content="【微信小程序】全局变量的定义与使用, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Content-Type 四种常见取值 | Blog | Jessieeeeee</title>
+    <title>【微信小程序】全局变量的定义与使用 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -246,12 +246,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://img2.baidu.com/it/u=3649388259,1540630197&fm=26&fmt=auto&gp=0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Content-Type 四种常见取值</h1>
+                    <h1 class="description center-align post-title">【微信小程序】全局变量的定义与使用</h1>
                 </div>
             </div>
         </div>
@@ -367,12 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/API/">
-                                <span class="chip bg-color">API</span>
-                            </a>
-                        
-                            <a href="/tags/POST/">
-                                <span class="chip bg-color">POST</span>
+                            <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                                <span class="chip bg-color">微信小程序</span>
                             </a>
                         
                     </div>
@@ -383,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                前端
+                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
+                                微信小程序
                             </a>
                         
                     </div>
@@ -417,65 +413,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><code>Content-Type</code> 是指 http/https 发送信息至服务器时的内容编码类型，<code>ContentType</code> 用于表明发送数据流的类型，服务器根据编码类型使用特定的解析方式，获取数据流中的数据。</p>
-<p>在网络请求中，常用的 <code>Content-Type</code> 有如下：<code>text/html</code>, <code>text/plain</code>, <code>text/css</code>, <code>text/javascript</code>, <code>image/jpeg</code>, <code>image/png</code>, <code>image/gif</code>, <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, <code>application/json</code>, <code>application/xml</code> 等。</p>
-<p>其中：<code>text/html</code>, <code>text/plain</code>, <code>text/css</code>, <code>text/javascript</code>, <code>image/jpeg</code>, <code>image/png</code>, <code>image/gif</code> 都是常见的页面资源类型。</p>
-<p><code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, <code>application/json</code>, <code>application/xml</code> 这四个是ajax的请求，表单提交或上传文件的常用的资源类型。</p>
-<h2 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application/x-www-form-urlencoded"></a>application/x-www-form-urlencoded</h2><p>最常见 POST 提交数据的方式。浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 <code>application/x-www-form-urlencoded</code> 方式提交数据。</p>
-<p>请求类似于下面这样：</p>
-<pre class=" language-html"><code class="language-html">POST http://192.168.2.12/index HTTP/1.1 
-Content-Type: application/x-www-form-urlencoded;charset=utf-8 
-title=test&amp;sub%5B%5D=1&amp;sub%5B%5D=2&amp;sub%5B%5D=3 
+                <h2 id="全局变量的定义"><a href="#全局变量的定义" class="headerlink" title="全局变量的定义"></a>全局变量的定义</h2><p>在你初次打开 app.js 文件时，很容易混淆。在 <code>onLaunch</code> 函数里是有个 <code>globalData</code> 对象，但请注意，你的全局变量不是写在这里，而是另外在函数外定义一个 <code>globalData</code>。</p>
+<p>例如下图：<br><img src="https://img-blog.csdnimg.cn/e74993b3afd946acb2f01bfccca31dfa.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Za15Za15Za15Za16KaB5oqx5oqx,size_20,color_FFFFFF,t_70,g_se,x_16"><br><code>globalData</code> 一定要定义在与函数同级的位置。然后在<code>globalData</code> 里面编写你的全局变量的值。</p>
+<h2 id="全局变量的赋值"><a href="#全局变量的赋值" class="headerlink" title="全局变量的赋值"></a>全局变量的赋值</h2><p>一般初始化的时候会给空值或者固定值，然后通过后期的小程序使用过程中改变全局变量。</p>
+<p>全局变量值得改变有两个地方。一是在 app.js 文件中改变。二是在其他 js 文件中改变。</p>
+<p>在 app.js 中，你只需要通过 <code>this.globalData.XXXX = XXX</code> 进行赋值即可。不能使用 <code>this.setData</code> 进行赋值。</p>
+<p>在其他 js 文件中，我们首先要引入全局变量：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">getApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<p> 首先，<code>Content-Type</code> 被指定为 <code>application/x-www-form-urlencoded</code>。其次，提交的数据按照 <code>key1=val1&amp;key2=val2</code> 的方式进行编码，<code>key</code> 和 <code>val</code> 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持。</p>
-<h2 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart/form-data"></a>multipart/form-data</h2><p> 这是另一种非常常见的 POST 数据提交的方式。我们在使用表单上传文件时，必须让 form 的 enctyped 等于这个值。关于处理上传请求的实战后续我会写文章来补充。</p>
-<p>来看一个请求示例：</p>
-<pre class=" language-html"><code class="language-html">POST http://192.168.2.12/index HTTP/1.1 
-Content-Type:multipart/form-data;
-
-boundary=--WebKitFormBoundaryrGKCBY7qhFd3TrwA 
----WebKitFormBoundaryrGKCBY7qhFd3TrwA 
-Content-Disposition: form-data; name="text" 
-title 
----WebKitFormBoundaryrGKCBY7qhFd3TrwA 
-Content-Disposition:form-data;name="file"; filename="chrome.png" 
-Content-Type: image/png 
-PNG ... content of chrome.png ... 
----WebKitFormBoundaryrGKCBY7qhFd3TrwA
+<p>然后通过 <code>app</code> 去调用 <code>globalData</code>。</p>
+<p>例如：</p>
+<pre class=" language-javascript"><code class="language-javascript">app<span class="token punctuation">.</span>globalData<span class="token punctuation">.</span>XXXX <span class="token operator">=</span> XXX
 </code></pre>
-<p>上述示例中，首先生成了一个 boundary 用于分割不同的字段，为了避免与正文内容重复，boundary 很长很复杂。然后 <code>Content-Type</code> 里指明了数据是以 <code>mutipart/form-data</code> 来编码，本次请求的 boundary 是什么内容。消息主体里按照字段个数又分为多个结构类似的部分，每部分都是以 –boundary 开始，紧接着内容描述信息，然后是回车，最后是字段具体内容（文本或二进制）。</p>
-<p>如果传输的是文件，还要包含文件名和文件类型信息。消息主体最后以 –boundary– 标示结束。这种方式一般用来上传文件，各大服务端语言对它也有着良好的支持。</p>
-<p><strong>上面提到的这两种 POST 数据的方式，都是浏览器原生支持的，而且现阶段原生 form 表单也只支持这两种方式。但是随着越来越多的 Web 站点，尤其是 Web/App，全部使用 Ajax 进行数据交互之后，我们完全可以定义新的数据提交方式，给开发带来更多便利。</strong></p>
-<h2 id="application-json"><a href="#application-json" class="headerlink" title="application/json"></a>application/json</h2><p>application/json 关于这个 <code>Content-Type</code> 作为响应头大家应该并不会感到不陌生。实际上，现在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 JSON 字符串。由于 JSON 规范的流行，除了低版本 IE 之外的各大浏览器都原生支持 JSON.stringify，服务端语言也都有处理 JSON 的函数，使用 JSON 不会遇上什么麻烦。</p>
-<p>JSON 格式支持比键值对复杂得多的结构化数据，这一点也很有用。记得我几年前做一个项目时，需要提交的数据层次非常深，我就是把数据 JSON 序列化之后来提交的。不过当时我是把 JSON 字符串作为 <code>val</code>，仍然放在键值对里，以 <code>x-www-form-urlencoded</code> 方式提交。Google 的 AngularJS 中的 Ajax 功能，默认就是提交 JSON 字符串。</p>
-<p>例如下面这段代码：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'title'</span><span class="token punctuation">:</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'sub'</span> <span class="token punctuation">:</span> <span class="token string">'IT测试老兵'</span><span class="token punctuation">}</span><span class="token punctuation">;</span> 
-$http<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-   <span class="token operator">...</span> 
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<h2 id="全局变量的使用"><a href="#全局变量的使用" class="headerlink" title="全局变量的使用"></a>全局变量的使用</h2><p>使用全局变量分为两种情况，一是在 app.js 文件中使用，二是在其他 js 文件中使用。</p>
+<p>在 app.js 文件中使用时直接通过 <code>this.globalData.XXXX</code> 即可使用。</p>
+<p>在其他 js 文件中使用先获取全局对象：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">getApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<p>最终发送的请求是：</p>
-<pre class=" language-html"><code class="language-html">POST http://www.example.com HTTP/1.1 
-Content-Type: application/json;charset=utf-8 
-{"title":"test","sub":"IT测试老兵"} 
-</code></pre>
-<p>这种方案，可以方便的提交复杂的结构化数据，特别适合 RESTful 的接口。各大抓包工具如 Chrome 自带的开发者工具、Firebug、Fiddler，都会以树形结构展示 JSON 数据，非常友好。</p>
-<p>但也有些服务端语言还没有支持这种方式，例如 php 就无法通过 $_POST 对象从上面的请求中获得内容。这时候，需要自己动手处理下：在请求头中 <code>Content-Type</code> 为 <code>application/json</code> 时，从 <code>php://input</code> 里获得原始输入流，再 <code>json_decode</code> 成对象。一些 php 框架已经开始这么做了。</p>
-<h2 id="text-xml"><a href="#text-xml" class="headerlink" title="text/xml"></a>text/xml</h2><p>XML-RPC（XML Remote Procedure Call）。它是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。典型的 XML-RPC 请求是这样的：</p>
-<pre class=" language-html"><code class="language-html">POST http://http://ws.webxml.com.cn/  HTTP/1.1 
-Content-Type: text/xml 
-
-<span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">soap:</span>Envelope</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsd</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>soap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.xmlsoap.org/soap/envelope/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">soap:</span>Body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>getSupportCityDatasetResponse</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://WebXml.com.cn/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>getSupportCityDatasetResult</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">xsd:</span>schema</span><span class="token punctuation">></span></span>schema<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">xsd:</span>schema</span><span class="token punctuation">></span></span>xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>getSupportCityDatasetResult</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>getSupportCityDatasetResponse</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">soap:</span>Body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">soap:</span>Envelope</span><span class="token punctuation">></span></span>
-</code></pre>
-<p>XML-RPC 协议简单、功能够用，各种语言的实现都有。它的使用也很广泛，如 WordPress 的 XML-RPC Api，搜索引擎的 ping 服务等等。</p>
+<p>接着通过 <code>app.globalData.XXXX</code> 调用即可。</p>
+<h2 id="全局变量的有效期"><a href="#全局变量的有效期" class="headerlink" title="全局变量的有效期"></a>全局变量的有效期</h2><p>全局变量的有效期只存在于当前使用的状态下，一旦小程序被用户退出或者微信自身清理之后，将不保留全局变量。所以你需要根据自己的需求进行设置全局变量，合理的应用。</p>
 
                 
             </div>
@@ -502,7 +458,7 @@ Content-Type: text/xml
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/08/31/content-type/">http://cjx-chen.github.io/2021/08/31/content-type/</a>
+                    <a href="http://cjx-chen.github.io/2021/08/31/wx-globaldata/">http://cjx-chen.github.io/2021/08/31/wx-globaldata/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -540,12 +496,8 @@ Content-Type: text/xml
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/API/">
-                                    <span class="chip bg-color">API</span>
-                                </a>
-                            
-                                <a href="/tags/POST/">
-                                    <span class="chip bg-color">POST</span>
+                                <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                                    <span class="chip bg-color">微信小程序</span>
                                 </a>
                             
                         </div>
@@ -717,9 +669,10 @@ Content-Type: text/xml
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/08/31/wx-globaldata/">
                     <div class="card-image">
@@ -736,9 +689,9 @@ Content-Type: text/xml
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -751,6 +704,7 @@ Content-Type: text/xml
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -769,12 +723,12 @@ Content-Type: text/xml
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/25/wx-newslist/">
+                <a href="/2021/08/31/content-type/">
                     <div class="card-image">
                         
-                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】实现新闻列表（文字垂直居上、垂直居下）">
+                        <img src="https://img2.baidu.com/it/u=3649388259,1540630197&fm=26&fmt=auto&gp=0.jpg" class="responsive-img" alt="Content-Type 四种常见取值">
                         
-                        <span class="card-title">【微信小程序】实现新闻列表（文字垂直居上、垂直居下）</span>
+                        <span class="card-title">Content-Type 四种常见取值</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -785,14 +739,14 @@ Content-Type: text/xml
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    微信小程序
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
@@ -802,8 +756,12 @@ Content-Type: text/xml
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                        <span class="chip bg-color">微信小程序</span>
+                    <a href="/tags/API/">
+                        <span class="chip bg-color">API</span>
+                    </a>
+                    
+                    <a href="/tags/POST/">
+                        <span class="chip bg-color">POST</span>
                     </a>
                     
                 </div>
