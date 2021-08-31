@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【微信小程序】全局变量的定义与使用, Blog | Jessieeeeee">
+    <meta name="keywords" content="【微信小程序】使用函数防抖与函数节流, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【微信小程序】全局变量的定义与使用 | Blog | Jessieeeeee</title>
+    <title>【微信小程序】使用函数防抖与函数节流 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -251,7 +251,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【微信小程序】全局变量的定义与使用</h1>
+                    <h1 class="description center-align post-title">【微信小程序】使用函数防抖与函数节流</h1>
                 </div>
             </div>
         </div>
@@ -371,6 +371,10 @@
                                 <span class="chip bg-color">微信小程序</span>
                             </a>
                         
+                            <a href="/tags/%E4%BC%98%E5%8C%96-js/">
+                                <span class="chip bg-color">优化 js</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -413,25 +417,205 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="全局变量的定义"><a href="#全局变量的定义" class="headerlink" title="全局变量的定义"></a>全局变量的定义</h2><p>在你初次打开 app.js 文件时，很容易混淆。在 <code>onLaunch</code> 函数里是有个 <code>globalData</code> 对象，但请注意，你的全局变量不是写在这里，而是另外在函数外定义一个 <code>globalData</code>。</p>
-<p>例如下图：<br><img src="https://img-blog.csdnimg.cn/e74993b3afd946acb2f01bfccca31dfa.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Za15Za15Za15Za16KaB5oqx5oqx,size_20,color_FFFFFF,t_70,g_se,x_16"><br><code>globalData</code> 一定要定义在与函数同级的位置。然后在<code>globalData</code> 里面编写你的全局变量的值。</p>
-<h2 id="全局变量的赋值"><a href="#全局变量的赋值" class="headerlink" title="全局变量的赋值"></a>全局变量的赋值</h2><p>一般初始化的时候会给空值或者固定值，然后通过后期的小程序使用过程中改变全局变量。</p>
-<p>全局变量值得改变有两个地方。一是在 app.js 文件中改变。二是在其他 js 文件中改变。</p>
-<p>在 app.js 中，你只需要通过 <code>this.globalData.XXXX = XXX</code> 进行赋值即可。不能使用 <code>this.setData</code> 进行赋值。</p>
-<p>在其他 js 文件中，我们首先要引入全局变量：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">getApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <p>函数防抖和函数节流都是老生常谈的问题了。这两种方式都能优化 js 的性能。有些人可能会搞混两个的概念。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h3><p><strong>函数防抖</strong>： 英文 debounce 有防反跳的意思，大致就是指防止重复触发。</p>
+<p>那么，函数防抖，真正的含义是：延迟函数执行。即不管 debounce 函数触发了多久，只在最后一次触发 debounce 函数时，才定义 setTimeout，到达间隔时间再执行 需要防抖的函数。</p>
+<p><strong>用处：多用于 input 框输入时，显示匹配的输入内容的情况。</strong></p>
+<h3 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h3><p><strong>函数节流</strong>： 英文 throttle 有节流阀的意思。大致意思也是 节约触发的频率</p>
+<p>那么，函数节流，真正的含义是：单位时间 n 秒内，第一次触发函数并执行，以后 n 秒内不管触发多少次，都不执行。直到下一个单位时间 n 秒，第一次触发函数并执行，这个 n 秒内不管函数多少次都不执行。</p>
+<p><strong>用处：多用于页面 scroll 滚动，或者窗口 resize，或者防止按钮重复点击等情况。</strong></p>
+<hr>
+<p>其实如果只根据控制函数触发的频率是不好区分这两个概念的。我认为两个函数都能达到防止重复触发的功能。但是函数防抖是 n 秒后延迟执行；而函数节流是立马执行，n 秒后再立马执行。</p>
+<h2 id="方法封装"><a href="#方法封装" class="headerlink" title="方法封装"></a>方法封装</h2><p>在小程序中，函数防抖、函数节流的使用方式：</p>
+<p>一般都会把这两种方法封装在公用的 tool.js 中：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/* 函数节流 */</span>
+<span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span> interval<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> enterTime <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment" spellcheck="true">// 触发的时间</span>
+  <span class="token keyword">const</span> gapTime <span class="token operator">=</span> interval <span class="token operator">||</span> <span class="token number">300</span> <span class="token comment" spellcheck="true">// 间隔时间，如果interval不传，则默认300ms</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> context <span class="token operator">=</span> <span class="token keyword">this</span>
+    <span class="token keyword">const</span> backTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 第一次函数return即触发的时间</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>backTime <span class="token operator">-</span> enterTime <span class="token operator">></span> gapTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span>
+      enterTime <span class="token operator">=</span> backTime <span class="token comment" spellcheck="true">// 赋值给第一次触发的时间，这样就保存了第二次触发的时间</span>
+    <span class="token punctuation">}</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'节流成功!'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* 函数防抖 */</span>
+<span class="token keyword">function</span> <span class="token function">debounce</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span> interval<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> timer
+  <span class="token keyword">const</span> gapTime <span class="token operator">=</span> interval <span class="token operator">||</span> <span class="token number">1000</span> <span class="token comment" spellcheck="true">// 间隔时间，如果interval不传，则默认1000ms</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
+    <span class="token keyword">const</span> context <span class="token operator">=</span> <span class="token keyword">this</span>
+    <span class="token keyword">const</span> args <span class="token operator">=</span> arguments <span class="token comment" spellcheck="true">// 保存此处的arguments，因为setTimeout是全局的，arguments不是防抖函数需要的。</span>
+    timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> gapTime<span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'防抖成功!'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  throttle<span class="token punctuation">,</span>
+  debounce
+<span class="token punctuation">}</span>
 </code></pre>
-<p>然后通过 <code>app</code> 去调用 <code>globalData</code>。</p>
-<p>例如：</p>
-<pre class=" language-javascript"><code class="language-javascript">app<span class="token punctuation">.</span>globalData<span class="token punctuation">.</span>XXXX <span class="token operator">=</span> XXX
+<h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><p>search-list.wxml：</p>
+<pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!--pages/search-list/search-list.wxml--></span>
+<span class="token comment" spellcheck="true">&lt;!-- 顶部搜索框 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>van-search</span> 
+  <span class="token attr-name">focus</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+  <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{ value }}<span class="token punctuation">"</span></span> 
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>单词<span class="token punctuation">"</span></span>
+  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>请输入搜索关键字<span class="token punctuation">"</span></span> 
+  <span class="token attr-name">shape</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>round<span class="token punctuation">"</span></span>
+  <span class="token attr-name">use-action-slot</span>
+  <span class="token attr-name"><span class="token namespace">bind:</span>search</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>onSearch<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">bind:</span>change</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>onChange<span class="token punctuation">"</span></span>
+  <span class="token attr-name">clearable</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>action<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">bind:</span>tap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>onClick<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>搜索<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>van-search</span><span class="token punctuation">></span></span>
 </code></pre>
-<h2 id="全局变量的使用"><a href="#全局变量的使用" class="headerlink" title="全局变量的使用"></a>全局变量的使用</h2><p>使用全局变量分为两种情况，一是在 app.js 文件中使用，二是在其他 js 文件中使用。</p>
-<p>在 app.js 文件中使用时直接通过 <code>this.globalData.XXXX</code> 即可使用。</p>
-<p>在其他 js 文件中使用先获取全局对象：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">getApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<p>search-list.json：</p>
+<pre class=" language-json"><code class="language-json"><span class="token property">"usingComponents"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"van-search"</span><span class="token operator">:</span> <span class="token string">"@vant/weapp/search/index"</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<p>接着通过 <code>app.globalData.XXXX</code> 调用即可。</p>
-<h2 id="全局变量的有效期"><a href="#全局变量的有效期" class="headerlink" title="全局变量的有效期"></a>全局变量的有效期</h2><p>全局变量的有效期只存在于当前使用的状态下，一旦小程序被用户退出或者微信自身清理之后，将不保留全局变量。所以你需要根据自己的需求进行设置全局变量，合理的应用。</p>
+<p>search-list.js：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// pages/search-list/search-list.js</span>
+
+<span class="token keyword">import</span> tool <span class="token keyword">from</span> <span class="token string">'../../utils/tool.js'</span>
+
+<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面的初始数据
+   */</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    SearchList<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 检测搜索框输入
+   */</span>
+  onChange<span class="token punctuation">:</span> tool<span class="token punctuation">.</span><span class="token function">debounce</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// console.log(msg)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>detail<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      value<span class="token punctuation">:</span> msg<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>detail<span class="token punctuation">,</span>
+      SearchList<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSearchList</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 按Enter搜索
+   */</span>
+  onSearch<span class="token punctuation">:</span> tool<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'搜索'</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSearchList</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 点击搜索
+   */</span>
+  onClick<span class="token punctuation">:</span> tool<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// console.log('搜索' + this.data.value)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      SearchList<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSearchList</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">''</span> <span class="token operator">||</span> <span class="token keyword">this</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>SearchList<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      wx<span class="token punctuation">.</span><span class="token function">showToast</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">'查询不到该单词'</span><span class="token punctuation">,</span>
+        icon<span class="token punctuation">:</span> <span class="token string">'none'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面加载
+   */</span>
+  onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面初次渲染完成
+   */</span>
+  onReady<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面显示
+   */</span>
+  onShow<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面隐藏
+   */</span>
+  onHide<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面卸载
+   */</span>
+  onUnload<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */</span>
+  onPullDownRefresh<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面上拉触底事件的处理函数
+   */</span>
+  onReachBottom<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 用户点击右上角分享
+   */</span>
+  onShareAppMessage<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>实现效果如下：<br><img src="https://img-blog.csdnimg.cn/faa75706fd4d4f90b76bf660e24ee1e5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Za15Za15Za15Za16KaB5oqx5oqx,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="区别说明"><a href="#区别说明" class="headerlink" title="区别说明"></a>区别说明</h2><p><strong>函数节流的说明：</strong></p>
+<ol>
+<li><p>第一次执行时，是一定能执行函数的。</p>
+</li>
+<li><p>然后，n 秒内第二次触发的时候，当第一次与第二次间隔不足设置的间隔时间时，就不会执行。之后第三、第四次触发还是不执行。</p>
+</li>
+<li><p>直到 n 秒之后，有且仅有一次，并且是第一次再次触发函数。</p>
+</li>
+</ol>
+<p><strong>函数防抖的说明：</strong></p>
+<ol>
+<li><p>第一次触发函数时，定义了一个定时器。在 n 秒后执行。</p>
+</li>
+<li><p>然后，函数第二次触发的时候，由于闭包的特性，这时候的 <code>timer</code> 已经是第一次触发时的 定时器的标识了。然后直接清除第一次的 <code>setTimeout</code>，这时候第一次的 <code>setTimeout</code> 里面的内容就不会执行了。然后再定义第二次的 <code>setTimeout</code>。</p>
+</li>
+<li><p>然后重复第二个步骤，一直清除，又一直设置。直到函数最后一次触发，定义了最后的一个定时器，并且间隔 n 秒执行。</p>
+</li>
+<li><p>如果在最后一个定时器没执行时，函数又触发了，那么又重复第三步。相当于设置的间隔时间，只是延迟函数执行的时间，而不是间隔多少秒再执行。</p>
+</li>
+</ol>
+<p>到这里，这两个方式的区别就很明显了。函数节流是减少函数的触发频率，而函数防抖则是延迟函数执行，并且不管触发多少次都只执行最后一次。</p>
 
                 
             </div>
@@ -458,7 +642,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/08/31/wx-globaldata/">http://cjx-chen.github.io/2021/08/31/wx-globaldata/</a>
+                    <a href="http://cjx-chen.github.io/2021/08/31/wx-throttle-debounce/">http://cjx-chen.github.io/2021/08/31/wx-throttle-debounce/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -498,6 +682,10 @@
                             
                                 <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                                     <span class="chip bg-color">微信小程序</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BC%98%E5%8C%96-js/">
+                                    <span class="chip bg-color">优化 js</span>
                                 </a>
                             
                         </div>
@@ -669,9 +857,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/08/31/wx-throttle-debounce/">
                     <div class="card-image">
@@ -688,9 +877,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -703,6 +892,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -725,12 +915,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/31/content-type/">
+                <a href="/2021/08/31/wx-globaldata/">
                     <div class="card-image">
                         
-                        <img src="https://img2.baidu.com/it/u=3649388259,1540630197&fm=26&fmt=auto&gp=0.jpg" class="responsive-img" alt="Content-Type 四种常见取值">
+                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】全局变量的定义与使用">
                         
-                        <span class="card-title">Content-Type 四种常见取值</span>
+                        <span class="card-title">【微信小程序】全局变量的定义与使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -747,8 +937,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
+                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
+                                    微信小程序
                                 </a>
                             
                             
@@ -758,12 +948,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/API/">
-                        <span class="chip bg-color">API</span>
-                    </a>
-                    
-                    <a href="/tags/POST/">
-                        <span class="chip bg-color">POST</span>
+                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="chip bg-color">微信小程序</span>
                     </a>
                     
                 </div>
