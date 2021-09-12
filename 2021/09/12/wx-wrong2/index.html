@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【微信小程序】本地缓存保持登录状态之 wx.setStorageSync() 使用技巧, Blog | Jessieeeeee">
+    <meta name="keywords" content="【微信小程序】报错解决方法 [TypeError:N.length is not a function], Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【微信小程序】本地缓存保持登录状态之 wx.setStorageSync() 使用技巧 | Blog | Jessieeeeee</title>
+    <title>【微信小程序】报错解决方法 [TypeError:N.length is not a function] | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -251,7 +251,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【微信小程序】本地缓存保持登录状态之 wx.setStorageSync() 使用技巧</h1>
+                    <h1 class="description center-align post-title">【微信小程序】报错解决方法 [TypeError:N.length is not a function]</h1>
                 </div>
             </div>
         </div>
@@ -367,12 +367,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/API/">
-                                <span class="chip bg-color">API</span>
-                            </a>
-                        
                             <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                                 <span class="chip bg-color">微信小程序</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                                <span class="chip bg-color">报错解决方法</span>
                             </a>
                         
                     </div>
@@ -396,7 +396,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-31
+                    2021-09-12
                 </div>
                 
 
@@ -417,106 +417,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>微信小程序提供了一个如同浏览器 cookie 本地缓存方法，就是 <code>wx.setStorageSync()</code> 。</p>
-<p>注意，该方法是同步请求，还有个异步请求的方法是 <code>wx.setStorage()</code>，参考<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.setStorage.html">官方文档</a>。</p>
-<p>取出本地缓存方法 <code>wx.getStorageSync</code>，同样的，它也是同步请求，它也有一个异步请求方法 <code>wx.getStorage()</code>。</p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>登录时候，将所需要存的字段存入本地缓存中：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// pages/daily/daily.js</span>
-
-<span class="token comment" spellcheck="true">// 获取本地缓存中的TOKEN</span>
-<span class="token keyword">const</span> TOKEN <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'TOKEN'</span><span class="token punctuation">)</span>
-
-<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    peopleDetails<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 获取每日人物信息
-   */</span>
-  <span class="token function">getCharacter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 发起网络请求</span>
-    wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      url<span class="token punctuation">:</span> <span class="token string">'&lt;url>'</span><span class="token punctuation">,</span>
-      method<span class="token punctuation">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span>
-      header<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token string">'content-type'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span>
-        Authorization<span class="token punctuation">:</span> <span class="token string">'student '</span> <span class="token operator">+</span> TOKEN
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-            peopleDetails<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>peopleDetails<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span>
-          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'peopleDetails'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>peopleDetails<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'每日人物获取失败！'</span><span class="token punctuation">,</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>msg<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token function">fail</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面加载
-   */</span>
-  onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getCharacter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面初次渲染完成
-   */</span>
-  onReady<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面显示
-   */</span>
-  onShow<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面隐藏
-   */</span>
-  onHide<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面卸载
-   */</span>
-  onUnload<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */</span>
-  onPullDownRefresh<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 页面上拉触底事件的处理函数
-   */</span>
-  onReachBottom<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 用户点击右上角分享
-   */</span>
-  onShareAppMessage<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+                <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><code>N.length()</code> 后面的括号去掉；</p>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p><code>N.length</code> 是属性不是方法，不能在后面加括号执行；</p>
 
                 
             </div>
@@ -543,7 +445,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/08/31/wx-storage/">http://cjx-chen.github.io/2021/08/31/wx-storage/</a>
+                    <a href="http://cjx-chen.github.io/2021/09/12/wx-wrong2/">http://cjx-chen.github.io/2021/09/12/wx-wrong2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -581,12 +483,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/API/">
-                                    <span class="chip bg-color">API</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                                     <span class="chip bg-color">微信小程序</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                                    <span class="chip bg-color">报错解决方法</span>
                                 </a>
                             
                         </div>
@@ -758,9 +660,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/09/12/wx-wrong2/">
                     <div class="card-image">
@@ -777,9 +680,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -792,6 +695,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -814,12 +718,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/31/wx-music/">
+                <a href="/2021/08/31/wx-storage/">
                     <div class="card-image">
                         
-                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】音乐播放器">
+                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】本地缓存保持登录状态之 wx.setStorageSync() 使用技巧">
                         
-                        <span class="card-title">【微信小程序】音乐播放器</span>
+                        <span class="card-title">【微信小程序】本地缓存保持登录状态之 wx.setStorageSync() 使用技巧</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -846,6 +750,10 @@
                 </div>
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/API/">
+                        <span class="chip bg-color">API</span>
+                    </a>
                     
                     <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                         <span class="chip bg-color">微信小程序</span>

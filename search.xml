@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【微信小程序】报错解决方法 [TypeError:N.length is not a function]</title>
+      <link href="/2021/09/12/wx-wrong2/"/>
+      <url>/2021/09/12/wx-wrong2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><code>N.length()</code> 后面的括号去掉；</p><h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p><code>N.length</code> 是属性不是方法，不能在后面加括号执行；</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微信小程序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微信小程序 </tag>
+            
+            <tag> 报错解决方法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【微信小程序】本地缓存保持登录状态之 wx.setStorageSync() 使用技巧</title>
       <link href="/2021/08/31/wx-storage/"/>
       <url>/2021/08/31/wx-storage/</url>
