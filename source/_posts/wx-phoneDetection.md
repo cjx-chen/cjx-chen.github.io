@@ -106,13 +106,13 @@ tags:
     this.setData({
       phoneNumber: event.detail.value
     })
-    const myReg = /^(((13[0-9{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})) + \d{8})$/
+    const regex = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/
     if (this.data.phoneNumber.length !== 0 && this.data.phoneNumber.length !== 11) {
       this.setData({
         phoneLength: true,
         phoneError: '手机长度有误'
       })
-    } else if (this.data.phoneNumber.length !== 0 && !myReg.test(this.data.phoneNumber)) {
+    } else if (this.data.phoneNumber.length !== 0 && !regex.test(this.data.phoneNumber)) {
       this.setData({
         phoneFormat: true,
         phoneError: '手机号有误'
