@@ -12,7 +12,7 @@ tags:
 ![](https://img-blog.csdnimg.cn/8f4603b9f5a543e0813df98542727928.png)
 
 ## 代码
-```
+```css
 .item-content {
   width: 120rpx;
   white-space: nowrap;
