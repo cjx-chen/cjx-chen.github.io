@@ -641,10 +641,9 @@ $(function () {
 
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
-    <img src="../../source/medias/airplane.png" />
-    <!-- <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
         <i class="fas fa-arrow-up"></i>
-    </a> -->
+    </a>
 </div>
 
     <script src="/libs/materialize/materialize.min.js"></script>
@@ -707,9 +706,17 @@ $(function () {
     <script type="text/javascript" src="/js/click_show_text.js"></script>
 
     <!-- 雪花特效 -->
-    <script type="text/javascript" src="\js\snow.js"></script>
+    <!-- <script type="text/javascript" src="\js\snow.js"></script>
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
-    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script> -->
+
+    <script type="text/javascript">
+        //只在桌面版网页启用特效
+        var windowWidth = $(window).width();
+        if (windowWidth > 768) {
+            document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+        }
+    </script>
 </body>
 
 </html>
