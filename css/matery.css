@@ -5,10 +5,10 @@
         width: 95%;
     }
     header .brand-logo .logo-span {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
     header .brand-logo .waves-effect {
-        margin-left: -20px;
+        margin-left: -30px;
     }
     .bg-cover .title {
         font-size: 2.38rem;
