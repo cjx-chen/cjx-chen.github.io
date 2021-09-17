@@ -579,7 +579,7 @@ header .go-back i {
 }
 
 .bg-cover:before,
-/* .bg-cover:after {
+.bg-cover:after {
     position: absolute;
     z-index: 1;
     width: 100%;
@@ -588,12 +588,12 @@ header .go-back i {
     left: 0;
     top: 0;
     content: "";
-} */
+}
 
 .bg-cover .container {
     position: relative;
-    /* color: #fff; */
-    color: rgba(0, 0, 0, .1);
+    color: #fff;
+    /* color: rgba(0, 0, 0, .3); */
     z-index: 2;
 }
 
@@ -618,8 +618,11 @@ header .go-back i {
 }
 
 @-webkit-keyframes rainbow {
+    0%, 100% {
+        background: rgba(30, 30, 30, 0.5);
+    }
 
-    0%,
+    /* 0%,
     100% {
         background: rgba(156, 39, 176, 0.75);
         background: linear-gradient(45deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
@@ -660,12 +663,15 @@ header .go-back i {
         background: linear-gradient(45deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
-    }
+    } */
 }
 
 @keyframes rainbow {
+    0%, 100% {
+        background: rgba(30, 30, 30, 0.5);
+    }
 
-    0%,
+    /* 0%,
     100% {
         background: rgba(156, 39, 176, 0.75);
         background: linear-gradient(45deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
@@ -706,7 +712,7 @@ header .go-back i {
         background: linear-gradient(45deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
-    }
+    } */
 }
 
 .index-card {
