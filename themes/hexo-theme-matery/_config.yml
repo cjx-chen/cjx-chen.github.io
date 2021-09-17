@@ -177,7 +177,7 @@ reward:
 # minCharNumber: Approve copyright information by copying at least how many characters.
 # 是否激活复制文章时追加博客和作者的版权信息.
 copyright:
-  enable: false
+  enable: true
   minCharNumber: 120 # 至少复制多少个字符就追加版权信息.
   description: 本文章著作权归作者所有，任何形式的转载都请注明出处。
 
@@ -325,9 +325,9 @@ livere:
 # To use it, activate the configuration item and set appId and appKey.
 # Valine 评论模块的配置，默认为不激活，如要使用，就请激活该配置项，并设置 appId 和 appKey.
 valine:
-  enable: false
-  appId:
-  appKey:
+  enable: true
+  appId: omhjk2eWWeLz1bJOJxNLmov8-gzGzoHsz
+  appKey: YWoMSg4atNJmaxqnqb8v8CWd
   notify: false
   verify: false
   visitor: true
@@ -390,13 +390,13 @@ busuanziStatistics:
 # Add google analytics configuration
 # 添加 Google Analytics 配置
 googleAnalytics:
-  enable: false
+  enable: true
   id:
 
 # Add baidu analytics configuration
 # 添加 baidu Analytics 配置
 baiduAnalytics:
-  enable: false
+  enable: true
   id:
 
 # 百度搜索资源平台提交链接
@@ -537,7 +537,8 @@ ribbon_dynamic:
 # 支持顺序，可选项目为twitter, facebook, google, qq, qzone, wechat, weibo, douban, linkedin.
 sharejs:
   enable: true
-  sites: twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin
+  # sites: twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin
+  sites: qq,wechat
 
 # addthis文章分享模块.
 addthis:
