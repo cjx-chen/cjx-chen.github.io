@@ -5,10 +5,10 @@
         width: 95%;
     }
     header .brand-logo .logo-span {
-        font-size: 0.5rem !important;
+        font-size: 1.1rem;
     }
     .bg-cover .title {
-        font-size: 0.5rem !important;
+        font-size: 3.1rem;
         font-weight: 700;
         line-height: 1.85em;
         margin-bottom: 20px;
@@ -50,6 +50,17 @@
         width: 90%;
         margin: 0 auto;
         max-width: 1250px;
+    }
+
+    header .brand-logo .logo-span {
+        font-size: 1.6rem;
+    }
+
+    .bg-cover .title {
+        font-size: 4rem;
+        line-height: 1.2em;
+        margin-bottom: 20px;
+        position: relative;
     }
 }
 
@@ -318,9 +329,9 @@ header .brand-logo .logo-img {
     padding-bottom: 6px;
 }
 
-header .brand-logo .logo-span {
+/* header .brand-logo .logo-span {
     font-size: 1.6rem;
-}
+} */
 
 /*修改顶部 logo 的文字垂直对齐为 top，避免默认 middle 看起来偏下*/
 header .brand-logo .waves-effect {
@@ -596,12 +607,12 @@ header .go-back i {
     z-index: 2;
 }
 
-.bg-cover .title {
+/* .bg-cover .title {
     font-size: 4rem;
     line-height: 1.2em;
     margin-bottom: 20px;
     position: relative;
-}
+} */
 
 .bg-cover .description {
     font-weight: 300;
