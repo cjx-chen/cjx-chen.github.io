@@ -1,7 +1,7 @@
 ---
 title: 自然语言处理 | 双向匹配中文分词 Python
 date: 2021-10-05 00:28:22
-img: http://www.west999.com/cms/images/2019-01-17/eustx1iuj4h.png
+img: https://p2.itc.cn/q_70/images03/20210910/d4882c75d6084fac9186d91237cc29ae.png
 categories: 
 - 自然语言处理
 tags:
