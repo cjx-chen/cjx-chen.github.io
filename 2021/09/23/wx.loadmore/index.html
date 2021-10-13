@@ -687,25 +687,26 @@
 </ol>
 <p>下拉加载说明：<br>当处理完数据刷新后，<code>wx.stopPullDownRefresh</code> 可以停止当前页面的下拉刷新。</p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token function">onPullDownRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-　　console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'--------下拉刷新-------'</span><span class="token punctuation">)</span>
-　　wx<span class="token punctuation">.</span><span class="token function">showNavigationBarLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//在标题栏中显示加载</span>
-　　wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-     url<span class="token punctuation">:</span> <span class="token string">'https://URL'</span><span class="token punctuation">,</span>
-     data<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-     method<span class="token punctuation">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span>
-     <span class="token comment" spellcheck="true">// OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT</span>
-     <span class="token comment" spellcheck="true">// header: {}, // 设置请求的 header</span>
-     success<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'--------下拉刷新-------'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    wx<span class="token punctuation">.</span><span class="token function">showNavigationBarLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 在标题栏中显示加载</span>
+    wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      url<span class="token punctuation">:</span> <span class="token string">'https://URL'</span><span class="token punctuation">,</span>
+      data<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      method<span class="token punctuation">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span>
+      <span class="token comment" spellcheck="true">// OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT</span>
+      <span class="token comment" spellcheck="true">// header: {}, // 设置请求的 header</span>
+      success<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token comment" spellcheck="true">// success</span>
-     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-     fail<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      fail<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token comment" spellcheck="true">// fail</span>
-     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-     complete<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      complete<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token comment" spellcheck="true">// complete</span>
-      wx<span class="token punctuation">.</span><span class="token function">hideNavigationBarLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//完成停止加载</span>
-      wx<span class="token punctuation">.</span><span class="token function">stopPullDownRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//停止下拉刷新</span>
-   <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        wx<span class="token punctuation">.</span><span class="token function">hideNavigationBarLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 完成停止加载</span>
+        wx<span class="token punctuation">.</span><span class="token function">stopPullDownRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 停止下拉刷新</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 
