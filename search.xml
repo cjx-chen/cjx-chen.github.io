@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>【Spring】报错解决方法 [IDEA中java文件出现小黄色的J]</title>
+      <link href="/2021/10/25/spring-error/"/>
+      <url>/2021/10/25/spring-error/</url>
+      
+        <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>上课的时候打开老师的项目发现项目不可运行，并且文件上标有小黄色的j，如下图所示：<br><img src="https://img-blog.csdnimg.cn/9bf992fdd76a42088ee5bbc9dee9c28e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><img src="https://img-blog.csdnimg.cn/925845a7f9944d5fb9d9d112cca0ccec.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="步骤一"><br><img src="https://img-blog.csdnimg.cn/ae23afa21e1846d99579d185fbc75c59.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="步骤二"><br><img src="https://img-blog.csdnimg.cn/d24ad2179d2e4def8e0eb2688ae87f34.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="步骤三"><br><img src="https://img-blog.csdnimg.cn/8a08803846cc44079565391cc0ecae9d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="步骤四"><br><img src="https://img-blog.csdnimg.cn/8f0e8407755e4e7ab6ca2b7db66dcf37.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="步骤五"><br>可以看到现在界面已经不报错了，运行结果如下：<br><img src="https://img-blog.csdnimg.cn/8a60c0a1c13649a28a0b1a91895813d6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> Spring </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> 报错解决方法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>自然语言处理 | 双向匹配中文分词 Python</title>
       <link href="/2021/10/05/nlp-bimmseg/"/>
       <url>/2021/10/05/nlp-bimmseg/</url>
