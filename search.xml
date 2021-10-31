@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【微信小程序】解决view标签内的文本不能自动换行问题</title>
+      <link href="/2021/10/31/wx-linebreak/"/>
+      <url>/2021/10/31/wx-linebreak/</url>
+      
+        <content type="html"><![CDATA[<h2 id="情景"><a href="#情景" class="headerlink" title="情景"></a>情景</h2><p>一行文字太多，用 <code>view</code> 标签包裹时，超出屏幕；</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>简单粗暴</p><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span>“overflow-wrap:</span> <span class="token attr-name">break-word;”</span><span class="token punctuation">></span></span>123213123123213213213213213213213213213213213211232131231232132132132132132132132132132132132112321312312321321321321321321321321321321321321<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微信小程序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微信小程序 </tag>
+            
+            <tag> 报错解决方法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Spring】报错解决方法 [IDEA中java文件出现小黄色的J]</title>
       <link href="/2021/10/25/spring-error/"/>
       <url>/2021/10/25/spring-error/</url>
