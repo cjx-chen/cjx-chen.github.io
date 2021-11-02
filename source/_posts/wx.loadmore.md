@@ -9,18 +9,503 @@ tags:
 ---
 
 ## 效果
-
-![](https://img-blog.csdnimg.cn/8fb00676a4064837be9b9c049383e193.gif)
-
+![方法一](https://img-blog.csdnimg.cn/06e35853ae6e4b4682b74724cd7b5ed9.gif)
+![方法二](https://img-blog.csdnimg.cn/7c572f7efb684ed8a8483fd4f3741e15.gif)
 ## 方法
+1. 在 `<scroll-view>` 里设定 `bindscrolltoupper` 和 `bindscrolltolower` 实现监听微信小程序下拉和下滑；
 
-1. 在 scroll-view 里设定 bindscrolltoupper 和 bindscrolltolower 实现微信小程序下拉；（本文使用此方法）
-2. onPullDownRefresh和onReachBottom方法实现小程序下拉加载和上拉刷新；
+2. `onPullDownRefresh` 和 `onReachBottom` 方法实现小程序下拉加载和上拉刷新；
+---
 
 ## 代码
+### 方法一
+#### index.wxml
+```html
+<!-- 顶部 关注 | 广场 标签栏 & 搜索框 -->
+<view>
+  <van-row class="roof">
+    <van-col span="8">
+      <view class="swiper-tab">
+        <view class="bre swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
+          关注
+        </view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
+          广场
+        </view>
+      </view>
+    </van-col>
+    <van-col span="16">
+      <van-search placeholder="搜索您感兴趣的物品吧～" focus="false" disabled="true" shape="round" bindtap="gotoSearch"></van-search>
+    </van-col>
+  </van-row>
+  <!-- 关注 | 广场 -->
+  <swiper style="height: {{ clientHeight?clientHeight+'px':'auto' }}" current="{{ currentTab }}" class="swiper-box" duration="300" bindchange="bindChange">
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scroll" style="height: {{ clientHeight?clientHeight+'px':'auto' }}" bindscrolltolower="getMoreArticle">
+        <waterfall-focus list="{{ FocusArticle }}" scene="deshion"></waterfall-focus>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scroll" style="height: {{ clientHeight?clientHeight+'px':'auto' }};" bindscrolltolower="getMoreArticle">
+        <waterfall-square results="{{ SquareArticle }}" scene="deshion"></waterfall-square>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>
+```
 
+#### index.js
+```javascript
+// 获取本地缓存中的USERID
+const USERID = wx.getStorageSync('USERID');
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    // 滑动导航栏当前页面索引
+    currentTab: 0,
+    SquareArticle: [],
+    FocusArticle: [],
+    onRefresh: false,
+    focusPageNum: 1,
+    focusPageSize: 2,
+    squarePageNum: 1,
+    squarePageSize: 4,
+    userId: USERID
+  },
+
+  /**
+   * tab切换功能(关注、广场)
+   */
+  // 滑动切换tab
+  bindChange: function (e) {
+    const that = this;
+    that.setData({
+      currentTab: e.detail.current
+    });
+    if (that.data.currentTab === 0) {
+      // 获取关注文章列表
+      that.getFocusArticle();
+    } else if (that.data.currentTab === 1) {
+      // 获取广场文章列表
+      that.getSquareArticle();
+    }
+  },
+
+  // 点击tab切换
+  swichNav: function (e) {
+    const that = this;
+    if (that.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      });
+    }
+    // console.log('currentTab', that.data.currentTab);
+    if (that.data.currentTab === 0) {
+      // 获取关注文章列表
+      that.getFocusArticle();
+    } else if (that.data.currentTab === 1) {
+      // 获取广场文章列表
+      that.getSquareArticle();
+    }
+  },
+
+  /**
+   * 进入搜索界面
+   */
+  gotoSearch: function () {
+    // 当前要跳转到另一个界面，但是会保留现有界面
+    wx.navigateTo({
+      url: '../search-article/search-article'
+    });
+  },
+
+  /**
+   * 获取广场文章列表
+   */
+  getSquareArticle: function () {
+    const that = this;
+    const onRefresh = that.data.onRefresh; // false为重新刷新数据，true为分页累加数据
+    if (onRefresh && that.data.currentTab === 1) {
+      that.setData({
+        squarePageNum: that.data.squarePageNum + 1
+      });
+    }
+    // console.log('onRefresh', onRefresh);
+    // console.log('currentTab', that.data.currentTab);
+    // 发起网络请求
+    wx.request({
+      url: 'url',
+      method: 'get',
+      data: {
+        page_num: that.data.squarePageNum,
+        page_size: that.data.squarePageSize,
+        user_id: that.data.userId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: (res) => {
+        // console.log(res);
+        if (res.data.code === 1) {
+          // console.log('广场文章列表获取成功！', res.data.message);
+          const squareDatas = res.data.data;
+          // console.log('datas', squareDatas);
+          if (onRefresh) {
+            if (squareDatas.length === 0) {
+              wx.showToast({
+                title: '没有更多数据啦',
+                icon: 'none'
+              });
+            } else {
+              that.setData({
+                SquareArticle: that.data.SquareArticle.concat(squareDatas)
+              });
+            }
+          } else {
+            that.setData({
+              SquareArticle: squareDatas
+            });
+          }
+        } else {
+          console.log('广场文章列表获取失败！', res.data.message);
+        }
+      },
+      complete: (msg) => {
+        wx.hideLoading();
+      },
+      fail: (msg) => {
+        wx.hideLoading();
+        console.log(msg);
+      }
+    });
+  },
+
+  /**
+   * 获取关注文章列表
+   */
+  getFocusArticle: function () {
+    const that = this;
+    const onRefresh = that.data.onRefresh; // false为重新刷新数据，true为分页累加数据
+    if (onRefresh && that.data.currentTab === 0) {
+      that.setData({
+        focusPageNum: that.data.focusPageNum + 1
+      });
+    }
+    // 发起网络请求
+    wx.request({
+      url: 'url',
+      method: 'get',
+      data: {
+        page_num: that.data.focusPageNum,
+        page_size: that.data.focusPageSize,
+        user_id: that.data.userId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: (res) => {
+        // console.log(res);
+        if (res.data.code === 1) {
+          // console.log('关注文章列表获取成功！', res.data.message);
+          const focusDatas = res.data.data;
+          if (onRefresh) {
+            // console.log('length', focusDatas.length);
+            if (focusDatas.length === 0) {
+              wx.showToast({
+                title: '没有更多数据啦',
+                icon: 'none'
+              });
+            } else {
+              that.setData({
+                FocusArticle: that.data.FocusArticle.concat(focusDatas)
+              });
+            }
+          } else {
+            that.setData({
+              FocusArticle: focusDatas
+            });
+          }
+        } else {
+          console.log('关注文章列表获取失败！', res.data.message);
+        }
+      },
+      complete: (msg) => {
+        wx.hideLoading();
+      },
+      fail: (msg) => {
+        wx.hideLoading();
+        console.log(msg);
+      }
+    });
+  },
+
+  /**
+   * 获取更多文章列表
+   */
+  getMoreArticle: function () {
+    // console.log('Bottom');
+    wx.showLoading({
+      title: '正在拼命加载 w(ﾟДﾟ)w'// 加载转圈显示
+    });
+    const that = this;
+    that.setData({
+      onRefresh: true // 累加数据
+    });
+    if (that.data.currentTab === 0) {
+      // console.log('currentTab=0, getFocusArticle');
+      // 获取关注文章列表
+      that.getFocusArticle();
+    } else if (that.data.currentTab === 1) {
+      // console.log('currentTab=1, getSquareArticle');
+      // 获取广场文章列表
+      that.getSquareArticle();
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // 获取页面高度
+    const that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    });
+    if (that.data.currentTab === 0) {
+      // 获取关注文章列表
+      that.getFocusArticle();
+    } else if (that.data.currentTab === 1) {
+      // 获取广场文章列表
+      that.getSquareArticle();
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+});
+```
+
+
+### 方法二
+#### index.js
+```javascript
+// 获取本地缓存
+const USERID = wx.getStorageSync('USERID');
+const PROFILEURL = wx.getStorageSync('profileUrl');
+const NICKNAME = wx.getStorageSync('nickname');
+const POSTNUM = wx.getStorageSync('postNum');
+const ISFOLLOWING = wx.getStorageSync('isFollowing');
+const INTRODUCE = wx.getStorageSync('introduce');
+const TAGLIST = wx.getStorageSync('tagList');
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    UserInfo: [{
+      profileUrl: PROFILEURL,
+      nickname: NICKNAME,
+      postNum: POSTNUM,
+      isFollowing: ISFOLLOWING,
+      introduce: INTRODUCE,
+      tagList: TAGLIST
+    }],
+    ArticleList: [],
+    pageNum: 1,
+    pageSize: 4,
+    personalId: USERID,
+    userId: USERID,
+    onRefresh: false
+  },
+
+  /**
+   * 分页获取文章列表
+   */
+  getArticleList: function () {
+    const that = this;
+    const onRefresh = that.data.onRefresh; // false为重新刷新数据，true为分页累加数据
+    if (onRefresh) {
+      that.setData({
+        pageNum: that.data.pageNum + 1
+      });
+    }
+    // 发起网络请求
+    wx.request({
+      url: `url/${USERID}`,
+      method: 'get',
+      data: {
+        page_num: that.data.pageNum,
+        page_size: that.data.pageSize,
+        personal_id: that.data.personalId,
+        user_id: that.data.userId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: (res) => {
+        // console.log(res);
+        if (res.data.code === 1) {
+          // console.log('个人信息获取成功！', res.data.message);
+          const ArticleDatas = res.data.data.articleList;
+          // console.log(datas);
+          if (onRefresh) {
+            if (ArticleDatas.length === 0) {
+              wx.showToast({
+                title: '没有更多数据啦',
+                icon: 'none'
+              });
+            } else {
+              that.setData({
+                ArticleList: this.data.ArticleList.concat(ArticleDatas)
+              });
+            }
+          } else {
+            that.setData({
+              ArticleList: ArticleDatas
+            });
+          }
+        } else {
+          console.log('个人信息获取失败！', res.data.message);
+        }
+      },
+      complete: (msg) => {
+        wx.hideLoading();
+      },
+      fail: (msg) => {
+        wx.hideLoading();
+        console.log(msg);
+      }
+    });
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.getArticleList();
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    wx.showLoading({
+      title: '正在拼命加载 w(ﾟДﾟ)w'// 加载转圈显示
+    });
+    const that = this;
+    that.setData({
+      onRefresh: true // 累加数据
+    });
+    that.getArticleList();
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+});
+```
+---
+
+## 另一个项目代码
+### 效果
+![](https://img-blog.csdnimg.cn/8fb00676a4064837be9b9c049383e193.gif)
 ### index.wxml
-
 ```html
 <scroll-view scroll-top="{{ scrollTop }}" scroll-y="true" style="height:{{ scrollHeight }}px; " class="list" bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad" bindscroll="scroll">
     <view class="article-block" wx:for="{{ ArticleList }}" wx:key="index" bindtap="gotoArticleDetail" data-articleid="{{ item.article_id }}">
@@ -37,9 +522,7 @@ tags:
    </view>
   </scroll-view>
 ```
-
 ### index.js
-
 ```javascript
 const url = 'http://api/articlelist'
 let page = 0
@@ -238,7 +721,6 @@ Page({
   }
  })
 ```
-
 ### index.css
 
 ```css
@@ -282,39 +764,35 @@ Page({
 }
 ```
 
-## 拓展
-
+### 拓展
 这里简单讲述一下另一种方法：
-
 1. 首先要在 json 文件里设置 `window` 属性；
 2. 设置 js 里 `onPullDownRefresh` 和 `onReachBottom` 方法；
 
 下拉加载说明：
 当处理完数据刷新后，`wx.stopPullDownRefresh` 可以停止当前页面的下拉刷新。
 
-### 代码
-
+#### 代码
 ```javascript
 onPullDownRefresh(){
-    console.log('--------下拉刷新-------');
-    wx.showNavigationBarLoading(); // 在标题栏中显示加载
-    wx.request({
-      url: 'https://URL',
-      data: {},
-      method: 'GET',
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
-      success: function(res) {
+　　console.log('--------下拉刷新-------')
+　　wx.showNavigationBarLoading() //在标题栏中显示加载
+　　wx.request({
+     url: 'https://URL',
+     data: {},
+     method: 'GET',
+     // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+     // header: {}, // 设置请求的 header
+     success: function(res){
       // success
-      },
-      fail: function() {
+     },
+     fail: function() {
       // fail
-      },
-      complete: function() {
+     },
+     complete: function() {
       // complete
-        wx.hideNavigationBarLoading(); // 完成停止加载
-        wx.stopPullDownRefresh(); // 停止下拉刷新
-      }
-    });
-}
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+   }
+})
 ```
