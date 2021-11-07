@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【微信小程序】用 setData 方法修改 data 中对象数组某一项的属性值, Blog | Jessieeeeee">
+    <meta name="keywords" content="【微信小程序】上传头像, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【微信小程序】用 setData 方法修改 data 中对象数组某一项的属性值 | Blog | Jessieeeeee</title>
+    <title>【微信小程序】上传头像 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -262,7 +262,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【微信小程序】用 setData 方法修改 data 中对象数组某一项的属性值</h1>
+                    <h1 class="description center-align post-title">【微信小程序】上传头像</h1>
                 </div>
             </div>
         </div>
@@ -378,6 +378,10 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/API/">
+                                <span class="chip bg-color">API</span>
+                            </a>
+                        
                             <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                                 <span class="chip bg-color">微信小程序</span>
                             </a>
@@ -424,65 +428,316 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ol>
-<li>先用一个变量表示对象的属性值（字符串）或数组的某一项的值（字符串拼接起来）；</li>
-<li>将变量写在<code>[]</code>里面即可修改；</li>
-</ol>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/c987f59478c84802b2abd04224414358.gif"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="editInfo-js"><a href="#editInfo-js" class="headerlink" title="editInfo.js"></a>editInfo.js</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// pages/editInfo/editInfo.js</span>
+
+<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面的初始数据
+   */</span>
   data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 普通：</span>
-    text1<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span>
-    <span class="token comment" spellcheck="true">// 对象的属性值：</span>
-    text2<span class="token punctuation">:</span><span class="token punctuation">{</span>
-      text2_1<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token comment" spellcheck="true">// 数组：</span>
-    text3<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token comment" spellcheck="true">// 数组和对象结合：</span>
-    text4<span class="token punctuation">:</span><span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        bool<span class="token punctuation">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
-        num<span class="token punctuation">:</span><span class="token number">4</span>
+    dataList<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 获得图片本地路径
+   */</span>
+  chooseWxImage<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    wx<span class="token punctuation">.</span><span class="token function">chooseImage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 最多可以选择的图片张数</span>
+      count<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token comment" spellcheck="true">// 所选的图片的尺寸</span>
+      sizeType<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'original'</span><span class="token punctuation">,</span> <span class="token string">'compressed'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment" spellcheck="true">// 选择图片的来源</span>
+      sourceType<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'album'</span><span class="token punctuation">,</span> <span class="token string">'camera'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        wx<span class="token punctuation">.</span><span class="token function">showToast</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          title<span class="token punctuation">:</span> <span class="token string">'正在上传...'</span><span class="token punctuation">,</span>
+          icon<span class="token punctuation">:</span> <span class="token string">'loading'</span><span class="token punctuation">,</span>
+          mask<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          duration<span class="token punctuation">:</span> <span class="token number">10000</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>tempFilePaths<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        that<span class="token punctuation">.</span><span class="token function">upImgs</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>tempFilePaths<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 调用上传方法</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">{</span>
-        bool<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
-        num<span class="token punctuation">:</span><span class="token number">44</span>
+      fail<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fail'</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      complete<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
       <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  text1<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      text1<span class="token punctuation">:</span><span class="token number">11111</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  text2<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> t2 <span class="token operator">=</span> <span class="token string">"text2.text2_1"</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      <span class="token punctuation">[</span>t2<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token number">22222</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 上传服务器
+   * @param {*} imgurl
+   * @param {*} index
+   */</span>
+  upImgs<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>imgurl<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    wx<span class="token punctuation">.</span><span class="token function">uploadFile</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      url<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`http://api`</span></span><span class="token punctuation">,</span>
+      <span class="token comment" spellcheck="true">// 小程序本地的路径</span>
+      filePath<span class="token punctuation">:</span> imgurl<span class="token punctuation">,</span>
+      <span class="token comment" spellcheck="true">// 后台获取我们图片的key</span>
+      name<span class="token punctuation">:</span> <span class="token string">'file'</span><span class="token punctuation">,</span>
+      header<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'content-type'</span><span class="token punctuation">:</span> <span class="token string">'multipart/form-data'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment" spellcheck="true">// 额外的参数formData</span>
+      formData<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> datas <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>datas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>datas<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          wx<span class="token punctuation">.</span><span class="token function">setStorageSync</span><span class="token punctuation">(</span><span class="token string">'PROFILEURL'</span><span class="token punctuation">,</span> <span class="token string">'http://'</span> <span class="token operator">+</span> datas<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">const</span> profileUrl <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'PROFILEURL'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          that<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            profileUrl<span class="token punctuation">:</span> profileUrl
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          wx<span class="token punctuation">.</span><span class="token function">showToast</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            title<span class="token punctuation">:</span> <span class="token string">'头像上传成功'</span><span class="token punctuation">,</span>
+            icon<span class="token punctuation">:</span> <span class="token string">'success'</span><span class="token punctuation">,</span>
+            duration<span class="token punctuation">:</span> <span class="token number">2000</span><span class="token punctuation">,</span>
+            mask<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            success<span class="token punctuation">:</span> res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'success'</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 接口返回网络路径</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          wx<span class="token punctuation">.</span><span class="token function">showModal</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            title<span class="token punctuation">:</span> <span class="token string">'错误提示'</span><span class="token punctuation">,</span>
+            content<span class="token punctuation">:</span> datas<span class="token punctuation">.</span>message<span class="token punctuation">,</span>
+            showCancel<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fail'</span><span class="token punctuation">,</span> datas<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      fail<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fail'</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        wx<span class="token punctuation">.</span><span class="token function">hideToast</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        wx<span class="token punctuation">.</span><span class="token function">showModal</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          title<span class="token punctuation">:</span> <span class="token string">'错误提示'</span><span class="token punctuation">,</span>
+          content<span class="token punctuation">:</span> <span class="token string">'上传图片失败'</span><span class="token punctuation">,</span>
+          showCancel<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+          success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  text3<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> t3 <span class="token operator">=</span> <span class="token string">"text3["</span><span class="token operator">+</span><span class="token number">0</span><span class="token operator">+</span><span class="token string">"]"</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      <span class="token punctuation">[</span>t3<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token number">33333</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面加载
+   */</span>
+  onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  text4<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> t4 <span class="token operator">=</span> <span class="token string">"text4["</span><span class="token operator">+</span><span class="token number">0</span><span class="token operator">+</span><span class="token string">"].num"</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      <span class="token punctuation">[</span>t4<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token number">44444</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面初次渲染完成
+   */</span>
+  onReady<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面显示
+   */</span>
+  onShow<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面隐藏
+   */</span>
+  onHide<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面卸载
+   */</span>
+  onUnload<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */</span>
+  onPullDownRefresh<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面上拉触底事件的处理函数
+   */</span>
+  onReachBottom<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 用户点击右上角分享
+   */</span>
+  onShareAppMessage<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="index-wxml"><a href="#index-wxml" class="headerlink" title="index.wxml"></a>index.wxml</h3><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>page<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">catchtap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{text1}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">catchtap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{text2.text2_1}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">catchtap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{text3[0]}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">catchtap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{text4[0].num}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
+<h3 id="profile-js"><a href="#profile-js" class="headerlink" title="profile.js"></a>profile.js</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// pages/profile/profile.js</span>
+
+<span class="token comment" spellcheck="true">// 获取本地缓存</span>
+<span class="token keyword">const</span> USERID <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'USERID'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> ROLEID <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'ROLEID'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> PROFILEURL <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'PROFILEURL'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> NICKNAME <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'NICKNAME'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> POSTNUM <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'POSTNUM'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> FANSNUM <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'FANSNUM'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> INTRODUCE <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'INTRODUCE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> TAGLIST <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'TAGLIST'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面的初始数据
+   */</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    UserInfo<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      profileUrl<span class="token punctuation">:</span> PROFILEURL<span class="token punctuation">,</span>
+      nickname<span class="token punctuation">:</span> NICKNAME<span class="token punctuation">,</span>
+      postNum<span class="token punctuation">:</span> POSTNUM<span class="token punctuation">,</span>
+      fansNum<span class="token punctuation">:</span> FANSNUM<span class="token punctuation">,</span>
+      introduce<span class="token punctuation">:</span> INTRODUCE<span class="token punctuation">,</span>
+      tagList<span class="token punctuation">:</span> TAGLIST
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    pageNum<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    userPageSize<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    personalId<span class="token punctuation">:</span> USERID<span class="token punctuation">,</span>
+    userId<span class="token punctuation">:</span> USERID<span class="token punctuation">,</span>
+    onRefresh<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    roleId<span class="token punctuation">:</span> ROLEID
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 刷新普通用户信息
+   * @param {*} event
+   */</span>
+  updateUserInfo<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 获取本地缓存</span>
+    <span class="token keyword">const</span> PROFILEURL <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'PROFILEURL'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> NICKNAME <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'NICKNAME'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> POSTNUM <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'POSTNUM'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> FANSNUM <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'FANSNUM'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> INTRODUCE <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'INTRODUCE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> TAGLIST <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">getStorageSync</span><span class="token punctuation">(</span><span class="token string">'TAGLIST'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 更新缓存</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> that<span class="token punctuation">.</span>data<span class="token punctuation">.</span>UserInfo<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// console.log(that.data.UserInfo.length);</span>
+      <span class="token keyword">const</span> profileUrl <span class="token operator">=</span> <span class="token string">'UserInfo['</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">'].profileUrl'</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> nickname <span class="token operator">=</span> <span class="token string">'UserInfo['</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">'].nickname'</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> postNum <span class="token operator">=</span> <span class="token string">'UserInfo['</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">'].postNum'</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> fansNum <span class="token operator">=</span> <span class="token string">'UserInfo['</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">'].fansNum'</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> introduce <span class="token operator">=</span> <span class="token string">'UserInfo['</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">'].introduce'</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> tagList <span class="token operator">=</span> <span class="token string">'UserInfo['</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">'].tagList'</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token punctuation">[</span>profileUrl<span class="token punctuation">]</span><span class="token punctuation">:</span> PROFILEURL<span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>nickname<span class="token punctuation">]</span><span class="token punctuation">:</span> NICKNAME<span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>postNum<span class="token punctuation">]</span><span class="token punctuation">:</span> POSTNUM<span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>fansNum<span class="token punctuation">]</span><span class="token punctuation">:</span> FANSNUM<span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>introduce<span class="token punctuation">]</span><span class="token punctuation">:</span> INTRODUCE<span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>tagList<span class="token punctuation">]</span><span class="token punctuation">:</span> TAGLIST
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// console.log(that.data.UserInfo[0].profileUrl);</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 跳转编辑资料界面
+   */</span>
+  gotoEditInfo<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 当前要跳转到另一个界面，但是会保留现有界面</span>
+    wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      url<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`../editInfo/editInfo?</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>dataList<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面加载
+   */</span>
+  onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>USERID <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      wx<span class="token punctuation">.</span><span class="token function">redirectTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span> url<span class="token punctuation">:</span> <span class="token string">'pages/login/login'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面初次渲染完成
+   */</span>
+  onReady<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面显示
+   */</span>
+  onShow<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 每次回到这个页面都要更新缓存</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ROLEID <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      that<span class="token punctuation">.</span><span class="token function">updateUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      wx<span class="token punctuation">.</span><span class="token function">showToast</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">'用户未登录！'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 提示的内容,</span>
+        icon<span class="token punctuation">:</span> <span class="token string">'none'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 图标,</span>
+        duration<span class="token punctuation">:</span> <span class="token number">2000</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 延迟时间,</span>
+        mask<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 显示透明蒙层，防止触摸穿透,</span>
+        success<span class="token punctuation">:</span> res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用户未登录！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面隐藏
+   */</span>
+  onHide<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面卸载
+   */</span>
+  onUnload<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */</span>
+  onPullDownRefresh<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面上拉触底事件的处理函数
+   */</span>
+  onReachBottom<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 用户点击右上角分享
+   */</span>
+  onShareAppMessage<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/c0132a54a21f4b4eba4c9790071b66b4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_10,color_FFFFFF,t_70,g_se,x_16"></p>
 
                 
             </div>
@@ -509,7 +764,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/11/07/wx-changeprop/">http://cjx-chen.github.io/2021/11/07/wx-changeprop/</a>
+                    <a href="http://cjx-chen.github.io/2021/11/07/wx.uploadavatar/">http://cjx-chen.github.io/2021/11/07/wx.uploadavatar/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -546,6 +801,10 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
+                            
+                                <a href="/tags/API/">
+                                    <span class="chip bg-color">API</span>
+                                </a>
                             
                                 <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                                     <span class="chip bg-color">微信小程序</span>
@@ -986,9 +1245,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/11/07/wx.uploadavatar/">
                     <div class="card-image">
@@ -1005,9 +1265,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1020,6 +1280,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1042,12 +1303,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/06/wx-refresh/">
+                <a href="/2021/11/07/wx-changeprop/">
                     <div class="card-image">
                         
-                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】在组件中刷新页面">
+                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】用 setData 方法修改 data 中对象数组某一项的属性值">
                         
-                        <span class="card-title">【微信小程序】在组件中刷新页面</span>
+                        <span class="card-title">【微信小程序】用 setData 方法修改 data 中对象数组某一项的属性值</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1058,7 +1319,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
                             </span>
                         <span class="publish-author">
                             
