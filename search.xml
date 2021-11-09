@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>axure-chrome-extension 插件安装</title>
+      <link href="/2021/11/09/axure-extention-install/"/>
+      <url>/2021/11/09/axure-extention-install/</url>
+      
+        <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在我们收到axure-chrome-extension画的界面，通过浏览器无法打开时，在网上又无法找到安装包；</p><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><p>我们打开页面原型的路径下的 resources 的 chrome 目录里面有 axure-chrome-extension.crx</p><ol><li><p>复制一份</p></li><li><p>更名为 rar</p></li><li><p>解压之后<br><img src="https://img-blog.csdnimg.cn/802aef0711da4aeabaa323efd24024c7.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></p></li><li><p>打开谷歌浏览器打开扩展程序<br><img src="https://img-blog.csdnimg.cn/ce5e72dee39a465887bb15415b135823.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_19,color_FFFFFF,t_70,g_se,x_16"></p></li><li><p>添加扩展程序<br><img src="https://img-blog.csdnimg.cn/d352196d53f44265b00fbbd068b95df1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"><br> 后面就能正常访问页面原型了</p></li></ol><h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p>附带插件下载地址 ，按照上面的方式即可安装：<a href="https://files-cdn.cnblogs.com/files/xiaoxiangpaou/axure-chrome-extension.rar">https://files-cdn.cnblogs.com/files/xiaoxiangpaou/axure-chrome-extension.rar</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安装配置步骤 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Axure </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【微信小程序】上传头像</title>
       <link href="/2021/11/07/wx.uploadavatar/"/>
       <url>/2021/11/07/wx.uploadavatar/</url>
