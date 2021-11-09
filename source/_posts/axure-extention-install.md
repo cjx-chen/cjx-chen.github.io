@@ -1,7 +1,7 @@
 ---
 title: axure-chrome-extension 插件安装
 date: 2021-11-09 14:55:20 
-img: https://www.leixue.com/uploads/2018/12/Git.jpg!760
+img: https://img.zcool.cn/community/01a9545b0bb31aa8012043d8bfc39a.jpg@1280w_1280h_1e_1l_2o_100sh.jpg
 categories: 
 - 安装配置步骤
 tags:
