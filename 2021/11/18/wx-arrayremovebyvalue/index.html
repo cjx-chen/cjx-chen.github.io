@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【微信小程序】悬浮按钮, Blog | Jessieeeeee">
+    <meta name="keywords" content="【微信小程序】JavaScript 从数组中删除指定值元素的方法封装, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【微信小程序】悬浮按钮 | Blog | Jessieeeeee</title>
+    <title>【微信小程序】JavaScript 从数组中删除指定值元素的方法封装 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -262,7 +262,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【微信小程序】悬浮按钮</h1>
+                    <h1 class="description center-align post-title">【微信小程序】JavaScript 从数组中删除指定值元素的方法封装</h1>
                 </div>
             </div>
         </div>
@@ -424,47 +424,101 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>需要制作一个底部居右的悬浮按钮：<br><img src="https://img-blog.csdnimg.cn/1037e3b4271844f5b29e2843890774ae.png"></p>
-<p>需要制作一个固定在底部居中的悬浮按钮：<br><img src="https://img-blog.csdnimg.cn/5b51f40116cf4db0999ab7b5813ddf4c.png"></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="底部居右"><a href="#底部居右" class="headerlink" title="底部居右"></a>底部居右</h3><h4 id="index-wxml"><a href="#index-wxml" class="headerlink" title="index.wxml"></a>index.wxml</h4><pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 发布悬浮按钮 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>releaseBtn<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">bind:</span>tap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>gotoRelease<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>image</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>releaseIcon<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/images/pen.png<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
+                <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> somearray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"mon"</span><span class="token punctuation">,</span> <span class="token string">"tue"</span><span class="token punctuation">,</span> <span class="token string">"wed"</span><span class="token punctuation">,</span> <span class="token string">"thur"</span><span class="token punctuation">]</span>
+<span class="token function">removeByValue</span><span class="token punctuation">(</span>somearray<span class="token punctuation">,</span> <span class="token string">"tue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//somearray will now have "mon", "wed", "thur"</span>
 </code></pre>
-<h4 id="index-scss"><a href="#index-scss" class="headerlink" title="index.scss"></a>index.scss</h4><pre class=" language-css"><code class="language-css"><span class="token selector">// 发布悬浮按钮
-<span class="token class">.releaseBtn</span> </span><span class="token punctuation">{</span>
-  <span class="token selector">position: fixed;
-  bottom: 50px;
-  right: 50px;
-
-  <span class="token class">.releaseIcon</span> </span><span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">80</span>rpx<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">80</span>rpx<span class="token punctuation">;</span>
-    <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">50%</span><span class="token punctuation">;</span>
-    <span class="token property">border</span><span class="token punctuation">:</span> solid <span class="token number">1</span>rpx <span class="token hexcode">#FFC64B</span><span class="token punctuation">;</span>
-    <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">20</span>rpx<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h3 id="底部居中"><a href="#底部居中" class="headerlink" title="底部居中"></a>底部居中</h3><h4 id="index-wxml-1"><a href="#index-wxml-1" class="headerlink" title="index.wxml"></a>index.wxml</h4><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btnRelease<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>van-button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>release<span class="token punctuation">"</span></span> <span class="token attr-name">round</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>info<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{disabled}}<span class="token punctuation">"</span></span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#FFC64B<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    发布
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>van-button</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
-</code></pre>
-<h4 id="index-scss-1"><a href="#index-scss-1" class="headerlink" title="index.scss"></a>index.scss</h4><pre class=" language-css"><code class="language-css">  <span class="token selector"><span class="token class">.btnRelease</span></span><span class="token punctuation">{</span>
-    <span class="token selector">position: fixed;
-    bottom: 120rpx;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-
-    button </span><span class="token punctuation">{</span>
-      <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">220</span>rpx<span class="token punctuation">;</span>
-      <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">58</span>rpx<span class="token punctuation">;</span>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>在 src/utils/util.js 中定义函数 <code>removeByValue</code> 进行元素删除：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">removeByValue</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      arr<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  removeByValue
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>然后在 src/pages/home/home.js 中引用：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> util <span class="token keyword">from</span> <span class="token string">'../../utils/util.js'</span><span class="token punctuation">;</span>
+<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面的初始数据
+   */</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    somearray<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'mon'</span><span class="token punctuation">,</span> <span class="token string">'tue'</span><span class="token punctuation">,</span> <span class="token string">'wed'</span><span class="token punctuation">,</span> <span class="token string">'thur'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 删除数组某一值
+   */</span>
+  <span class="token keyword">delete</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    util<span class="token punctuation">.</span><span class="token function">removeByValue</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>data<span class="token punctuation">.</span>somearray<span class="token punctuation">,</span> <span class="token string">'tue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'somearray'</span><span class="token punctuation">,</span> that<span class="token punctuation">.</span>data<span class="token punctuation">.</span>somearray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面加载
+   */</span>
+  onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    that<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面初次渲染完成
+   */</span>
+  onReady<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面显示
+   */</span>
+  onShow<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面隐藏
+   */</span>
+  onHide<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 生命周期函数--监听页面卸载
+   */</span>
+  onUnload<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */</span>
+  onPullDownRefresh<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 页面上拉触底事件的处理函数
+   */</span>
+  onReachBottom<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 用户点击右上角分享
+   */</span>
+  onShareAppMessage<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 
                 
@@ -492,7 +546,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/11/18/wx-suspendbtn/">http://cjx-chen.github.io/2021/11/18/wx-suspendbtn/</a>
+                    <a href="http://cjx-chen.github.io/2021/11/18/wx-arrayremovebyvalue/">http://cjx-chen.github.io/2021/11/18/wx-arrayremovebyvalue/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -969,9 +1023,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/11/18/wx-arrayremovebyvalue/">
                     <div class="card-image">
@@ -988,9 +1043,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1003,6 +1058,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1021,12 +1077,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/18/create-vue3-vite-antdesignvue-proj/">
+                <a href="/2021/11/18/wx-suspendbtn/">
                     <div class="card-image">
                         
-                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】创建 vite + vue3 + Ant Design Vue 项目">
+                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】悬浮按钮">
                         
-                        <span class="card-title">【Vue3】创建 vite + vue3 + Ant Design Vue 项目</span>
+                        <span class="card-title">【微信小程序】悬浮按钮</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1043,12 +1099,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
-                                    安装配置步骤
-                                </a>
-                            
-                            <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/Vue3/" class="post-category">
-                                    Vue3
+                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
+                                    微信小程序
                                 </a>
                             
                             
@@ -1058,8 +1110,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue3/">
-                        <span class="chip bg-color">Vue3</span>
+                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="chip bg-color">微信小程序</span>
                     </a>
                     
                 </div>
