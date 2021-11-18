@@ -6,6 +6,7 @@ categories:
 - 微信小程序
 tags:
 - 微信小程序
+- JavaScript
 ---
 ## 效果
 

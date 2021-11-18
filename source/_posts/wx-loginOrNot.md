@@ -7,6 +7,7 @@ categories:
 tags:
 - 微信小程序
 - API
+- JavaScript
 ---
 
 ## 实现效果
