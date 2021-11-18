@@ -9,22 +9,22 @@ tags:
 ---
 
 ## 效果
+需要制作一个底部居右的悬浮按钮：
+![](https://img-blog.csdnimg.cn/1037e3b4271844f5b29e2843890774ae.png)
 
-需要制作一个如下图右下角的悬浮按钮：
-![](https://img-blog.csdnimg.cn/52f6d623a1d74d6ca437ddce08e2fcc4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_11,color_FFFFFF,t_70,g_se,x_16)
+需要制作一个固定在底部居中的悬浮按钮：
+![](https://img-blog.csdnimg.cn/5b51f40116cf4db0999ab7b5813ddf4c.png)
 
 ## 代码
-
-### index.wxml
-
+### 底部居右
+#### index.wxml
 ```html
 <!-- 发布悬浮按钮 -->
 <view class="releaseBtn" bind:tap="gotoRelease">
   <image class="releaseIcon" src="/images/pen.png" />
 </view>
 ```
-
-### index.scss
+#### index.scss
 
 ```css
 // 发布悬浮按钮
@@ -41,4 +41,30 @@ tags:
     padding: 20rpx;
   }
 }
+```
+### 底部居中
+#### index.wxml
+```html
+<view class="btnRelease">
+  <van-button class="release" round type="info" disabled="{{disabled}}" color="#FFC64B">
+    发布
+  </van-button>
+</view>
+```
+#### index.scss
+
+```css
+  .btnRelease{
+    position: fixed;
+    bottom: 120rpx;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+    button {
+      width: 220rpx;
+      height: 58rpx;
+    }
+  }
 ```
