@@ -424,13 +424,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>需要制作一个如下图右下角的悬浮按钮：<br><img src="https://img-blog.csdnimg.cn/52f6d623a1d74d6ca437ddce08e2fcc4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_11,color_FFFFFF,t_70,g_se,x_16"></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="index-wxml"><a href="#index-wxml" class="headerlink" title="index.wxml"></a>index.wxml</h3><pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 发布悬浮按钮 --></span>
+                <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>需要制作一个底部居右的悬浮按钮：<br><img src="https://img-blog.csdnimg.cn/1037e3b4271844f5b29e2843890774ae.png"></p>
+<p>需要制作一个固定在底部居中的悬浮按钮：<br><img src="https://img-blog.csdnimg.cn/5b51f40116cf4db0999ab7b5813ddf4c.png"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="底部居右"><a href="#底部居右" class="headerlink" title="底部居右"></a>底部居右</h3><h4 id="index-wxml"><a href="#index-wxml" class="headerlink" title="index.wxml"></a>index.wxml</h4><pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 发布悬浮按钮 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>releaseBtn<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">bind:</span>tap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>gotoRelease<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>image</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>releaseIcon<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/images/pen.png<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
 </code></pre>
-<h3 id="index-scss"><a href="#index-scss" class="headerlink" title="index.scss"></a>index.scss</h3><pre class=" language-css"><code class="language-css"><span class="token selector">// 发布悬浮按钮
+<h4 id="index-scss"><a href="#index-scss" class="headerlink" title="index.scss"></a>index.scss</h4><pre class=" language-css"><code class="language-css"><span class="token selector">// 发布悬浮按钮
 <span class="token class">.releaseBtn</span> </span><span class="token punctuation">{</span>
   <span class="token selector">position: fixed;
   bottom: 50px;
@@ -444,6 +445,26 @@
     <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">20</span>rpx<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="底部居中"><a href="#底部居中" class="headerlink" title="底部居中"></a>底部居中</h3><h4 id="index-wxml-1"><a href="#index-wxml-1" class="headerlink" title="index.wxml"></a>index.wxml</h4><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btnRelease<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>van-button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>release<span class="token punctuation">"</span></span> <span class="token attr-name">round</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>info<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{disabled}}<span class="token punctuation">"</span></span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#FFC64B<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    发布
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>van-button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
+</code></pre>
+<h4 id="index-scss-1"><a href="#index-scss-1" class="headerlink" title="index.scss"></a>index.scss</h4><pre class=" language-css"><code class="language-css">  <span class="token selector"><span class="token class">.btnRelease</span></span><span class="token punctuation">{</span>
+    <span class="token selector">position: fixed;
+    bottom: 120rpx;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+    button </span><span class="token punctuation">{</span>
+      <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">220</span>rpx<span class="token punctuation">;</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">58</span>rpx<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
 </code></pre>
 
                 
