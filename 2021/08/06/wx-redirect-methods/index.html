@@ -424,20 +424,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="wx-navigateTo-OBJECT"><a href="#wx-navigateTo-OBJECT" class="headerlink" title="wx.navigateTo(OBJECT)"></a>wx.navigateTo(OBJECT)</h2><p>这是最普遍的一种跳转方式，其官方解释为：“保留当前页面，跳转到应用内的某个页面”类似于html中的 <code>window.location.href=" "</code></p>
+                <h2 id="页面跳转"><a href="#页面跳转" class="headerlink" title="页面跳转"></a>页面跳转</h2><h3 id="wx-navigateTo-OBJECT"><a href="#wx-navigateTo-OBJECT" class="headerlink" title="wx.navigateTo(OBJECT)"></a>wx.navigateTo(OBJECT)</h3><p>这是最普遍的一种跳转方式，其官方解释为：“保留当前页面，跳转到应用内的某个页面”类似于html中的 <code>window.location.href=" "</code></p>
 <pre class=" language-javascript"><code class="language-javascript">wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   url<span class="token punctuation">:</span> <span class="token string">'test?id=1'</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>实际效果如下：<br><img src="https://img-blog.csdnimg.cn/06cc6793b3a24847ab6bdc7ef151403d.png"><br>小程序中左上角有一个返回箭头，可返回上一个页面；</p>
+<p>实际效果如下：<br><img src="https://img-blog.csdnimg.cn/06cc6793b3a24847ab6bdc7ef151403d.png" alt="在这里插入图片描述"><br>小程序中左上角有一个返回箭头，可返回上一个页面；</p>
 <p>也可以通过方法  <code>wx.navigateBack</code> 返回原页面；</p>
-<h2 id="wx-redirectTo-OBJECT"><a href="#wx-redirectTo-OBJECT" class="headerlink" title="wx.redirectTo(OBJECT)"></a>wx.redirectTo(OBJECT)</h2><p>关闭当前页面，跳转到应用内的某个页面。类似于html中的  <code>window.open('你所要跳转的页面');</code></p>
+<h3 id="wx-redirectTo-OBJECT"><a href="#wx-redirectTo-OBJECT" class="headerlink" title="wx.redirectTo(OBJECT)"></a>wx.redirectTo(OBJECT)</h3><p>关闭当前页面，跳转到应用内的某个页面。类似于html中的  <code>window.open('你所要跳转的页面');</code></p>
 <pre class=" language-javascript"><code class="language-javascript">wx<span class="token punctuation">.</span><span class="token function">redirectTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   url<span class="token punctuation">:</span> <span class="token string">'test?id=1'</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>效果如下：<br><img src="https://img-blog.csdnimg.cn/94f360118a68455dac2b725a28e12d3c.png" alt="在这里插入图片描述">左上角没有返回箭头，不能返回上一个页面；</p>
-<h2 id="wx-switchTab-OBJECT"><a href="#wx-switchTab-OBJECT" class="headerlink" title="wx.switchTab(OBJECT)"></a>wx.switchTab(OBJECT)</h2><p>跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面；</p>
+<h3 id="wx-switchTab-OBJECT"><a href="#wx-switchTab-OBJECT" class="headerlink" title="wx.switchTab(OBJECT)"></a>wx.switchTab(OBJECT)</h3><p>跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面；</p>
 <p>app.json：</p>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"tabBar"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -455,8 +455,8 @@
   url<span class="token punctuation">:</span> <span class="token string">'/index'</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p><img src="https://img-blog.csdnimg.cn/7f199fc9bff741c184aafea2819bf2ff.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70"><br><code>wx.navigateTo</code> 和 <code>wx.redirectTo</code> 不允许跳转到 tabbar 页面，只能用 <code>wx.switchTab</code> 跳转到 tabbar 页面；</p>
-<h2 id="wx-reLaunch-OBJECT"><a href="#wx-reLaunch-OBJECT" class="headerlink" title="wx.reLaunch(OBJECT)"></a>wx.reLaunch(OBJECT)</h2><p>关闭所有页面，打开到应用内的某个页面。</p>
+<p><img src="https://img-blog.csdnimg.cn/7f199fc9bff741c184aafea2819bf2ff.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0plc3NpZWVlZWVlZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><code>wx.navigateTo</code> 和 <code>wx.redirectTo</code> 不允许跳转到 tabbar 页面，只能用 <code>wx.switchTab</code> 跳转到 tabbar 页面；</p>
+<h3 id="wx-reLaunch-OBJECT"><a href="#wx-reLaunch-OBJECT" class="headerlink" title="wx.reLaunch(OBJECT)"></a>wx.reLaunch(OBJECT)</h3><p>关闭所有页面，打开到应用内的某个页面。</p>
 <p>跟 <code>wx.redirectTo</code> 一样左上角不会出现返回箭头，但两者却不完全相同；</p>
 <p>这里要提到小程序中的 <code>getCurrentPages()</code> 方法：</p>
 <p>在 <code>wx.navigateTo</code> 中，每跳转一个新的页面，其原始页面就会被加入堆栈，通过调用 <code>wx.navigateBack(OBJECT)</code> 可通过获取堆栈中保存的页面返回上一级或多级页面；</p>
@@ -494,6 +494,10 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
 
 <span class="token comment" spellcheck="true">// 在C页面内 navigateBack，则无效</span>
 </code></pre>
+<h2 id="返回上级页面"><a href="#返回上级页面" class="headerlink" title="返回上级页面"></a>返回上级页面</h2><pre class=" language-javascript"><code class="language-javascript">wx<span class="token punctuation">.</span><span class="token function">navigateBack</span><span class="token punctuation">(</span><span class="token punctuation">{</span> 
+    delta<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token comment" spellcheck="true">//返回上一级页面</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 
                 
             </div>
@@ -520,7 +524,7 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/08/06/redirect-methods/">http://cjx-chen.github.io/2021/08/06/redirect-methods/</a>
+                    <a href="http://cjx-chen.github.io/2021/08/06/wx-redirect-methods/">http://cjx-chen.github.io/2021/08/06/wx-redirect-methods/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1034,12 +1038,12 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                        <span class="chip bg-color">微信小程序</span>
-                    </a>
-                    
                     <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
                         <span class="chip bg-color">报错解决方法</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="chip bg-color">微信小程序</span>
                     </a>
                     
                 </div>
@@ -1053,7 +1057,7 @@ wx<span class="token punctuation">.</span><span class="token function">reLaunch<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/06/mult-tag/">
+                <a href="/2021/08/06/wx-mult-tag/">
                     <div class="card-image">
                         
                         <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】vant-weapp 实现多选标签">
