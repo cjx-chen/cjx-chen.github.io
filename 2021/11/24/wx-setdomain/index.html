@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【微信小程序】JavaScript 从数组中删除指定值元素的方法封装, Blog | Jessieeeeee">
+    <meta name="keywords" content="【微信小程序】微信公众平台合法域名设置, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【微信小程序】JavaScript 从数组中删除指定值元素的方法封装 | Blog | Jessieeeeee</title>
+    <title>【微信小程序】微信公众平台合法域名设置 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -262,7 +262,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【微信小程序】JavaScript 从数组中删除指定值元素的方法封装</h1>
+                    <h1 class="description center-align post-title">【微信小程序】微信公众平台合法域名设置</h1>
                 </div>
             </div>
         </div>
@@ -382,10 +382,6 @@
                                 <span class="chip bg-color">微信小程序</span>
                             </a>
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -398,6 +394,10 @@
                                 微信小程序
                             </a>
                         
+                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
+                                安装配置步骤
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -407,7 +407,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-18
+                    2021-11-24
                 </div>
                 
 
@@ -428,102 +428,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> somearray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"mon"</span><span class="token punctuation">,</span> <span class="token string">"tue"</span><span class="token punctuation">,</span> <span class="token string">"wed"</span><span class="token punctuation">,</span> <span class="token string">"thur"</span><span class="token punctuation">]</span>
-<span class="token function">removeByValue</span><span class="token punctuation">(</span>somearray<span class="token punctuation">,</span> <span class="token string">"tue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//somearray will now have "mon", "wed", "thur"</span>
-</code></pre>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>在 src/utils/util.js 中定义函数 <code>removeByValue</code> 进行元素删除：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">removeByValue</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      arr<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">break</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  removeByValue
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
-<p>然后在 src/pages/home/home.js 中引用：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> util <span class="token keyword">from</span> <span class="token string">'../../utils/util.js'</span><span class="token punctuation">;</span>
-<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 页面的初始数据
-   */</span>
-  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    somearray<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'mon'</span><span class="token punctuation">,</span> <span class="token string">'tue'</span><span class="token punctuation">,</span> <span class="token string">'wed'</span><span class="token punctuation">,</span> <span class="token string">'thur'</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 删除数组某一值
-   */</span>
-  <span class="token keyword">delete</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
-    util<span class="token punctuation">.</span><span class="token function">removeByValue</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>data<span class="token punctuation">.</span>somearray<span class="token punctuation">,</span> <span class="token string">'tue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'somearray'</span><span class="token punctuation">,</span> that<span class="token punctuation">.</span>data<span class="token punctuation">.</span>somearray<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面加载
-   */</span>
-  onLoad<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
-    that<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面初次渲染完成
-   */</span>
-  onReady<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面显示
-   */</span>
-  onShow<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面隐藏
-   */</span>
-  onHide<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 生命周期函数--监听页面卸载
-   */</span>
-  onUnload<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */</span>
-  onPullDownRefresh<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 页面上拉触底事件的处理函数
-   */</span>
-  onReachBottom<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
-  <span class="token comment" spellcheck="true">/**
-   * 用户点击右上角分享
-   */</span>
-  onShareAppMessage<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+                <p>进入微信小程序公众平台：</p>
+<p>进入设置：<br><img src="https://img-blog.csdnimg.cn/a4a2fd61747c4e568090d0cc5c3c9c84.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"><br>添加即可：<br><img src="https://img-blog.csdnimg.cn/9bd2e358bc25423ab63ea93390325733.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"><br>如果有文件的上传或下载也需要填写 uploadFile 和 downloadFile 的合法域名；</p>
+<p>最后进入微信开发者工具查看合法域名是否成功：<br><img src="https://img-blog.csdnimg.cn/ba9d0f2a7a7c4d66b224e77f31cd7a72.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_16,color_FFFFFF,t_70,g_se,x_16"><br>搞定！</p>
 
                 
             </div>
@@ -550,7 +457,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/11/18/wx-arrayremovebyvalue/">http://cjx-chen.github.io/2021/11/18/wx-arrayremovebyvalue/</a>
+                    <a href="http://cjx-chen.github.io/2021/11/24/wx-setdomain/">http://cjx-chen.github.io/2021/11/24/wx-setdomain/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -590,10 +497,6 @@ module<span class="token punctuation">.</span>exports <span class="token operato
                             
                                 <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                                     <span class="chip bg-color">微信小程序</span>
-                                </a>
-                            
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                         </div>
@@ -1031,9 +934,10 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/11/24/wx-setdomain/">
                     <div class="card-image">
@@ -1050,9 +954,9 @@ module<span class="token punctuation">.</span>exports <span class="token operato
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1069,6 +973,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1087,12 +992,12 @@ module<span class="token punctuation">.</span>exports <span class="token operato
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/18/wx-suspendbtn/">
+                <a href="/2021/11/18/wx-arrayremovebyvalue/">
                     <div class="card-image">
                         
-                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】悬浮按钮">
+                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】JavaScript 从数组中删除指定值元素的方法封装">
                         
-                        <span class="card-title">【微信小程序】悬浮按钮</span>
+                        <span class="card-title">【微信小程序】JavaScript 从数组中删除指定值元素的方法封装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1113,10 +1018,6 @@ module<span class="token punctuation">.</span>exports <span class="token operato
                                     微信小程序
                                 </a>
                             
-                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E9%9C%80%E6%B1%82/" class="post-category">
-                                    需求
-                                </a>
-                            
                             
                         </span>
                     </div>
@@ -1128,8 +1029,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
                         <span class="chip bg-color">微信小程序</span>
                     </a>
                     
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
