@@ -131,13 +131,22 @@ $ git commit -m 'feat: 增加了xx功能'
 
 $ git status
 
+# 如果执行commit后还,执行push时,想要撤销这次的commit,则输入以下命令,若想要连着add也撤销的话,--soft改为--hard
+git reset --soft HEAD^
+
+# 如果只是想修改一下注释,则输入以下命令,会进入vim编辑器，修改完成你要的注释后保存即可
+git commit --amend
+
 # 获取远程于本地内容同步
 $ git pull
 
 # 将本地仓库提交到远程仓库
-$ git push -u origin dev	# 将本地的dev分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了
-$ git push -u origin master # 将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了
+$ git push -u origin dev	# 将本地的dev分支推送到origin主机,同时指定origin为默认主机,后面就可以不加任何参数使用git push了
+$ git push -u origin master # 将本地的master分支推送到origin主机,同时指定origin为默认主机,后面就可以不加任何参数使用git push了
 $ git push
+
+# 如果某个远程分支不想要了,可以删除github上的远程分支
+git push origin :xxx
 ```
 
 ### Git 克隆操作
