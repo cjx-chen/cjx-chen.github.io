@@ -492,13 +492,22 @@ $ git commit <span class="token operator">-</span>m <span class="token string">'
 
 $ git status
 
+<span class="token comment" spellcheck="true"># 如果执行commit后还,执行push时,想要撤销这次的commit,则输入以下命令,若想要连着add也撤销的话,--soft改为--hard</span>
+git reset <span class="token operator">--</span>soft HEAD^
+
+<span class="token comment" spellcheck="true"># 如果只是想修改一下注释,则输入以下命令,会进入vim编辑器，修改完成你要的注释后保存即可</span>
+git commit <span class="token operator">--</span>amend
+
 <span class="token comment" spellcheck="true"># 获取远程于本地内容同步</span>
 $ git pull
 
 <span class="token comment" spellcheck="true"># 将本地仓库提交到远程仓库</span>
-$ git push <span class="token operator">-</span>u origin dev    <span class="token comment" spellcheck="true"># 将本地的dev分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了</span>
-$ git push <span class="token operator">-</span>u origin master <span class="token comment" spellcheck="true"># 将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了</span>
+$ git push <span class="token operator">-</span>u origin dev    <span class="token comment" spellcheck="true"># 将本地的dev分支推送到origin主机,同时指定origin为默认主机,后面就可以不加任何参数使用git push了</span>
+$ git push <span class="token operator">-</span>u origin master <span class="token comment" spellcheck="true"># 将本地的master分支推送到origin主机,同时指定origin为默认主机,后面就可以不加任何参数使用git push了</span>
 $ git push
+
+<span class="token comment" spellcheck="true"># 如果某个远程分支不想要了,可以删除github上的远程分支</span>
+git push origin :xxx
 </code></pre>
 <h3 id="Git-克隆操作"><a href="#Git-克隆操作" class="headerlink" title="Git 克隆操作"></a>Git 克隆操作</h3><ul>
 <li><strong>目的</strong>：将远程仓库（github对应的项目）复制到本地；</li>
