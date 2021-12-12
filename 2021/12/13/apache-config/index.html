@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【微信小程序】微信公众平台合法域名设置, Blog | Jessieeeeee">
+    <meta name="keywords" content="【Apache】Web 服务器配置与 FTP 服务器配置, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【微信小程序】微信公众平台合法域名设置 | Blog | Jessieeeeee</title>
+    <title>【Apache】Web 服务器配置与 FTP 服务器配置 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -257,12 +257,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://geode.incubator.apache.org/img/asf_logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【微信小程序】微信公众平台合法域名设置</h1>
+                    <h1 class="description center-align post-title">【Apache】Web 服务器配置与 FTP 服务器配置</h1>
                 </div>
             </div>
         </div>
@@ -378,8 +378,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                                <span class="chip bg-color">微信小程序</span>
+                            <a href="/tags/Apache/">
+                                <span class="chip bg-color">Apache</span>
+                            </a>
+                        
+                            <a href="/tags/ftp/">
+                                <span class="chip bg-color">ftp</span>
                             </a>
                         
                     </div>
@@ -390,11 +394,7 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                微信小程序
-                            </a>
-                        
-                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
+                            <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
                                 安装配置步骤
                             </a>
                         
@@ -407,7 +407,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-24
+                    2021-12-13
                 </div>
                 
 
@@ -428,9 +428,133 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>进入微信小程序公众平台：</p>
-<p>进入设置：<br><img src="https://img-blog.csdnimg.cn/a4a2fd61747c4e568090d0cc5c3c9c84.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"><br>添加即可：<br><img src="https://img-blog.csdnimg.cn/9bd2e358bc25423ab63ea93390325733.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"><br>如果有文件的上传或下载也需要填写 uploadFile 和 downloadFile 的合法域名；</p>
-<p>最后进入微信开发者工具查看合法域名是否成功：<br><img src="https://img-blog.csdnimg.cn/ba9d0f2a7a7c4d66b224e77f31cd7a72.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_16,color_FFFFFF,t_70,g_se,x_16"><br>搞定！</p>
+                <h2 id="设置端口号为：8080，查看访问方式有何区别"><a href="#设置端口号为：8080，查看访问方式有何区别" class="headerlink" title="设置端口号为：8080，查看访问方式有何区别"></a>设置端口号为：8080，查看访问方式有何区别</h2><p>打开 Apache 的配置文件 httpd.conf：<br><img src="https://img-blog.csdnimg.cn/50fb3910977041b3ba28f7d07853f180.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="点开http.conf"><br>搜索 listen：<br><img src="https://img-blog.csdnimg.cn/e402b3fb547044f48fbe517e7ef106a1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="搜索listen"><br>将端口号改为 <code>8080</code>，然后重启 Apache，我们发现：</p>
+<p>之前打开的网址是 localhost：<br><img src="https://img-blog.csdnimg.cn/e5abef619dff465ba062969920ebe436.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="之前打开的网址是localhost"><br>现在打开的网址是 localhost:8080：<br><img src="https://img-blog.csdnimg.cn/a2a272fade8143b4b910277f5ae41c6d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="现在打开的网址是localhost:8080"></p>
+<h2 id="将文档主目录放到-d-homepage-文件夹下"><a href="#将文档主目录放到-d-homepage-文件夹下" class="headerlink" title="将文档主目录放到 d:\homepage 文件夹下"></a>将文档主目录放到 d:\homepage 文件夹下</h2><p>打开 Apache 的配置文件 httpd.conf 找到了 <code>DocumentRoot "D:/Download/xampp/htdocs"</code>与 <code>&lt;Directory "D:/Download/xampp/htdocs"&gt;</code> <img src="https://img-blog.csdnimg.cn/59712151df9b40b29a8f6fb3973f92b3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="搜索htdocs"><br>改为 <code>DocumentRoot "D:/homepage"</code> 与 <code>&lt;Directory "D:/homepage"&gt;</code><br><img src="https://img-blog.csdnimg.cn/b0164e7a0f4847fabdd31c1a643bea64.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="修改主目录地址"><br>这时候重启 Apache 试一下，会发现首页出来了：<br><img src="https://img-blog.csdnimg.cn/168680837a6b42c5ac873fde1af6b757.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="index.html"></p>
+<h2 id="设置-default-htm-为缺省的访问文件"><a href="#设置-default-htm-为缺省的访问文件" class="headerlink" title="设置 default.htm 为缺省的访问文件"></a>设置 default.htm 为缺省的访问文件</h2><p>“缺省 意思即“默认”。 缺省文件名 系统默认的文件名。也就是说你没有指定用哪件工具，系统自动提供给你的那个就是缺省的，例如你在打开网页时，如果IE是缺省的浏览器，系统就会打开IE——Internet Explorer，使用IE来浏览网页。 </p>
+<p>在 Apache 的配置文件 httpd.conf 中搜索 <code>DirectoryIndex</code>：<br><img src="https://img-blog.csdnimg.cn/c4ab454af90c49beb1e2675eec989ca6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="可以看到 default.htm 已被设为缺省的访问文件"></p>
+<h2 id="为-d-web2002-文件夹，-设置虚拟目录名-st2002"><a href="#为-d-web2002-文件夹，-设置虚拟目录名-st2002" class="headerlink" title="为 d:\web2002 文件夹， 设置虚拟目录名 \st2002"></a>为 d:\web2002 文件夹， 设置虚拟目录名 \st2002</h2><p>在 Apache 的配置文件 httpd.conf 中搜索 <code>&lt;IfModule alias_module&gt;</code>：<br><img src="https://img-blog.csdnimg.cn/efba0383806240e2a1b78d34a8792d56.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="搜索 <IfModule alias_module>"><br>在里面添加：<code>Alias /st2002 "d:/web2002/"</code>：<br><img src="https://img-blog.csdnimg.cn/5acee0c0da8347d8952291fe755aa1d7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="添加虚拟目录配置"><br>然后在<code>&lt;/IfModule&gt;</code> 后面接着加：<br><img src="https://img-blog.csdnimg.cn/cc2748ef0f6b495b9c90fcff1b59907d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="添加如图代码"><br>保存后，重新启动 Apache 就可以了。</p>
+<h2 id="取消-st2002-的目录浏览功能"><a href="#取消-st2002-的目录浏览功能" class="headerlink" title="取消 st2002 的目录浏览功能"></a>取消 st2002 的目录浏览功能</h2><p>在上文添加的代码中，将 Options 进行如下修改：<br><img src="https://img-blog.csdnimg.cn/809e3ccf27db44a78a3e2cf22f6ce079.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="修改 Options"><br>可关闭 Apache 相关目录的浏览功能。</p>
+<h2 id="用-www-的-upload-上传文件到-d-web2002-文件夹，用-ftp-复制文件到-d-web2002-文件夹，比较操作上的区别"><a href="#用-www-的-upload-上传文件到-d-web2002-文件夹，用-ftp-复制文件到-d-web2002-文件夹，比较操作上的区别" class="headerlink" title="用 www 的 upload 上传文件到 d:\web2002 文件夹，用 ftp 复制文件到 d:\web2002 文件夹，比较操作上的区别"></a>用 www 的 upload 上传文件到 d:\web2002 文件夹，用 ftp 复制文件到 d:\web2002 文件夹，比较操作上的区别</h2><h3 id="配置-放上传文件的目录-apache-httpd"><a href="#配置-放上传文件的目录-apache-httpd" class="headerlink" title="配置 放上传文件的目录 apache(httpd)"></a>配置 放上传文件的目录 apache(httpd)</h3><p>修改 apache vhost 配置文件：D:\Download\xampp\apache\conf\extra\httpd-vhosts.conf，添加以下配置：</p>
+<pre class=" language-powershell"><code class="language-powershell">&lt;VirtualHost <span class="token operator">*</span>:8080>
+     ServerAdmin Administrator@www<span class="token punctuation">.</span>mediamix<span class="token punctuation">.</span>cn
+     DocumentRoot <span class="token string">"D:/web2002"</span>
+     ServerName www<span class="token punctuation">.</span>mediamix<span class="token punctuation">.</span>cn
+     ServerAlias www<span class="token punctuation">.</span>mediamix<span class="token punctuation">.</span>cn
+     ErrorLog <span class="token string">"logs/mediamix.cn-error.log"</span>
+     CustomLog <span class="token string">"logs/mediamix.cn.log"</span> common
+    &lt;Directory <span class="token string">"D:/web2002"</span>>
+      Options Indexes FollowSymLinks Includes ExecCGI
+      AllowOverride All
+      Require all granted
+    &lt;<span class="token operator">/</span>Directory>
+&lt;<span class="token operator">/</span>VirtualHost>
+</code></pre>
+<p>（这一步好像并没有起到什么作用？</p>
+<h3 id="www-文件上传"><a href="#www-文件上传" class="headerlink" title="www 文件上传"></a>www 文件上传</h3><p>将 d:/homepage/index.html 的内容改为以下代码：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>文件上传表单<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span>
+               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">enctype</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>multipart/form-data<span class="token punctuation">'</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>myform<span class="token punctuation">'</span></span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>submit.php<span class="token punctuation">'</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>post<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
+                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>hidden<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>MAX_FILE_SIZE<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1000000000<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+                  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>选择文件上传
+                          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>rzfile<span class="token punctuation">'</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>file<span class="token punctuation">'</span></span><span class="token punctuation">/></span></span>
+                  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+                  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">colspan</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>2<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
+                          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>submit<span class="token punctuation">'</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>上传<span class="token punctuation">'</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>submit<span class="token punctuation">'</span></span><span class="token punctuation">/></span></span>
+                  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>将 d:/homepage/index.php 的内容改为以下代码：</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+  <span class="token comment" spellcheck="true">//header('content-type:test/html;charset=utf-8');</span>
+ <span class="token comment" spellcheck="true">//1.通过$_FILES文件上传变量接收上传文件信息</span>
+ <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$_FILES</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token variable">$file</span><span class="token operator">=</span><span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string">'rzfile'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token variable">$filename</span><span class="token operator">=</span><span class="token variable">$file</span><span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token variable">$type</span><span class="token operator">=</span><span class="token variable">$file</span><span class="token punctuation">[</span><span class="token string">'type'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token variable">$tmp_name</span><span class="token operator">=</span><span class="token variable">$file</span><span class="token punctuation">[</span><span class="token string">'tmp_name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token variable">$size</span><span class="token operator">=</span><span class="token variable">$file</span><span class="token punctuation">[</span><span class="token string">'size'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token variable">$error</span><span class="token operator">=</span><span class="token variable">$file</span><span class="token punctuation">[</span><span class="token string">'error'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token variable">$uploaddir</span><span class="token operator">=</span><span class="token string">'/upload/'</span><span class="token punctuation">;</span>
+  <span class="token variable">$uploadfile</span><span class="token operator">=</span><span class="token variable">$uploaddir</span><span class="token punctuation">.</span><span class="token function">basename</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+  <span class="token comment" spellcheck="true">//2.判断错误号，只有为0或者是UPLOAD_ERR_OK，表示没有错误发生，上传成功</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$error</span> <span class="token operator">==</span> <span class="token constant">UPLOAD_ERR_OK</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$tmp_name</span><span class="token punctuation">,</span> <span class="token variable">$uploadfile</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token keyword">echo</span> <span class="token string">'file:'</span><span class="token punctuation">.</span><span class="token variable">$filename</span><span class="token punctuation">.</span><span class="token string">'upload successful'</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token keyword">else</span> <span class="token punctuation">{</span>
+         <span class="token keyword">echo</span> <span class="token string">'file'</span><span class="token punctuation">.</span><span class="token variable">$filename</span><span class="token punctuation">.</span><span class="token string">'upload failed'</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+     <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token variable">$error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">case</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string">'1: upload file size beyond upload_max_filesize'</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+   <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string">'2: upload file size beyond post form MAX_FILE_SIZE limit'</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token punctuation">:</span>
+          <span class="token keyword">echo</span> <span class="token string">'3: 文件被部分上传'</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+     <span class="token keyword">case</span> <span class="token number">4</span><span class="token punctuation">:</span>
+     <span class="token keyword">echo</span> <span class="token string">'4: 没有选择上传文件'</span><span class="token punctuation">;</span>
+     <span class="token keyword">break</span><span class="token punctuation">;</span>
+   <span class="token keyword">case</span> <span class="token number">6</span><span class="token punctuation">:</span>
+       <span class="token keyword">echo</span> <span class="token string">'6: 没有找到临时目录'</span><span class="token punctuation">;</span>
+         <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">7</span><span class="token punctuation">:</span>
+     <span class="token keyword">case</span> <span class="token number">8</span><span class="token punctuation">:</span>
+         <span class="token keyword">echo</span> <span class="token string">'7:8: 系统错误'</span><span class="token punctuation">;</span>
+         <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+ <span class="token delimiter">?></span>
+</code></pre>
+<p>然后进行一次文件上传：<br><img src="https://img-blog.csdnimg.cn/ea3ab839e9ac44a2bf565b16ce39afba.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="选择文件，点击上传"><br><img src="https://img-blog.csdnimg.cn/060370393276435684fb1b580449652f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="上传成功"><br>查看 d:/web2002，有我们上传的 test2.txt 文件，即成功：<br><img src="https://img-blog.csdnimg.cn/8c53689961ed4756a8822ec3421f796c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="上传成功"></p>
+<h3 id="匿名-FTP-配置"><a href="#匿名-FTP-配置" class="headerlink" title="匿名 FTP 配置"></a>匿名 FTP 配置</h3><p><img src="https://img-blog.csdnimg.cn/537c5d31161244c0a4287c3f0e1bc78e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="点击admin开启ftp服务"><br>会打开如下界面：<img src="https://img-blog.csdnimg.cn/b6fc887e79a6488ba3a1f2ac9f318fe6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_10,color_FFFFFF,t_70,g_se,x_16" alt="如果是第一次进入，直接点击ok即可"><br>然后勾选「Always connect to this server」再按下〔OK〕。建议选中“总是连接到本服务器”的选项，即表示每次启动管理控制台，都是管理本机的 Filezilla 服务。</p>
+<p>1.首先打开管理控制台，点击左起第四个图标进入系统设置。<br><img src="https://img-blog.csdnimg.cn/aa3023b57d444a6e89023ae9d2f3c709.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="进入系统设置"><br>2.打开 ftp 用户管理界面，点击右侧的 add 按钮，添加新用户。<br>3.在新增用户的对话框中，输入“anonymous”这个名字，即FTP的匿名用户。<br><img src="https://img-blog.csdnimg.cn/77b1c5d15e15464bbe15094817aa0213.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="添加匿名用户"><br>4.点击确认，添加用户完成，返回用户管理界面。<br>5.点击左侧的“Shared folders”菜单。点击Add按钮，添加 d:\web2002 目录。<br>6.打开浏览文件夹的选项，选择要设置FTP的目录。<br>7.点击确定，添加用户完成。<br><img src="https://img-blog.csdnimg.cn/d0f5c6c95b884612865d53ea5f1ec12c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="添加目录"><br><img src="https://img-blog.csdnimg.cn/f4bd8179f75344a1bc12192b1b4deaf7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="并将其设为home dir"><br><img src="https://img-blog.csdnimg.cn/a28aa3cbf58a4318aa85f7e6aad8c94c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="开放相应权限"><br>现在用户FTP客户端连接到 FileZilla Server上，可以看到匿名 FTP 已经配置完成。<br><img src="https://img-blog.csdnimg.cn/797aed99b71b4167a7ee4ca81d6a3250.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="复制test文件添加进来试试"></p>
+<h3 id="比较操作上的区别"><a href="#比较操作上的区别" class="headerlink" title="比较操作上的区别"></a>比较操作上的区别</h3><p>www 上传：即通过浏览器来上传文件。</p>
+<p>1、通过浏览器上传文件，按照“操作向导”一步步操作完成；<br>2、支持断点续传，支持大文件上传；</p>
+<p>ftp 上传：</p>
+<p>1、需要建立 FTP 服务器及配置设置，专业性强；<br>2、不支持断点续传，只能重新上传，支持大文件上传；</p>
+<h2 id="FileZilla-Server-详细配置解析"><a href="#FileZilla-Server-详细配置解析" class="headerlink" title="FileZilla Server 详细配置解析"></a>FileZilla Server 详细配置解析</h2><p>注意：修改端口和密码非常重要，这是确保 Filezilla 安全的重点，必须修改端口，必须设置密码！密码建议足够复杂！可以在管理界面中进行修改：</p>
+<p>首先要进行服务器全局参数设置：</p>
+<p>1、General settings（常规设置）：</p>
+<p>Listen on Port：监听端口，其实就是FTP服务器的连接端口。（一般都是21）<br>Max.Number of users：允许最大并发连接客户端的数量。（0为不限制）<br>Number of Threads：处理线程。也就是CPU优先级别。数值调得越大优先级越高，一般默认即可。</p>
+<p>下面的是超时设置，</p>
+<p>Connections timeout：连接超时时间；此处默认是120秒。<br>No Transfer timeout：传输空闲超时；此处默认是120秒。<br>Login timeout：登入超时。此处是60秒。</p>
+<p>FileZilla Server全局参数设置</p>
+<p>1.1、Welcome message：页面设置客户端登录成功以后显示的Welcome信息。<br><img src="https://img-blog.csdnimg.cn/14e518600f8b49348e5080818f115a7d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="Welcome message"><br>站长此处已经改为Welcom to  FTP Server！此处最好要修改！因为随便暴露的话黑客可能会利用漏洞进行攻击。建议和站长输入的一样即可。 </p>
+<p>1.2、IP bindings（IP绑定）页面：把服务器与IP地址绑定，使用*以绑定到所有地址。（一般默认即可）<br><img src="https://img-blog.csdnimg.cn/bc8a644ecaf847e7bd6c41c91ea55704.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="IP bindings"><br>1.3、IP Filter（IP过滤器）页面：设置IP过滤规则，在上面栏目中的IP是被禁止与FTP服务器连接的，下面的是允许的。</p>
+<p>格式：可以是单个IP地址、IP地址段，可以使用通配符、使用IP/subnet语法或正则表达式（以“/”结尾）来过滤主机名。</p>
+<p>（一般默认即可，除非有需要的话再来进行设置）<br><img src="https://img-blog.csdnimg.cn/8887308e57e7485aba1e9ad2adb7c665.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="IP Filter"><br>2、Passive mode settings（被动传输模式设置）：这个页面要重点关注。<br><img src="https://img-blog.csdnimg.cn/11d199659c484cbca8dc9dff30f719fa.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="Passive mode settings"></p>
+<p>先修改Use custom port range：此处根据自己需要选择（例：10000-10020）。</p>
+<p>下面是被动传输设置：</p>
+<p> 1.如果服务器本身直接拥有公网IP，可以选软件默认的“Default”。</p>
+<p> 2.如果服务器是在局域网里面，在一个网关后面，那么就要选择第二项“Use the follwoing IP”，并且在下面的输入栏填写公网的IP地址；否则，客户端用PASV被动模式可能无法连接FTP服务器。因为服务器是在内网中，在客户端使用PASV模式连接服务器的时候，服务器收到连接请求之后需要把自身的IP地址告诉客户端，由于服务器在内网中，它侦测到的IP地址是内网的（如192.168.0.5），它把这个IP地址交给客户端，客户端自然无法连接。在这里设置了指定的IP地址后，服务器就会把这个公网合法的IP地址提交给客户端，这样才能正常建立连接。如果服务器是动态IP的，那么可以选择下面的“Retrieve external IP address from”，利用FileZilla官方网站免费提供的IP查询页面获取当时的公网合法IP，然后服务器把这个公网合法IP地址提交给客户端。当然静态IP也可以用这个，只不过没有必要。</p>
+<p>这个设置页面对服务器位于内网的情况非常重要。有些FTP服务器端没有这个设置项目，客户端就只能用Port主动模式连接。当然有些客户端软件针对这个问题有专门的设置，如FlashFXP的站点设置中只要选中“被动模式使用站点IP”就可以了。</p>
+<p>对于在局域网中的服务器，如果服务器没有置于DMZ区，那么强烈建议选中下面的“Use custom port range”定义PASV端口范围。由于PASV模式中，是服务器随机打开端口，然后把打开的端口号告诉客户端，让客户端连接打开的端口。但是因为服务器处于网关后面，如果网关那里没有做对应的端口映射，客户端从外网就无法连接服务器打开的端口，导致PASV模式连接失败。在这里限定服务器打开的端口范围，然后到连接外网的网关那里，对服务器的这些端口做端口映射（虚拟服务）。这需要服务器和Internet网关设备配合设置，这样外网的客户端才能用PASV模式连接进来。</p>
+<p>3、Security settings（安全设置）：</p>
+<p>这里的两个选项关系到能否FXP。软件默认状态“Block incoming server-to-server transfers”和“Block outgoing server-to-server transfers”两项都是选中的，前面那项是禁止连入的服务器对传，后面是禁止传出的服务器对传。也就是说默认状态不允许FXP，如果需要使用FXP，那么就把这两个项目取消选择。注意FXP传输除了跟这个页面的设置有关，还跟IP过滤器有关。</p>
+<p><img src="https://img-blog.csdnimg.cn/dc5aeaa565d04aa58723619a1b4ab85e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="Security settings"><br>4、miscellaneous：杂项设置。<br><img src="https://img-blog.csdnimg.cn/7f4e3942feb240a2813978c63a7bae78.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="miscellaneous"><br>默认即可。</p>
+<p>5、 Admin Interface setting（管理员界面设定）：</p>
+<p>这个就是登录配置服务器界面的一些参数。端口号的设置在安装的时候也出现过。下面两栏可以定义允许远程登录配置的网络界面和IP地址，第一个空白可以设置把管理界面绑定到IP地址，使用*以绑定所有IP地址，127.0.0.1是默认绑定，它一直存在且不可被移除；第二个空白设置允许连接到管理界面的IP地址，可以使用通配符（例如：123.234.12？.*），127.0.0.1总是被允许连接到管理界面的。在最下面更改管理员口令。<br><img src="https://img-blog.csdnimg.cn/0021331d8ad8479aafde7036edb0b49b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="Admin Interface setting"><br>注意：修改端口和密码非常重要，这是确保Filezilla安全的重点，必须修改端口，必须设置密码！密码建议足够复杂！</p>
+<p>6、Logging（日志）：设定是否启用日志记录功能以及日志文件大小和文件名。<br><img src="https://img-blog.csdnimg.cn/473b6877fdb44169b68116669693c995.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="Logging"><br>7、Speed Limits（速度限制）：</p>
+<p>这个是全局参数，默认状态不限速。可以选中“Constant Speed Limit of”并填写限速数值来实现速度限制，下载（传出）和上传（传入）可以分别设置。还可以根据时段自定义限速规则——“Use Speed Limit Rules”，比如这台服务器或者网络连接除了做FTP服务器之外还有别的用途，需要根据时间调度，不能让FTP传输挤占所有网络带宽影响其它的网络服务；就可以通过这里设置。</p>
+<p><img src="https://img-blog.csdnimg.cn/0fac47f4f2e94edcbeca1047705159dc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="Speed Limits"><br>8、Filetransfer compression（文件传输压缩设置）：</p>
+<p>MODE Z FTP协议是一种实时压缩的传输协议。在这种模式下，发送方的数据在发出之前先进行压缩，再送到网络链路中传输，接收方将收到数据实时解包，在本地还原重组成原文件。这种模式可以大幅度减少网络中的数据流量，提升传输效率（速度）。当然对于已经压缩过的文件，就几乎没有效果了。要使用这种传输模式，需要服务器端和客户端都支持MODE Z协议。<br><img src="https://img-blog.csdnimg.cn/8e98a08cb00146fa9ce3783d36fee802.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="Filetransfer compression"><br>勾选“Enable MODE Z support”就可以启用本服务器的MODE Z支持功能，这样，只要客户端也支持MODE Z就可以获得它带来的性能提升。“Minimum allowed compression level”和“Maximum allowed compression level”分别设置最小压缩率和最大压缩率。最下面可以输入不启用MODE Z功能的目标IP。</p>
+<p>9、设置“SSL/TLS settings”：安全套接层协议设置<br><img src="https://img-blog.csdnimg.cn/fc693b29fb1248c59f75c1b9da11c18e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="SSL/TLS settings"><br>选中“Enable FTP over SSL/TLS support(FTPS)”进行公钥私钥的设置.</p>
+<p>10、Autoban：自动断开<br><img src="https://img-blog.csdnimg.cn/d014757c42924b3385438251bc4113d0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16" alt="Autoban"><br>FileZilla Server配置勾选是否一小时之内允许重复10次失败尝试。</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://www.5xiaobo.com/?id=528">https://www.5xiaobo.com/?id=528</a></p>
 
                 
             </div>
@@ -457,7 +581,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2021/11/24/wx-setdomain/">http://cjx-chen.github.io/2021/11/24/wx-setdomain/</a>
+                    <a href="http://cjx-chen.github.io/2021/12/13/apache-config/">http://cjx-chen.github.io/2021/12/13/apache-config/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -495,8 +619,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                                    <span class="chip bg-color">微信小程序</span>
+                                <a href="/tags/Apache/">
+                                    <span class="chip bg-color">Apache</span>
+                                </a>
+                            
+                                <a href="/tags/ftp/">
+                                    <span class="chip bg-color">ftp</span>
                                 </a>
                             
                         </div>
@@ -934,9 +1062,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/12/13/apache-config/">
                     <div class="card-image">
@@ -953,9 +1082,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -968,6 +1097,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -990,12 +1120,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/18/wx-arrayremovebyvalue/">
+                <a href="/2021/11/24/wx-setdomain/">
                     <div class="card-image">
                         
-                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】JavaScript 从数组中删除指定值元素的方法封装">
+                        <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】微信公众平台合法域名设置">
                         
-                        <span class="card-title">【微信小程序】JavaScript 从数组中删除指定值元素的方法封装</span>
+                        <span class="card-title">【微信小程序】微信公众平台合法域名设置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1006,7 +1136,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-24
                             </span>
                         <span class="publish-author">
                             
@@ -1014,6 +1144,10 @@
                             
                             <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
                                     微信小程序
+                                </a>
+                            
+                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
+                                    安装配置步骤
                                 </a>
                             
                             
@@ -1025,10 +1159,6 @@
                     
                     <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
                         <span class="chip bg-color">微信小程序</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
