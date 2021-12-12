@@ -164,7 +164,12 @@ tags:
 ![并将其设为home dir](https://img-blog.csdnimg.cn/f4bd8179f75344a1bc12192b1b4deaf7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16)
 ![开放相应权限](https://img-blog.csdnimg.cn/a28aa3cbf58a4318aa85f7e6aad8c94c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16)
 现在用户FTP客户端连接到 FileZilla Server上，可以看到匿名 FTP 已经配置完成。 
+
+复制test文件添加进来试试：
 ![复制test文件添加进来试试](https://img-blog.csdnimg.cn/797aed99b71b4167a7ee4ca81d6a3250.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16)
+打开本地 d:\web2002\ 已存在上传的文件：
+![打开本地 d:\web2002\ 已存在上传的文件](https://img-blog.csdnimg.cn/ec2c4ca8369544c6854830ba30dc4359.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16)
+ftp 上传文件成功。
 ### 比较操作上的区别
 www 上传：即通过浏览器来上传文件。
 
