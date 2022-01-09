@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【Jquery】循环渲染并定义data取值</title>
+      <link href="/2022/01/09/jquery-data/"/>
+      <url>/2022/01/09/jquery-data/</url>
+      
+        <content type="html"><![CDATA[<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> items <span class="token operator">=</span> <span class="token string">''</span><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    items <span class="token operator">+</span><span class="token operator">=</span> <span class="token template-string"><span class="token string">`      &lt;div class="list">        &lt;div class="prize"></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>res<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>prize_name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/div>        &lt;div class="receive" data-url="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>res<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>receiveUrl<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">" style="display: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>res<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>goods_type <span class="token operator">==</span> <span class="token number">2</span><span class="token operator">?</span><span class="token string">'block'</span> <span class="token punctuation">:</span> <span class="token string">'none'</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">">领取&lt;/div>    &lt;/div>`</span></span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>goods_type<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.pop'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Jquery </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Apache】Web 服务器配置与 FTP 服务器配置</title>
       <link href="/2021/12/13/apache-config/"/>
       <url>/2021/12/13/apache-config/</url>
