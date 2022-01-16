@@ -505,23 +505,527 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2022/01/09/jquery-data/">
+                    <a href="/2022/01/16/vue3-id/">
                         <div class="card-image">
                             
-                            <img src="https://img.php.cn/upload/article/000/000/194/ffb4ed33d825a51cd2aa47468fe5219c.png" class="responsive-img" alt="【Jquery】循环渲染并定义data取值">
+                            <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】实现动态给id赋值，点击事件获取当前点击的元素的id操作">
                             
-                            <span class="card-title">【Jquery】循环渲染并定义data取值</span>
+                            <span class="card-title">【Vue3】实现动态给id赋值，点击事件获取当前点击的元素的id操作</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                var items = ''
-for (let i = 0; i &lt; res.data.length; i++) {
-    items += `
-      &lt;div class="list">
-        &lt;div
+                                场景需要让输出的 id 为 0，1……
+代码&lt;div v-for="(item,index) in list" :key="index" >
+    &lt;div :id="index" @click="b(index)">我是id
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Vue3/">
+                            <span class="chip bg-color">Vue3</span>
+                        </a>
+                        
+                        <a href="/tags/Html/">
+                            <span class="chip bg-color">Html</span>
+                        </a>
+                        
+                        <a href="/tags/Javascript/">
+                            <span class="chip bg-color">Javascript</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/14/vue3-wrong1/">
+                        <div class="card-image">
+                            
+                            <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】跨域问题 [The value of the &#39;Access-Control-Allow-Origin&#39; header in the response must not be the..]">
+                            
+                            <span class="card-title">【Vue3】跨域问题 [The value of the &#39;Access-Control-Allow-Origin&#39; header in the response must not be the..]</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                场景vue 项目中 axios 请求数据的时候请求失败，出现跨域问题。
+报错信息The value of the 'Access-Control-Allow-Origin' header in the response must not b
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Vue3/">
+                            <span class="chip bg-color">Vue3</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                            <span class="chip bg-color">报错解决方法</span>
+                        </a>
+                        
+                        <a href="/tags/Javascript/">
+                            <span class="chip bg-color">Javascript</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/14/vue3-tofixed/">
+                        <div class="card-image">
+                            
+                            <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】保留小数点位数以及转化为百分比">
+                            
+                            <span class="card-title">【Vue3】保留小数点位数以及转化为百分比</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                toFixed MDNtoFixed() 方法使用定点表示法来格式化一个数值。
+一、保留小数点后两位四舍五入
+export function NumFilter (value) {
+  // 截取当前数据到小数点后两位
+  let real
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Vue3/">
+                            <span class="chip bg-color">Vue3</span>
+                        </a>
+                        
+                        <a href="/tags/Javascript/">
+                            <span class="chip bg-color">Javascript</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/14/vue3-params/">
+                        <div class="card-image">
+                            
+                            <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】Vue-Router4.x 实现路由跳转传参">
+                            
+                            <span class="card-title">【Vue3】Vue-Router4.x 实现路由跳转传参</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                传递参数&lt;script>
+  import {
+    useRouter
+  } from "vue-router";
+  export default {
+    setup() {
+      const router = us
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Vue3/">
+                            <span class="chip bg-color">Vue3</span>
+                        </a>
+                        
+                        <a href="/tags/router/">
+                            <span class="chip bg-color">router</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/14/js-reload/">
+                        <div class="card-image">
+                            
+                            <img src="https://pic1.zhimg.com/v2-bde07fdceb700b45ea02f16e3bb099e7_1440w.jpg?source=172ae18b" class="responsive-img" alt="【JavaScript】实现延时3秒刷新">
+                            
+                            <span class="card-title">【JavaScript】实现延时3秒刷新</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                代码setTimeout(function (){
+    window.location.reload();
+}, 3000);
+
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JavaScript/">
+                            <span class="chip bg-color">JavaScript</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/11/wx-sendobj/">
+                        <div class="card-image">
+                            
+                            <img src="https://static.sduan.com/web/upload/other/20211101/1635748984504710.jpeg" class="responsive-img" alt="【微信小程序】页面跳转传递参数（实体，对象）">
+                            
+                            <span class="card-title">【微信小程序】页面跳转传递参数（实体，对象）</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                场景在一个列表中点击了某个 item，跳转到详情界面，那么我就需要把 item 的实体数据从列表页面传递到详情页面。
+实现方法那么我们来看看微信小程序给我们提供的API：这里大家可以清楚看到 api 中说到的如何传递参数，其实它这里指的参数
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
+                                    微信小程序
+                                </a>
+                                
+                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E9%9C%80%E6%B1%82/" class="post-category">
+                                    需求
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JavaScript/">
+                            <span class="chip bg-color">JavaScript</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                            <span class="chip bg-color">微信小程序</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/09/bootstrap-modal/">
+                        <div class="card-image">
+                            
+                            <img src="https://pic3.zhimg.com/v2-85a8c11c81bc910f379fbd028f76b5bd_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Bootstrap】模态框（Modal）插件">
+                            
+                            <span class="card-title">【Bootstrap】模态框（Modal）插件</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                效果
+
+用法可以切换模态框（Modal）插件的隐藏内容：
+
+通过 data 属性：在控制器元素（比如按钮或者链接）上设置属性 data-toggle="modal"，同时设置 data-target="#identifier" 或 href
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Bootstrap/">
+                            <span class="chip bg-color">Bootstrap</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/09/select-value/">
+                        <div class="card-image">
+                            
+                            <img src="https://pic1.zhimg.com/v2-bde07fdceb700b45ea02f16e3bb099e7_1440w.jpg?source=172ae18b" class="responsive-img" alt="【JavaScript】select 事件监听及选中">
+                            
+                            <span class="card-title">【JavaScript】select 事件监听及选中</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                效果
+代码Html&lt;!-- 创建作品集 -->
+&lt;div class="create-block">
+  &lt;div class="create-mainbackground" style="min-width: 600px
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Html/">
+                            <span class="chip bg-color">Html</span>
+                        </a>
+                        
+                        <a href="/tags/Jquery/">
+                            <span class="chip bg-color">Jquery</span>
+                        </a>
+                        
+                        <a href="/tags/JavaScript/">
+                            <span class="chip bg-color">JavaScript</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/09/js-toast/">
+                        <div class="card-image">
+                            
+                            <img src="https://pic1.zhimg.com/v2-bde07fdceb700b45ea02f16e3bb099e7_1440w.jpg?source=172ae18b" class="responsive-img" alt="【JavaScript】封装Toast弹窗">
+                            
+                            <span class="card-title">【JavaScript】封装Toast弹窗</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                效果
+代码/**
+ * 封装Toast提示
+ * @param {提示信息} msg 
+ * @param {延迟时间} duration 
+ */
+function Toast(msg, duration) {
+  duration = 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JavaScript/">
+                            <span class="chip bg-color">JavaScript</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/09/jquery-jump/">
+                        <div class="card-image">
+                            
+                            <img src="https://img.php.cn/upload/article/000/000/194/ffb4ed33d825a51cd2aa47468fe5219c.png" class="responsive-img" alt="【jQuery】跳转另一个页面">
+                            
+                            <span class="card-title">【jQuery】跳转另一个页面</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1.我们可以利用http的重定向来跳转
+window.location.replace("http://www.baidu.com");
+
+2.使用 href 来跳转
+window.location.href = "http://www.b
                             
                         </div>
                         <div class="publish-info">
@@ -557,32 +1061,35 @@ for (let i = 0; i &lt; res.data.length; i++) {
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/12/13/apache-config/">
+                    <a href="/2022/01/09/jquery-checkbox/">
                         <div class="card-image">
                             
-                            <img src="http://geode.incubator.apache.org/img/asf_logo.png" class="responsive-img" alt="【Apache】Web 服务器配置与 FTP 服务器配置">
+                            <img src="https://img.php.cn/upload/article/000/000/194/ffb4ed33d825a51cd2aa47468fe5219c.png" class="responsive-img" alt="【jQuery】获取 input checkbox 被选中的值">
                             
-                            <span class="card-title">【Apache】Web 服务器配置与 FTP 服务器配置</span>
+                            <span class="card-title">【jQuery】获取 input checkbox 被选中的值</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                设置端口号为：8080，查看访问方式有何区别打开 Apache 的配置文件 httpd.conf：搜索 listen：将端口号改为 8080，然后重启 Apache，我们发现：
-之前打开的网址是 localhost：现在打开的网址是 loc
+                                代码&lt;html>
+    &lt;head>
+        &lt;meta charset="gbk">
+        &lt;!-- 引入JQuery -->
+        &lt;script src="jquery-1.
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-09
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
-                                    安装配置步骤
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                                 
                                 
@@ -593,12 +1100,8 @@ for (let i = 0; i &lt; res.data.length; i++) {
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Apache/">
-                            <span class="chip bg-color">Apache</span>
-                        </a>
-                        
-                        <a href="/tags/ftp/">
-                            <span class="chip bg-color">ftp</span>
+                        <a href="/tags/Jquery/">
+                            <span class="chip bg-color">Jquery</span>
                         </a>
                         
                     </div>
@@ -610,38 +1113,32 @@ for (let i = 0; i &lt; res.data.length; i++) {
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/11/24/wx-setdomain/">
+                    <a href="/2022/01/09/html-button/">
                         <div class="card-image">
                             
-                            <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】微信公众平台合法域名设置">
+                            <img src="https://bkimg.cdn.bcebos.com/pic/fc1f4134970a304ed9002dcad3c8a786c9175ce4?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5/format,f_auto" class="responsive-img" alt="【Html】解决 button 按钮点击后自动刷新页面的问题">
                             
-                            <span class="card-title">【微信小程序】微信公众平台合法域名设置</span>
+                            <span class="card-title">【Html】解决 button 按钮点击后自动刷新页面的问题</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                进入微信小程序公众平台：
-进入设置：添加即可：如果有文件的上传或下载也需要填写 uploadFile 和 downloadFile 的合法域名；
-最后进入微信开发者工具查看合法域名是否成功：搞定！
-
+                                问题页面上有一个查询按钮为 Button 标签，点击查询按钮后会自动刷新页面，令人费解，查资料后发现是 button 的默认行为导致的。
+&lt;button class="btn btn-default active" id="btnAd
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-09
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    微信小程序
-                                </a>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
-                                    安装配置步骤
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                                 
                                 
@@ -652,535 +1149,8 @@ for (let i = 0; i &lt; res.data.length; i++) {
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                            <span class="chip bg-color">微信小程序</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/11/18/wx-arrayremovebyvalue/">
-                        <div class="card-image">
-                            
-                            <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】JavaScript 从数组中删除指定值元素的方法封装">
-                            
-                            <span class="card-title">【微信小程序】JavaScript 从数组中删除指定值元素的方法封装</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                效果const somearray = ["mon", "tue", "wed", "thur"]
-removeByValue(somearray, "tue");
-//somearray will now have "mon", "wed
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    微信小程序
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                            <span class="chip bg-color">微信小程序</span>
-                        </a>
-                        
-                        <a href="/tags/JavaScript/">
-                            <span class="chip bg-color">JavaScript</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/11/18/wx-suspendbtn/">
-                        <div class="card-image">
-                            
-                            <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】悬浮按钮">
-                            
-                            <span class="card-title">【微信小程序】悬浮按钮</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                效果需要制作一个底部居右的悬浮按钮：
-需要制作一个固定在底部居中的悬浮按钮：
-代码底部居右index.wxml&lt;!-- 发布悬浮按钮 -->
-&lt;view class="releaseBtn" bind:tap="gotoRele
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    微信小程序
-                                </a>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E9%9C%80%E6%B1%82/" class="post-category">
-                                    需求
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                            <span class="chip bg-color">微信小程序</span>
-                        </a>
-                        
-                        <a href="/tags/CSS/">
-                            <span class="chip bg-color">CSS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/11/18/create-vue3-vite-antdesignvue-proj/">
-                        <div class="card-image">
-                            
-                            <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】创建 vite + vue3 + Ant Design Vue 项目">
-                            
-                            <span class="card-title">【Vue3】创建 vite + vue3 + Ant Design Vue 项目</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                搭建脚手架创建项目：然后按照它的指示运行项目
-配置文件安装构建 vue-router：
-npm i vue-router@next
-
-创建 router/index.js 文件：
-import { createRouter, createW
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
-                                    安装配置步骤
-                                </a>
-                                
-                                <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/Vue3/" class="post-category">
-                                    Vue3
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Vue3/">
-                            <span class="chip bg-color">Vue3</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/11/09/axure-extention-install/">
-                        <div class="card-image">
-                            
-                            <img src="https://img.zcool.cn/community/01a9545b0bb31aa8012043d8bfc39a.jpg@1280w_1280h_1e_1l_2o_100sh.jpg" class="responsive-img" alt="axure-chrome-extension 插件安装">
-                            
-                            <span class="card-title">axure-chrome-extension 插件安装</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                场景在我们收到axure-chrome-extension画的界面，通过浏览器无法打开时，在网上又无法找到安装包；
-安装方法我们打开页面原型的路径下的 resources 的 chrome 目录里面有 axure-chrome-extens
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-09
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
-                                    安装配置步骤
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Axure/">
-                            <span class="chip bg-color">Axure</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/11/07/wx.uploadavatar/">
-                        <div class="card-image">
-                            
-                            <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】上传头像">
-                            
-                            <span class="card-title">【微信小程序】上传头像</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                效果
-代码editInfo.js// pages/editInfo/editInfo.js
-
-Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    dataList: []
-  },
-
-  /**
- 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    微信小程序
-                                </a>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E9%9C%80%E6%B1%82/" class="post-category">
-                                    需求
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/API/">
-                            <span class="chip bg-color">API</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                            <span class="chip bg-color">微信小程序</span>
-                        </a>
-                        
-                        <a href="/tags/JavaScript/">
-                            <span class="chip bg-color">JavaScript</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/11/07/wx-changeprop/">
-                        <div class="card-image">
-                            
-                            <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】用 setData 方法修改 data 中对象数组某一项的属性值">
-                            
-                            <span class="card-title">【微信小程序】用 setData 方法修改 data 中对象数组某一项的属性值</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                方法
-先用一个变量表示对象的属性值（字符串）或数组的某一项的值（字符串拼接起来）；
-将变量写在[]里面即可修改；
-
-代码index.jsPage({
-  data: {
-    // 普通：
-    text1:1,
-    // 对象的属
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    微信小程序
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                            <span class="chip bg-color">微信小程序</span>
-                        </a>
-                        
-                        <a href="/tags/JavaScript/">
-                            <span class="chip bg-color">JavaScript</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/11/06/wx-refresh/">
-                        <div class="card-image">
-                            
-                            <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】在组件中刷新页面">
-                            
-                            <span class="card-title">【微信小程序】在组件中刷新页面</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                代码在组件页面的 js 对应的函数中加入：
-const page = getCurrentPages().pop(); //当前页面
-if (page == undefined || page == null) return; 
-page.
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-06
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    微信小程序
-                                </a>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E9%9C%80%E6%B1%82/" class="post-category">
-                                    需求
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                            <span class="chip bg-color">微信小程序</span>
-                        </a>
-                        
-                        <a href="/tags/JavaScript/">
-                            <span class="chip bg-color">JavaScript</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/11/02/wx-justifycontent/">
-                        <div class="card-image">
-                            
-                            <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】div 标签内实现垂直居中">
-                            
-                            <span class="card-title">【微信小程序】div 标签内实现垂直居中</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                效果
-代码index.wxml &lt;van-button class="btn" size="large" type="primary" bind:tap="getUserInfo">
-   &lt;div style="display
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-02
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    微信小程序
-                                </a>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E9%9C%80%E6%B1%82/" class="post-category">
-                                    需求
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                            <span class="chip bg-color">微信小程序</span>
-                        </a>
-                        
-                        <a href="/tags/CSS/">
-                            <span class="chip bg-color">CSS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/11/01/wx-add-new-property/">
-                        <div class="card-image">
-                            
-                            <img src="https://ss2.meipian.me/users/9402500/origincd3ac259910cbb278b3d8aae6a1bbea4.jpg?imageView2/2/w/750/h/1400/q/80" class="responsive-img" alt="【微信小程序】给后台返回的对象数组每个对象添加指定新属性">
-                            
-                            <span class="card-title">【微信小程序】给后台返回的对象数组每个对象添加指定新属性</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                效果后台返回数据：添加属性后数据：
-说明auto 与 seeMore 属性是在请求到后台的数据后逐条添加的；
-代码主要补充的是页面加载时 js 中的初始化数据方法部分：
-Component({
-  /**
-   * 组件的属性列表
-   *
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    微信小程序
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                            <span class="chip bg-color">微信小程序</span>
-                        </a>
-                        
-                        <a href="/tags/JavaScript/">
-                            <span class="chip bg-color">JavaScript</span>
+                        <a href="/tags/Html/">
+                            <span class="chip bg-color">Html</span>
                         </a>
                         
                     </div>
@@ -1205,7 +1175,7 @@ Component({
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 4</div>
+            <div class="center-align b-text-gray">1 / 5</div>
         </div>
         <div class="col s6 m4 l4">
             
