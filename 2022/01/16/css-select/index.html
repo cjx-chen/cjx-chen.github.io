@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【Vue3】跨域问题 [The value of the &#39;Access-Control-Allow-Origin&#39; header in the response must not be the..], Blog | Jessieeeeee">
+    <meta name="keywords" content="【CSS】设置文字不能被选中&amp;解除限制, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【Vue3】跨域问题 [The value of the &#39;Access-Control-Allow-Origin&#39; header in the response must not be the..] | Blog | Jessieeeeee</title>
+    <title>【CSS】设置文字不能被选中&amp;解除限制 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -257,12 +257,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/img_convert/6a94b39a44d659ccf65af2fd34480ea9.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Vue3】跨域问题 [The value of the &#39;Access-Control-Allow-Origin&#39; header in the response must not be the..]</h1>
+                    <h1 class="description center-align post-title">【CSS】设置文字不能被选中&amp;解除限制</h1>
                 </div>
             </div>
         </div>
@@ -378,16 +378,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Vue3/">
-                                <span class="chip bg-color">Vue3</span>
+                            <a href="/tags/CSS/">
+                                <span class="chip bg-color">CSS</span>
                             </a>
                         
                             <a href="/tags/Javascript/">
                                 <span class="chip bg-color">Javascript</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-                                <span class="chip bg-color">报错解决方法</span>
                             </a>
                         
                     </div>
@@ -398,8 +394,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Vue3/" class="post-category">
-                                Vue3
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
                             </a>
                         
                     </div>
@@ -411,7 +407,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-14
+                    2022-01-16
                 </div>
                 
 
@@ -432,11 +428,33 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>vue 项目中 axios 请求数据的时候请求失败，出现跨域问题。</p>
-<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p><code>The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard</code></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><strong>withCredentials 属性</strong></p>
-<p>CORS 请求默认不发送 Cookie 和 HTTP 认证信息。如果要把 Cookie 发到服务器，一方面要服务器同意，指定 <code>Access-Control-Allow-Credentials</code> 字段。</p>
-<p>出现这个报错信息很可能是你在前端设置了 <code>withCredentials = true;</code> 你可以去掉这个设置。</p>
+                <h2 id="方法一：JS"><a href="#方法一：JS" class="headerlink" title="方法一：JS"></a>方法一：JS</h2><pre class=" language-javascript"><code class="language-javascript">
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>onselectstart<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token string">"undefined"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        
+    <span class="token comment" spellcheck="true">// IE下禁止元素被选取        </span>
+    element<span class="token punctuation">.</span>onselectstart <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"return false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// firefox下禁止元素被选取的变通办法        </span>
+    element<span class="token punctuation">.</span>onmousedown <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"return false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+    element<span class="token punctuation">.</span>onmouseup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"return true"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+<span class="token punctuation">}</span> 
+</code></pre>
+<blockquote>
+<p>IE下有 onselectstart 这个方法，通过设置这个方法可以禁止元素文本被选取。而firefox下没有这个方法，但可以通过css或一种变通的办法解决。</p>
+</blockquote>
+<p>另一种方法是：</p>
+<pre class=" language-javascript"><code class="language-javascript">ie<span class="token punctuation">:</span>document<span class="token punctuation">.</span>selection<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+ff<span class="token punctuation">:</span>window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeAllRanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>兼容的写法：</p>
+<pre class=" language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>getSelection <span class="token operator">?</span> window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeAllRanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> document<span class="token punctuation">.</span>selection<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这种方法不但不影响拖放对象的选择效果，还能对整个文档进行清除。</p>
+<h2 id="方法二：CSS"><a href="#方法二：CSS" class="headerlink" title="方法二：CSS"></a>方法二：CSS</h2><pre class=" language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>
+      <span class="token property">-moz-user-select</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>
+      <span class="token property">-webkit-user-select</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>
+      <span class="token property">user-select</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>    
+<span class="token punctuation">}</span>
+</code></pre>
 
                 
             </div>
@@ -463,7 +481,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2022/01/14/vue3-wrong1/">http://cjx-chen.github.io/2022/01/14/vue3-wrong1/</a>
+                    <a href="http://cjx-chen.github.io/2022/01/16/css-select/">http://cjx-chen.github.io/2022/01/16/css-select/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -501,16 +519,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Vue3/">
-                                    <span class="chip bg-color">Vue3</span>
+                                <a href="/tags/CSS/">
+                                    <span class="chip bg-color">CSS</span>
                                 </a>
                             
                                 <a href="/tags/Javascript/">
                                     <span class="chip bg-color">Javascript</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-                                    <span class="chip bg-color">报错解决方法</span>
                                 </a>
                             
                         </div>
@@ -948,9 +962,63 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/01/16/css-select/">
+                    <div class="card-image">
+                        
+                        <img src="https://img-blog.csdnimg.cn/img_convert/6a94b39a44d659ccf65af2fd34480ea9.png" class="responsive-img" alt="【CSS】设置文字不能被选中&amp;解除限制">
+                        
+                        <span class="card-title">【CSS】设置文字不能被选中&amp;解除限制</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
+                    </a>
+                    
+                    <a href="/tags/Javascript/">
+                        <span class="chip bg-color">Javascript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/01/16/vue3-id/">
                     <div class="card-image">
@@ -967,9 +1035,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -995,58 +1063,6 @@
                     
                     <a href="/tags/Html/">
                         <span class="chip bg-color">Html</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/01/14/vue3-tofixed/">
-                    <div class="card-image">
-                        
-                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】保留小数点位数以及转化为百分比">
-                        
-                        <span class="card-title">【Vue3】保留小数点位数以及转化为百分比</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Vue3/" class="post-category">
-                                    Vue3
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Vue3/">
-                        <span class="chip bg-color">Vue3</span>
-                    </a>
-                    
-                    <a href="/tags/Javascript/">
-                        <span class="chip bg-color">Javascript</span>
                     </a>
                     
                 </div>

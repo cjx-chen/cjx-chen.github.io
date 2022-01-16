@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【CSS】设置文字不能被选中&amp;解除限制</title>
+      <link href="/2022/01/16/css-select/"/>
+      <url>/2022/01/16/css-select/</url>
+      
+        <content type="html"><![CDATA[<h2 id="方法一：JS"><a href="#方法一：JS" class="headerlink" title="方法一：JS"></a>方法一：JS</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>onselectstart<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token string">"undefined"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token comment" spellcheck="true">// IE下禁止元素被选取        </span>    element<span class="token punctuation">.</span>onselectstart <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"return false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">// firefox下禁止元素被选取的变通办法        </span>    element<span class="token punctuation">.</span>onmousedown <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"return false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            element<span class="token punctuation">.</span>onmouseup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"return true"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span> </code></pre><blockquote><p>IE下有 onselectstart 这个方法，通过设置这个方法可以禁止元素文本被选取。而firefox下没有这个方法，但可以通过css或一种变通的办法解决。</p></blockquote><p>另一种方法是：</p><pre class=" language-javascript"><code class="language-javascript">ie<span class="token punctuation">:</span>document<span class="token punctuation">.</span>selection<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>ff<span class="token punctuation">:</span>window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeAllRanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre><p>兼容的写法：</p><pre class=" language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>getSelection <span class="token operator">?</span> window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeAllRanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> document<span class="token punctuation">.</span>selection<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>这种方法不但不影响拖放对象的选择效果，还能对整个文档进行清除。</p><h2 id="方法二：CSS"><a href="#方法二：CSS" class="headerlink" title="方法二：CSS"></a>方法二：CSS</h2><pre class=" language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>      <span class="token property">-moz-user-select</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>      <span class="token property">-webkit-user-select</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>      <span class="token property">user-select</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>    <span class="token punctuation">}</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSS </tag>
+            
+            <tag> Javascript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Vue3】实现动态给id赋值，点击事件获取当前点击的元素的id操作</title>
       <link href="/2022/01/16/vue3-id/"/>
       <url>/2022/01/16/vue3-id/</url>
@@ -22,9 +49,9 @@
             
             <tag> Vue3 </tag>
             
-            <tag> Html </tag>
-            
             <tag> Javascript </tag>
+            
+            <tag> Html </tag>
             
         </tags>
       
@@ -51,9 +78,9 @@
             
             <tag> Vue3 </tag>
             
-            <tag> 报错解决方法 </tag>
-            
             <tag> Javascript </tag>
+            
+            <tag> 报错解决方法 </tag>
             
         </tags>
       
@@ -498,9 +525,9 @@
       
         <tags>
             
-            <tag> 微信小程序 </tag>
-            
             <tag> CSS </tag>
+            
+            <tag> 微信小程序 </tag>
             
         </tags>
       
@@ -666,9 +693,9 @@
       
         <tags>
             
-            <tag> 微信小程序 </tag>
-            
             <tag> CSS </tag>
+            
+            <tag> 微信小程序 </tag>
             
         </tags>
       
@@ -722,11 +749,11 @@
       
         <tags>
             
+            <tag> CSS </tag>
+            
             <tag> 报错解决方法 </tag>
             
             <tag> 微信小程序 </tag>
-            
-            <tag> CSS </tag>
             
         </tags>
       
@@ -1122,9 +1149,9 @@
       
         <tags>
             
-            <tag> 微信小程序 </tag>
-            
             <tag> CSS </tag>
+            
+            <tag> 微信小程序 </tag>
             
         </tags>
       
@@ -1151,9 +1178,9 @@
       
         <tags>
             
-            <tag> 微信小程序 </tag>
-            
             <tag> CSS </tag>
+            
+            <tag> 微信小程序 </tag>
             
         </tags>
       
