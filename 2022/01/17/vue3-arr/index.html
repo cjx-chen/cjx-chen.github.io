@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【SpringBoot】跨域(CORS)支持：注解@CrossOrigin, Blog | Jessieeeeee">
+    <meta name="keywords" content="【Vue3】使用reactive包裹数组赋值, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【SpringBoot】跨域(CORS)支持：注解@CrossOrigin | Blog | Jessieeeeee</title>
+    <title>【Vue3】使用reactive包裹数组赋值 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -257,12 +257,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/img_convert/174788b2ec1d828d85a0a7ac65bea2cd.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【SpringBoot】跨域(CORS)支持：注解@CrossOrigin</h1>
+                    <h1 class="description center-align post-title">【Vue3】使用reactive包裹数组赋值</h1>
                 </div>
             </div>
         </div>
@@ -378,16 +378,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
+                            <a href="/tags/Vue3/">
+                                <span class="chip bg-color">Vue3</span>
                             </a>
                         
-                            <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-                                <span class="chip bg-color">报错解决方法</span>
-                            </a>
-                        
-                            <a href="/tags/SpringBoot/">
-                                <span class="chip bg-color">SpringBoot</span>
+                            <a href="/tags/Javascript/">
+                                <span class="chip bg-color">Javascript</span>
                             </a>
                         
                     </div>
@@ -398,8 +394,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java/" class="post-category">
-                                Java
+                            <a href="/categories/Vue3/" class="post-category">
+                                Vue3
                             </a>
                         
                     </div>
@@ -432,66 +428,40 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="跨域-CORS-支持"><a href="#跨域-CORS-支持" class="headerlink" title="跨域(CORS)支持"></a>跨域(CORS)支持</h2><p>出于安全原因，浏览器禁止Ajax调用驻留在当前原点之外的资源。</p>
-<p>跨源资源共享（CORS）是由大多数浏览器实现的W3C规范，允许您灵活地指定什么样的跨域请求被授权，而不是使用一些不太安全和不太强大的策略，如IFRAME或JSONP。</p>
-<p>Spring Framework 4.2 GA为CORS提供了第一类支持，使您比通常的基于过滤器的解决方案更容易和更强大地配置它。所以springMVC的版本要在4.2或以上版本才支持<code>@CrossOrigin</code></p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p><strong>controller 配置 CORS</strong></p>
-<h3 id="controller方法的CORS配置"><a href="#controller方法的CORS配置" class="headerlink" title="controller方法的CORS配置"></a>controller方法的CORS配置</h3><p>你可以向<code>@RequestMapping</code>注解处理程序方法添加一个<code>@CrossOrigin</code>注解，以便启用CORS（默认情况下，<code>@CrossOrigin</code>允许在<code>@RequestMapping</code>注解中指定的所有源和HTTP方法）：</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/account"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AccountController</span> <span class="token punctuation">{</span>
- 
-    <span class="token annotation punctuation">@CrossOrigin</span>
-    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/{id}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> Account <span class="token function">retrieve</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> Long id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// ...</span>
-    <span class="token punctuation">}</span>
- 
-    <span class="token annotation punctuation">@DeleteMapping</span><span class="token punctuation">(</span><span class="token string">"/{id}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> Long id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// ...</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+                <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>将接口请求到的列表数据赋值给响应数据arr</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> load <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//假设请求接口返回的数据</span>
+  <span class="token comment" spellcheck="true">// 方法1 失败，直接赋值丢失了响应性</span>
+  <span class="token comment" spellcheck="true">// arr = res;</span>
+  <span class="token comment" spellcheck="true">// 方法2 这样也是失败</span>
+  <span class="token comment" spellcheck="true">// arr.concat(res);</span>
+  <span class="token comment" spellcheck="true">// 方法3 可以，但是很麻烦</span>
+  res<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>e <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>其中<code>@CrossOrigin</code>中的2个参数：</p>
-<ul>
-<li>origins：允许可访问的域列表</li>
-<li>maxAge：准备响应前的缓存持续的最大时间（以秒为单位）。</li>
-</ul>
-<h3 id="为整个controller启用-CrossOrigin"><a href="#为整个controller启用-CrossOrigin" class="headerlink" title="为整个controller启用@CrossOrigin"></a>为整个controller启用<code>@CrossOrigin</code></h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@CrossOrigin</span><span class="token punctuation">(</span>origins <span class="token operator">=</span> <span class="token string">"http://domain2.com"</span><span class="token punctuation">,</span> maxAge <span class="token operator">=</span> <span class="token number">3600</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/account"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AccountController</span> <span class="token punctuation">{</span>
- 
-    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/{id}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> Account <span class="token function">retrieve</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> Long id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// ...</span>
-    <span class="token punctuation">}</span>
- 
-    <span class="token annotation punctuation">@DeleteMapping</span><span class="token punctuation">(</span><span class="token string">"/{id}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> Long id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// ...</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>在这个例子中，对于<code>retrieve()</code>和<code>remove()</code>处理方法都启用了跨域支持，还可以看到如何使用<code>@CrossOrigin</code>属性定制CORS配置。</p>
-<h3 id="同时使用controller和方法级别的CORS配置"><a href="#同时使用controller和方法级别的CORS配置" class="headerlink" title="同时使用controller和方法级别的CORS配置"></a>同时使用controller和方法级别的CORS配置</h3><p>Spring将合并两个注释属性以创建合并的CORS配置</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@CrossOrigin</span><span class="token punctuation">(</span>maxAge <span class="token operator">=</span> <span class="token number">3600</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/account"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AccountController</span> <span class="token punctuation">{</span>
- 
-    <span class="token annotation punctuation">@CrossOrigin</span><span class="token punctuation">(</span>origins <span class="token operator">=</span> <span class="token string">"http://domain2.com"</span><span class="token punctuation">)</span>
-    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/{id}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> Account <span class="token function">retrieve</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> Long id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// ...</span>
-    <span class="token punctuation">}</span>
- 
-    <span class="token annotation punctuation">@DeleteMapping</span><span class="token punctuation">(</span><span class="token string">"/{id}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> Long id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// ...</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<blockquote>
+<p>方法1：vue3 使用 proxy，对于对象和数组都不能直接整个赋值；<br>方法2：concat 不改变原数组</p>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 方法4</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  arr<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+state<span class="token punctuation">.</span>arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true">// 方法5</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+state<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true">// 方法6</span>
+<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 亦或者</span>
+arr<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment" spellcheck="true">// 清空原数组</span>
+arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">...</span>res<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 解构然后push进去</span>
 </code></pre>
 
                 
@@ -519,7 +489,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2022/01/17/springboot-cors/">http://cjx-chen.github.io/2022/01/17/springboot-cors/</a>
+                    <a href="http://cjx-chen.github.io/2022/01/17/vue3-arr/">http://cjx-chen.github.io/2022/01/17/vue3-arr/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -557,16 +527,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
+                                <a href="/tags/Vue3/">
+                                    <span class="chip bg-color">Vue3</span>
                                 </a>
                             
-                                <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-                                    <span class="chip bg-color">报错解决方法</span>
-                                </a>
-                            
-                                <a href="/tags/SpringBoot/">
-                                    <span class="chip bg-color">SpringBoot</span>
+                                <a href="/tags/Javascript/">
+                                    <span class="chip bg-color">Javascript</span>
                                 </a>
                             
                         </div>
@@ -1004,9 +970,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/01/17/vue3-arr/">
                     <div class="card-image">
@@ -1023,9 +990,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1038,6 +1005,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1060,12 +1028,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/17/mysql-er/">
+                <a href="/2022/01/17/springboot-cors/">
                     <div class="card-image">
                         
-                        <img src="https://www.xuekebaba.com/uploads/202002/24/200224124159340.jpg" class="responsive-img" alt="【MySQL】数据表自动生成ER图">
+                        <img src="https://img-blog.csdnimg.cn/img_convert/174788b2ec1d828d85a0a7ac65bea2cd.png" class="responsive-img" alt="【SpringBoot】跨域(CORS)支持：注解@CrossOrigin">
                         
-                        <span class="card-title">【MySQL】数据表自动生成ER图</span>
+                        <span class="card-title">【SpringBoot】跨域(CORS)支持：注解@CrossOrigin</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1082,8 +1050,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -1093,8 +1061,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                        <span class="chip bg-color">报错解决方法</span>
+                    </a>
+                    
+                    <a href="/tags/SpringBoot/">
+                        <span class="chip bg-color">SpringBoot</span>
                     </a>
                     
                 </div>
