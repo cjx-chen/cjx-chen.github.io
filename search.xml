@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【Vue3】vite 配置IP，解决“vite use `--host` to expose”</title>
+      <link href="/2022/01/17/vite-ip/"/>
+      <url>/2022/01/17/vite-ip/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>vite 启动后出现 <code>“ Network: use --host to expose ”</code></p><pre class=" language-shell"><code class="language-shell">vite v2.3.7 dev server running at:  > Local: http://localhost:3000/  > Network: use `--host` to expose</code></pre><h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>这是因为IP没有做配置，所以不能从IP启动，需要在 vite.config.js做相应配置；</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在 vite.config.js中添加 server.host 为 0.0.0.0：</p><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token function">vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">// 在文件中添加以下内容</span>    server<span class="token punctuation">:</span> <span class="token punctuation">{</span>        host<span class="token punctuation">:</span> <span class="token string">'0.0.0.0'</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>保存后显示：</p><pre class=" language-shell"><code class="language-shell">vite v2.3.7 dev server running at:  > Network:  http://192.168.199.127:3000/  > Local:    http://localhost:3000/</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安装配置步骤 </category>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue3 </tag>
+            
+            <tag> Vite </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【CSS】div层调整z-index属性无效原因分析及解决方法</title>
       <link href="/2022/01/17/css-z-index/"/>
       <url>/2022/01/17/css-z-index/</url>
