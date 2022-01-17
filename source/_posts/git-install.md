@@ -138,6 +138,8 @@ git reset --soft HEAD^
 git commit --amend
 
 # 获取远程于本地内容同步
+$ git pull origin <远程分支名>:<本地分支名>	#将远程指定分支 拉取到 本地指定分支上
+$ git pull origin <远程分支名>	#将远程指定分支 拉取到 本地当前分支上
 $ git pull
 
 # 将本地仓库提交到远程仓库
