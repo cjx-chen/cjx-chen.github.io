@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【Vue3】AntDesign 文件上传, Blog | Jessieeeeee">
+    <meta name="keywords" content="【Vue3】axios 封装, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【Vue3】AntDesign 文件上传 | Blog | Jessieeeeee</title>
+    <title>【Vue3】axios 封装 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -262,7 +262,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Vue3】AntDesign 文件上传</h1>
+                    <h1 class="description center-align post-title">【Vue3】axios 封装</h1>
                 </div>
             </div>
         </div>
@@ -386,8 +386,8 @@
                                 <span class="chip bg-color">Javascript</span>
                             </a>
                         
-                            <a href="/tags/AntDesign/">
-                                <span class="chip bg-color">AntDesign</span>
+                            <a href="/tags/axios/">
+                                <span class="chip bg-color">axios</span>
                             </a>
                         
                     </div>
@@ -432,24 +432,91 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/0f699cedb8f44783aef9b961ed32aa32.gif"></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>upload-block<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      <span class="token comment" spellcheck="true">&lt;!-- &lt;div class="msgTitle">请上传以下格式的文档：&lt;/div>
-      &lt;div class="msgContent">.txt.&lt;/div> --></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>uploadBtn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-upload</span> <span class="token attr-name"><span class="token namespace">v-model:</span>file-list</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>txtFile<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>txt<span class="token punctuation">"</span></span> <span class="token attr-name">accept</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.txt<span class="token punctuation">"</span></span> <span class="token attr-name">:multiple</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-          <span class="token attr-name">:before-upload</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>beforeUploadTxt<span class="token punctuation">"</span></span> <span class="token attr-name">:headers</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>headers<span class="token punctuation">"</span></span> <span class="token attr-name">:showUploadList</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">:withCredentials</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-          <span class="token attr-name">:disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>loading<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-button</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>txtFile.length &lt; 1 &amp;&amp; excelFile.length &lt; 1<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>selectFileBtn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>upload-outlined</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>upload-outlined</span><span class="token punctuation">></span></span>
-            txt
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-button</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-upload</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+                <p>首先，在项目 src 目录下新建一个 config 文件夹，并在该文件夹下新建一个 index.js：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// index.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  development<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    baseUrl<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span> <span class="token comment" spellcheck="true">// 测试接口域名</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  beta<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    baseUrl<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span> <span class="token comment" spellcheck="true">// 测试接口域名</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  release<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    baseUrl<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span> <span class="token comment" spellcheck="true">// 正式接口域名</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  production<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    baseUrl<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
+<p>然后，在项目 src 目录下新建一个 utils 文件夹，并在该文件夹下新建一个 axios.js 与 request.js：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// axios.js</span>
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
+<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'../router/index'</span>
+<span class="token keyword">import</span> config <span class="token keyword">from</span> <span class="token string">'../config'</span>
+
+<span class="token comment" spellcheck="true">// 这边由于后端没有区分测试和正式，姑且都写成一个接口。</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>baseURL <span class="token operator">=</span> config<span class="token punctuation">[</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>env<span class="token punctuation">.</span>MODE<span class="token punctuation">]</span><span class="token punctuation">.</span>baseUrl
+<span class="token comment" spellcheck="true">// 携带 cookie，对目前的项目没有什么作用，因为我们是 token 鉴权</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>withCredentials <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token comment" spellcheck="true">// 请求头，headers 信息</span>
+<span class="token comment" spellcheck="true">// axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'</span>
+<span class="token comment" spellcheck="true">// axios.defaults.headers['token'] = localGet('token') || ''</span>
+
+<span class="token comment" spellcheck="true">// 默认 post 请求，使用 multipart/form-data 形式</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>post<span class="token punctuation">[</span><span class="token string">"Content-Type"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"multipart/form-data;charset=UTF-8"</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 请求拦截器，内部根据返回值，重新组装，统一管理。</span>
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> res <span class="token operator">!==</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'服务端异常！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'服务端异常！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>status <span class="token operator">!=</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> res
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> axios
+</code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
+
+<span class="token comment" spellcheck="true">// 创建axios</span>
+<span class="token keyword">const</span> service <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseURL<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//post请求头</span>
+service<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>post<span class="token punctuation">[</span><span class="token string">"Content-Type"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"multipart/form-data;charset=UTF-8"</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 添加请求拦截器</span>
+service<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>config<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 在发送请求之前做些什么</span>
+  <span class="token keyword">return</span> config<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 对请求错误做些什么</span>
+  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 添加响应拦截器</span>
+service<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 对响应数据做点什么</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'res'</span><span class="token punctuation">,</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 对响应错误做点什么</span>
+  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> service<span class="token punctuation">;</span>
+</code></pre>
+<p>最后，在 vue 文件中引入 axios：</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
   <span class="token keyword">import</span> <span class="token punctuation">{</span> defineComponent<span class="token punctuation">,</span> ref<span class="token punctuation">,</span> onMounted<span class="token punctuation">,</span> reactive<span class="token punctuation">,</span> toRefs <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
   <span class="token keyword">import</span> <span class="token punctuation">{</span> message <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ant-design-vue'</span><span class="token punctuation">;</span>
@@ -543,7 +610,6 @@
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
-<p>参考资料：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuyujuan/p/10867557.html">vue中的文件上传和下载</a></p>
 
                 
             </div>
@@ -570,7 +636,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2022/01/17/vue3-uploadtxt/">http://cjx-chen.github.io/2022/01/17/vue3-uploadtxt/</a>
+                    <a href="http://cjx-chen.github.io/2022/01/17/vue3-axios/">http://cjx-chen.github.io/2022/01/17/vue3-axios/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -616,8 +682,8 @@
                                     <span class="chip bg-color">Javascript</span>
                                 </a>
                             
-                                <a href="/tags/AntDesign/">
-                                    <span class="chip bg-color">AntDesign</span>
+                                <a href="/tags/axios/">
+                                    <span class="chip bg-color">axios</span>
                                 </a>
                             
                         </div>
@@ -1055,9 +1121,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/01/17/vue3-axios/">
                     <div class="card-image">
@@ -1074,9 +1141,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1089,6 +1156,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1115,12 +1183,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/17/vue3-event/">
+                <a href="/2022/01/17/vue3-uploadtxt/">
                     <div class="card-image">
                         
-                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】Vue3.x中的事件和方法全解">
+                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】AntDesign 文件上传">
                         
-                        <span class="card-title">【Vue3】Vue3.x中的事件和方法全解</span>
+                        <span class="card-title">【Vue3】AntDesign 文件上传</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1156,8 +1224,8 @@
                         <span class="chip bg-color">Javascript</span>
                     </a>
                     
-                    <a href="/tags/Html/">
-                        <span class="chip bg-color">Html</span>
+                    <a href="/tags/AntDesign/">
+                        <span class="chip bg-color">AntDesign</span>
                     </a>
                     
                 </div>
