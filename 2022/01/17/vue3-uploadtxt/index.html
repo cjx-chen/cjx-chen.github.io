@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【Vue3】使用 multipart/form-data 提交数据, Blog | Jessieeeeee">
+    <meta name="keywords" content="【Vue3】AntDesign 文件上传, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【Vue3】使用 multipart/form-data 提交数据 | Blog | Jessieeeeee</title>
+    <title>【Vue3】AntDesign 文件上传 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -262,7 +262,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Vue3】使用 multipart/form-data 提交数据</h1>
+                    <h1 class="description center-align post-title">【Vue3】AntDesign 文件上传</h1>
                 </div>
             </div>
         </div>
@@ -386,6 +386,10 @@
                                 <span class="chip bg-color">Javascript</span>
                             </a>
                         
+                            <a href="/tags/AntDesign/">
+                                <span class="chip bg-color">AntDesign</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -428,50 +432,118 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// Txt上传前</span>
-<span class="token keyword">const</span> beforeUploadTxt <span class="token operator">=</span> <span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-    <span class="token comment" spellcheck="true">// 获取图片地址</span>
-    <span class="token keyword">const</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    reader<span class="token punctuation">.</span>onload <span class="token operator">=</span> e <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// console.log('e.target', e.target)</span>
-      file<span class="token punctuation">.</span>path <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">,</span> file<span class="token punctuation">.</span>path<span class="token punctuation">)</span>
-      txtFile<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">[</span>file<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">// Txt上传</span>
-<span class="token keyword">const</span> handleUploadTxt <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'txt'</span><span class="token punctuation">,</span> txtFile<span class="token punctuation">.</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>txtFile<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      message<span class="token punctuation">.</span><span class="token function">warning</span><span class="token punctuation">(</span><span class="token string">'请先上传文件！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Please upload first'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    
-    <span class="token comment" spellcheck="true">// 使用formData格式传递参数</span>
-    <span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    params<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'txt'</span><span class="token punctuation">,</span> txtFile<span class="token punctuation">.</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-    loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-    
-    <span class="token keyword">try</span> <span class="token punctuation">{</span>
-      axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/upload_txt'</span><span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        message<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">'请求成功！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
-      loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+                <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://img-blog.csdnimg.cn/0f699cedb8f44783aef9b961ed32aa32.gif"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>upload-block<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token comment" spellcheck="true">&lt;!-- &lt;div class="msgTitle">请上传以下格式的文档：&lt;/div>
+      &lt;div class="msgContent">.txt.&lt;/div> --></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>uploadBtn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-upload</span> <span class="token attr-name"><span class="token namespace">v-model:</span>file-list</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>txtFile<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>txt<span class="token punctuation">"</span></span> <span class="token attr-name">accept</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.txt<span class="token punctuation">"</span></span> <span class="token attr-name">:multiple</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+          <span class="token attr-name">:before-upload</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>beforeUploadTxt<span class="token punctuation">"</span></span> <span class="token attr-name">:headers</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>headers<span class="token punctuation">"</span></span> <span class="token attr-name">:showUploadList</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">:withCredentials</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+          <span class="token attr-name">:disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>loading<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-button</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>txtFile.length &lt; 1 &amp;&amp; excelFile.length &lt; 1<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>selectFileBtn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>upload-outlined</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>upload-outlined</span><span class="token punctuation">></span></span>
+            txt
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-button</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-upload</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
 </code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> defineComponent<span class="token punctuation">,</span> ref<span class="token punctuation">,</span> onMounted<span class="token punctuation">,</span> reactive<span class="token punctuation">,</span> toRefs <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> message <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ant-design-vue'</span><span class="token punctuation">;</span>
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> UploadOutlined <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@ant-design/icons-vue'</span><span class="token punctuation">;</span>
+  <span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'../utils/axios'</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineComponent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'Index'</span><span class="token punctuation">,</span>
+    components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      UploadOutlined
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> tags <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        tag<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+        pos<span class="token punctuation">:</span> <span class="token string">''</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> txtFile <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> loading <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment" spellcheck="true">// Txt上传前</span>
+      <span class="token keyword">const</span> beforeUploadTxt <span class="token operator">=</span> <span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+          <span class="token comment" spellcheck="true">// 获取图片地址</span>
+          <span class="token keyword">const</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          reader<span class="token punctuation">.</span>onload <span class="token operator">=</span> e <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// console.log('e.target', e.target)</span>
+            file<span class="token punctuation">.</span>path <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">,</span> file<span class="token punctuation">.</span>path<span class="token punctuation">)</span>
+            txtFile<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">[</span>file<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">;</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    
+      <span class="token comment" spellcheck="true">// Txt上传</span>
+      <span class="token keyword">const</span> handleUploadTxt <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'txt'</span><span class="token punctuation">,</span> txtFile<span class="token punctuation">.</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>txtFile<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            message<span class="token punctuation">.</span><span class="token function">warning</span><span class="token punctuation">(</span><span class="token string">'请先上传文件！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Please upload first'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        
+          <span class="token comment" spellcheck="true">// 使用formData格式传递参数</span>
+          <span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          params<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'txt'</span><span class="token punctuation">,</span> txtFile<span class="token punctuation">.</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+          loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        
+          <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/upload_txt'</span><span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+              message<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">'请求成功！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+          <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment" spellcheck="true">// 上传后</span>
+      <span class="token keyword">const</span> txtChange <span class="token operator">=</span> info <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">!==</span> <span class="token string">'uploading'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// txtFile = info.file;</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">,</span> info<span class="token punctuation">.</span>txtFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'done'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          message<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 文件上传成功！`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'error'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 文件上传失败！`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        loading<span class="token punctuation">,</span>
+        txtFile<span class="token punctuation">,</span>
+        headers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'multipart/form-data'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        txtChange<span class="token punctuation">,</span>
+        beforeUploadTxt<span class="token punctuation">,</span>
+        handleUploadTxt
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuyujuan/p/10867557.html">vue中的文件上传和下载</a></p>
 
                 
             </div>
@@ -498,7 +570,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2022/01/17/vue3-formdata/">http://cjx-chen.github.io/2022/01/17/vue3-formdata/</a>
+                    <a href="http://cjx-chen.github.io/2022/01/17/vue3-uploadtxt/">http://cjx-chen.github.io/2022/01/17/vue3-uploadtxt/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -542,6 +614,10 @@
                             
                                 <a href="/tags/Javascript/">
                                     <span class="chip bg-color">Javascript</span>
+                                </a>
+                            
+                                <a href="/tags/AntDesign/">
+                                    <span class="chip bg-color">AntDesign</span>
                                 </a>
                             
                         </div>
@@ -984,12 +1060,12 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2022/01/17/vue3-formdata/">
+                <a href="/2022/01/17/vue3-uploadtxt/">
                     <div class="card-image">
                         
-                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】使用 multipart/form-data 提交数据">
+                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】AntDesign 文件上传">
                         
-                        <span class="card-title">【Vue3】使用 multipart/form-data 提交数据</span>
+                        <span class="card-title">【Vue3】AntDesign 文件上传</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1024,6 +1100,10 @@
                     
                     <a href="/tags/Javascript/">
                         <span class="chip bg-color">Javascript</span>
+                    </a>
+                    
+                    <a href="/tags/AntDesign/">
+                        <span class="chip bg-color">AntDesign</span>
                     </a>
                     
                 </div>
