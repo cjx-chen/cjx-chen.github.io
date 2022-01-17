@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【CSS】设置文字不能被选中&amp;解除限制, Blog | Jessieeeeee">
+    <meta name="keywords" content="【MySQL】数据表自动生成ER图, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【CSS】设置文字不能被选中&amp;解除限制 | Blog | Jessieeeeee</title>
+    <title>【MySQL】数据表自动生成ER图 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -257,12 +257,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/img_convert/6a94b39a44d659ccf65af2fd34480ea9.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.xuekebaba.com/uploads/202002/24/200224124159340.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【CSS】设置文字不能被选中&amp;解除限制</h1>
+                    <h1 class="description center-align post-title">【MySQL】数据表自动生成ER图</h1>
                 </div>
             </div>
         </div>
@@ -378,12 +378,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
-                            </a>
-                        
-                            <a href="/tags/Javascript/">
-                                <span class="chip bg-color">Javascript</span>
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
                             </a>
                         
                     </div>
@@ -394,8 +390,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                前端
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
                             </a>
                         
                     </div>
@@ -407,7 +403,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-16
+                    2022-01-17
                 </div>
                 
 
@@ -428,33 +424,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="方法一：JS"><a href="#方法一：JS" class="headerlink" title="方法一：JS"></a>方法一：JS</h2><pre class=" language-javascript"><code class="language-javascript">
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>onselectstart<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token string">"undefined"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        
-    <span class="token comment" spellcheck="true">// IE下禁止元素被选取        </span>
-    element<span class="token punctuation">.</span>onselectstart <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"return false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// firefox下禁止元素被选取的变通办法        </span>
-    element<span class="token punctuation">.</span>onmousedown <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"return false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
-    element<span class="token punctuation">.</span>onmouseup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"return true"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
-<span class="token punctuation">}</span> 
-</code></pre>
-<blockquote>
-<p>IE下有 onselectstart 这个方法，通过设置这个方法可以禁止元素文本被选取。而firefox下没有这个方法，但可以通过css或一种变通的办法解决。</p>
-</blockquote>
-<p>另一种方法是：</p>
-<pre class=" language-javascript"><code class="language-javascript">ie<span class="token punctuation">:</span>document<span class="token punctuation">.</span>selection<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-ff<span class="token punctuation">:</span>window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeAllRanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<p>兼容的写法：</p>
-<pre class=" language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>getSelection <span class="token operator">?</span> window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeAllRanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> document<span class="token punctuation">.</span>selection<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>这种方法不但不影响拖放对象的选择效果，还能对整个文档进行清除。</p>
-<h2 id="方法二：CSS"><a href="#方法二：CSS" class="headerlink" title="方法二：CSS"></a>方法二：CSS</h2><pre class=" language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>
-      <span class="token property">-moz-user-select</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>
-      <span class="token property">-webkit-user-select</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>
-      <span class="token property">user-select</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>    
-<span class="token punctuation">}</span>
-</code></pre>
+                <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>mysql workbench</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li> 通过菜单栏 ”Database”，选择“Reverse Engineer…”，输入连接信息，并一路Next；<br><img src="https://img-blog.csdnimg.cn/2b97178094a0488a82e64cedffced944.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></li>
+<li>选择要生成ER图的数据库：<br><img src="https://img-blog.csdnimg.cn/3e2241fac98946b3a4ab36ca82e9bb57.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></li>
+<li>一路Next，最后excute和close；</li>
+<li>可以看到，在ERR Diagram区域多了一张图，点击它，就看到了自己想要的ER图了：<br><img src="https://img-blog.csdnimg.cn/d5c625811a7b4e769b4613f2ecf7d0d2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></li>
+<li>导出到图片：<br><img src="https://img-blog.csdnimg.cn/9028fa38d59845b8a93b351d47c56f32.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></li>
+</ol>
 
                 
             </div>
@@ -481,7 +458,7 @@ ff<span class="token punctuation">:</span>window<span class="token punctuation">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2022/01/16/css-select/">http://cjx-chen.github.io/2022/01/16/css-select/</a>
+                    <a href="http://cjx-chen.github.io/2022/01/17/mysql-er/">http://cjx-chen.github.io/2022/01/17/mysql-er/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -519,12 +496,8 @@ ff<span class="token punctuation">:</span>window<span class="token punctuation">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
-                                </a>
-                            
-                                <a href="/tags/Javascript/">
-                                    <span class="chip bg-color">Javascript</span>
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
                                 </a>
                             
                         </div>
@@ -962,9 +935,10 @@ ff<span class="token punctuation">:</span>window<span class="token punctuation">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/01/17/mysql-er/">
                     <div class="card-image">
@@ -981,9 +955,9 @@ ff<span class="token punctuation">:</span>window<span class="token punctuation">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -996,6 +970,7 @@ ff<span class="token punctuation">:</span>window<span class="token punctuation">
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1014,12 +989,12 @@ ff<span class="token punctuation">:</span>window<span class="token punctuation">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/16/vue3-id/">
+                <a href="/2022/01/16/css-select/">
                     <div class="card-image">
                         
-                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】实现动态给id赋值，点击事件获取当前点击的元素的id操作">
+                        <img src="https://img-blog.csdnimg.cn/img_convert/6a94b39a44d659ccf65af2fd34480ea9.png" class="responsive-img" alt="【CSS】设置文字不能被选中&amp;解除限制">
                         
-                        <span class="card-title">【Vue3】实现动态给id赋值，点击事件获取当前点击的元素的id操作</span>
+                        <span class="card-title">【CSS】设置文字不能被选中&amp;解除限制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1036,8 +1011,8 @@ ff<span class="token punctuation">:</span>window<span class="token punctuation">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Vue3/" class="post-category">
-                                    Vue3
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
@@ -1047,16 +1022,12 @@ ff<span class="token punctuation">:</span>window<span class="token punctuation">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue3/">
-                        <span class="chip bg-color">Vue3</span>
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                     <a href="/tags/Javascript/">
                         <span class="chip bg-color">Javascript</span>
-                    </a>
-                    
-                    <a href="/tags/Html/">
-                        <span class="chip bg-color">Html</span>
                     </a>
                     
                 </div>

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【MySQL】数据表自动生成ER图</title>
+      <link href="/2022/01/17/mysql-er/"/>
+      <url>/2022/01/17/mysql-er/</url>
+      
+        <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>mysql workbench</p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol><li> 通过菜单栏 ”Database”，选择“Reverse Engineer…”，输入连接信息，并一路Next；<br><img src="https://img-blog.csdnimg.cn/2b97178094a0488a82e64cedffced944.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></li><li>选择要生成ER图的数据库：<br><img src="https://img-blog.csdnimg.cn/3e2241fac98946b3a4ab36ca82e9bb57.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></li><li>一路Next，最后excute和close；</li><li>可以看到，在ERR Diagram区域多了一张图，点击它，就看到了自己想要的ER图了：<br><img src="https://img-blog.csdnimg.cn/d5c625811a7b4e769b4613f2ecf7d0d2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></li><li>导出到图片：<br><img src="https://img-blog.csdnimg.cn/9028fa38d59845b8a93b351d47c56f32.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【CSS】设置文字不能被选中&amp;解除限制</title>
       <link href="/2022/01/16/css-select/"/>
       <url>/2022/01/16/css-select/</url>
