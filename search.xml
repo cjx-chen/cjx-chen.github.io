@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【CSS】div层调整z-index属性无效原因分析及解决方法</title>
+      <link href="/2022/01/17/css-z-index/"/>
+      <url>/2022/01/17/css-z-index/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>div层调整z-index属性无效；</p><h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>在CSS中，只能通过代码改变层级，这个属性就是z-index，要让z-index起作用有个小小前提，就是元素的position属性要是relative，absolute或是fixed。</p><p><strong>z-index无论设置多高都不起作用情况</strong></p><p>这种情况发生的条件有三个：</p><ol><li>父标签 position属性为 relative；</li><li>问题标签无position属性（不包括static）；</li><li>问题标签含有浮动(float)属性。<br>eg：z-index层级不起作用，浮动会让z-index失效，代码如下:</li></ol><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span>relative<span class="token punctuation">;</span> <span class="token property">z-index</span><span class="token punctuation">:</span><span class="token number">9999</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">float</span><span class="token punctuation">:</span>left<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://7te9u8.com1.z0.glb.clouddn.com/wp-content/uploads/2014/03/100084691.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>div层调整z-index属性无效原因分析及解决方法<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol><li>position:relative改为position:absolute；</li><li>浮动元素添加position属性（如relative，absolute等）；</li><li>去除浮动。</li></ol><p>参考资料：<a href="https://blog.csdn.net/LEI2879223426/article/details/69650872">https://blog.csdn.net/LEI2879223426/article/details/69650872</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Vue3】axios 封装</title>
       <link href="/2022/01/17/vue3-axios/"/>
       <url>/2022/01/17/vue3-axios/</url>

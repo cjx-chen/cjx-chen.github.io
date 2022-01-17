@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【Vue3】axios 封装, Blog | Jessieeeeee">
+    <meta name="keywords" content="【CSS】div层调整z-index属性无效原因分析及解决方法, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【Vue3】axios 封装 | Blog | Jessieeeeee</title>
+    <title>【CSS】div层调整z-index属性无效原因分析及解决方法 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -257,12 +257,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/img_convert/6a94b39a44d659ccf65af2fd34480ea9.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Vue3】axios 封装</h1>
+                    <h1 class="description center-align post-title">【CSS】div层调整z-index属性无效原因分析及解决方法</h1>
                 </div>
             </div>
         </div>
@@ -378,16 +378,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Vue3/">
-                                <span class="chip bg-color">Vue3</span>
-                            </a>
-                        
-                            <a href="/tags/Javascript/">
-                                <span class="chip bg-color">Javascript</span>
-                            </a>
-                        
-                            <a href="/tags/axios/">
-                                <span class="chip bg-color">axios</span>
+                            <a href="/tags/CSS/">
+                                <span class="chip bg-color">CSS</span>
                             </a>
                         
                     </div>
@@ -398,8 +390,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Vue3/" class="post-category">
-                                Vue3
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
                             </a>
                         
                     </div>
@@ -432,184 +424,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>首先，在项目 src 目录下新建一个 config 文件夹，并在该文件夹下新建一个 index.js：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// index.js</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-  development<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    baseUrl<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span> <span class="token comment" spellcheck="true">// 测试接口域名</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  beta<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    baseUrl<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span> <span class="token comment" spellcheck="true">// 测试接口域名</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  release<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    baseUrl<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span> <span class="token comment" spellcheck="true">// 正式接口域名</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  production<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    baseUrl<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+                <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>div层调整z-index属性无效；</p>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>在CSS中，只能通过代码改变层级，这个属性就是z-index，要让z-index起作用有个小小前提，就是元素的position属性要是relative，absolute或是fixed。</p>
+<p><strong>z-index无论设置多高都不起作用情况</strong></p>
+<p>这种情况发生的条件有三个：</p>
+<ol>
+<li>父标签 position属性为 relative；</li>
+<li>问题标签无position属性（不包括static）；</li>
+<li>问题标签含有浮动(float)属性。<br>eg：z-index层级不起作用，浮动会让z-index失效，代码如下:</li>
+</ol>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span>relative<span class="token punctuation">;</span> <span class="token property">z-index</span><span class="token punctuation">:</span><span class="token number">9999</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">float</span><span class="token punctuation">:</span>left<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://7te9u8.com1.z0.glb.clouddn.com/wp-content/uploads/2014/03/100084691.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>div层调整z-index属性无效原因分析及解决方法<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>然后，在项目 src 目录下新建一个 utils 文件夹，并在该文件夹下新建一个 axios.js 与 request.js：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// axios.js</span>
-<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
-<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'../router/index'</span>
-<span class="token keyword">import</span> config <span class="token keyword">from</span> <span class="token string">'../config'</span>
-
-<span class="token comment" spellcheck="true">// 这边由于后端没有区分测试和正式，姑且都写成一个接口。</span>
-axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>baseURL <span class="token operator">=</span> config<span class="token punctuation">[</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>env<span class="token punctuation">.</span>MODE<span class="token punctuation">]</span><span class="token punctuation">.</span>baseUrl
-<span class="token comment" spellcheck="true">// 携带 cookie，对目前的项目没有什么作用，因为我们是 token 鉴权</span>
-axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>withCredentials <span class="token operator">=</span> <span class="token boolean">true</span>
-<span class="token comment" spellcheck="true">// 请求头，headers 信息</span>
-<span class="token comment" spellcheck="true">// axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'</span>
-<span class="token comment" spellcheck="true">// axios.defaults.headers['token'] = localGet('token') || ''</span>
-
-<span class="token comment" spellcheck="true">// 默认 post 请求，使用 multipart/form-data 形式</span>
-axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>post<span class="token punctuation">[</span><span class="token string">"Content-Type"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"multipart/form-data;charset=UTF-8"</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 请求拦截器，内部根据返回值，重新组装，统一管理。</span>
-axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> res <span class="token operator">!==</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'服务端异常！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'服务端异常！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>status <span class="token operator">!=</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> axios
-</code></pre>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
-
-<span class="token comment" spellcheck="true">// 创建axios</span>
-<span class="token keyword">const</span> service <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  baseURL<span class="token punctuation">:</span> <span class="token string">'http://xxx.xxx.xxx.xxx:xxxx'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//post请求头</span>
-service<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>post<span class="token punctuation">[</span><span class="token string">"Content-Type"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"multipart/form-data;charset=UTF-8"</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 添加请求拦截器</span>
-service<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>config<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// 在发送请求之前做些什么</span>
-  <span class="token keyword">return</span> config<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// 对请求错误做些什么</span>
-  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 添加响应拦截器</span>
-service<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// 对响应数据做点什么</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'res'</span><span class="token punctuation">,</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> response<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// 对响应错误做点什么</span>
-  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> service<span class="token punctuation">;</span>
-</code></pre>
-<p>最后，在 vue 文件中引入 axios：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
-  <span class="token keyword">import</span> <span class="token punctuation">{</span> defineComponent<span class="token punctuation">,</span> ref<span class="token punctuation">,</span> onMounted<span class="token punctuation">,</span> reactive<span class="token punctuation">,</span> toRefs <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
-  <span class="token keyword">import</span> <span class="token punctuation">{</span> message <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ant-design-vue'</span><span class="token punctuation">;</span>
-  <span class="token keyword">import</span> <span class="token punctuation">{</span> UploadOutlined <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@ant-design/icons-vue'</span><span class="token punctuation">;</span>
-  <span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'../utils/axios'</span>
-
-  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineComponent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'Index'</span><span class="token punctuation">,</span>
-    components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      UploadOutlined
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> tags <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        tag<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-        pos<span class="token punctuation">:</span> <span class="token string">''</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-      <span class="token keyword">const</span> txtFile <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-      <span class="token keyword">const</span> loading <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-      <span class="token comment" spellcheck="true">// Txt上传前</span>
-      <span class="token keyword">const</span> beforeUploadTxt <span class="token operator">=</span> <span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-          <span class="token comment" spellcheck="true">// 获取图片地址</span>
-          <span class="token keyword">const</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
-          reader<span class="token punctuation">.</span>onload <span class="token operator">=</span> e <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">// console.log('e.target', e.target)</span>
-            file<span class="token punctuation">.</span>path <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
-            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">,</span> file<span class="token punctuation">.</span>path<span class="token punctuation">)</span>
-            txtFile<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">[</span>file<span class="token punctuation">]</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span><span class="token punctuation">;</span>
-          <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-    
-      <span class="token comment" spellcheck="true">// Txt上传</span>
-      <span class="token keyword">const</span> handleUploadTxt <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'txt'</span><span class="token punctuation">,</span> txtFile<span class="token punctuation">.</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>txtFile<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            message<span class="token punctuation">.</span><span class="token function">warning</span><span class="token punctuation">(</span><span class="token string">'请先上传文件！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Please upload first'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span>
-        
-          <span class="token comment" spellcheck="true">// 使用formData格式传递参数</span>
-          <span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          params<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'txt'</span><span class="token punctuation">,</span> txtFile<span class="token punctuation">.</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-          loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        
-          <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/upload_txt'</span><span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-              message<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">'请求成功！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span>
-          <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
-            loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-
-      <span class="token comment" spellcheck="true">// 上传后</span>
-      <span class="token keyword">const</span> txtChange <span class="token operator">=</span> info <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">!==</span> <span class="token string">'uploading'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token comment" spellcheck="true">// txtFile = info.file;</span>
-          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">,</span> info<span class="token punctuation">.</span>txtFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'done'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          message<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 文件上传成功！`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'error'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 文件上传失败！`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-      
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>
-        loading<span class="token punctuation">,</span>
-        txtFile<span class="token punctuation">,</span>
-        headers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-          <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'multipart/form-data'</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        txtChange<span class="token punctuation">,</span>
-        beforeUploadTxt<span class="token punctuation">,</span>
-        handleUploadTxt
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-</code></pre>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li>position:relative改为position:absolute；</li>
+<li>浮动元素添加position属性（如relative，absolute等）；</li>
+<li>去除浮动。</li>
+</ol>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://blog.csdn.net/LEI2879223426/article/details/69650872">https://blog.csdn.net/LEI2879223426/article/details/69650872</a></p>
 
                 
             </div>
@@ -636,7 +469,7 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2022/01/17/vue3-axios/">http://cjx-chen.github.io/2022/01/17/vue3-axios/</a>
+                    <a href="http://cjx-chen.github.io/2022/01/17/css-z-index/">http://cjx-chen.github.io/2022/01/17/css-z-index/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -674,16 +507,8 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Vue3/">
-                                    <span class="chip bg-color">Vue3</span>
-                                </a>
-                            
-                                <a href="/tags/Javascript/">
-                                    <span class="chip bg-color">Javascript</span>
-                                </a>
-                            
-                                <a href="/tags/axios/">
-                                    <span class="chip bg-color">axios</span>
+                                <a href="/tags/CSS/">
+                                    <span class="chip bg-color">CSS</span>
                                 </a>
                             
                         </div>
@@ -1121,9 +946,10 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/01/17/css-z-index/">
                     <div class="card-image">
@@ -1140,9 +966,9 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1155,6 +981,7 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1173,12 +1000,12 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/17/vue3-uploadtxt/">
+                <a href="/2022/01/17/vue3-axios/">
                     <div class="card-image">
                         
-                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】AntDesign 文件上传">
+                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】axios 封装">
                         
-                        <span class="card-title">【Vue3】AntDesign 文件上传</span>
+                        <span class="card-title">【Vue3】axios 封装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1214,8 +1041,8 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
                         <span class="chip bg-color">Javascript</span>
                     </a>
                     
-                    <a href="/tags/AntDesign/">
-                        <span class="chip bg-color">AntDesign</span>
+                    <a href="/tags/axios/">
+                        <span class="chip bg-color">axios</span>
                     </a>
                     
                 </div>
