@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【Vue3】项目打包上线部署到服务器</title>
+      <link href="/2022/01/18/vue3-build/"/>
+      <url>/2022/01/18/vue3-build/</url>
+      
+        <content type="html"><![CDATA[<p>1、<code>npm run build</code>打包项目，生成dist文件夹；<br><img src="https://img-blog.csdnimg.cn/1ffd7b46fb8b40c3a35e9429fab9449b.png"><br>2、将dist文件夹复制，粘贴到服务器中；<br><img src="https://img-blog.csdnimg.cn/4d3b047dbc894a17b20104c8102ac2a5.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue3 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【HTML】点击直接下载文件</title>
       <link href="/2022/01/18/html-download/"/>
       <url>/2022/01/18/html-download/</url>

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【HTML】点击直接下载文件, Blog | Jessieeeeee">
+    <meta name="keywords" content="【Vue3】项目打包上线部署到服务器, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【HTML】点击直接下载文件 | Blog | Jessieeeeee</title>
+    <title>【Vue3】项目打包上线部署到服务器 | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -257,12 +257,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://bkimg.cdn.bcebos.com/pic/fc1f4134970a304ed9002dcad3c8a786c9175ce4?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5/format,f_auto')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【HTML】点击直接下载文件</h1>
+                    <h1 class="description center-align post-title">【Vue3】项目打包上线部署到服务器</h1>
                 </div>
             </div>
         </div>
@@ -378,8 +378,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/HTML/">
-                                <span class="chip bg-color">HTML</span>
+                            <a href="/tags/Vue3/">
+                                <span class="chip bg-color">Vue3</span>
                             </a>
                         
                     </div>
@@ -390,8 +390,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                前端
+                            <a href="/categories/Vue3/" class="post-category">
+                                Vue3
                             </a>
                         
                     </div>
@@ -424,52 +424,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>1、使用<code>&lt;a&gt;</code>标签</p>
-<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/user/test/xxxx.txt<span class="token punctuation">"</span></span> <span class="token attr-name">download</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>文件名.txt<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击下载<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-</code></pre>
-<p>这样当用户打开浏览器点击链接的时候就会直接下载文件。</p>
-<p>但是有个情况，比如txt,png,jpg等这些浏览器支持直接打开的文件是不会执行下载任务的，而是会直接打开文件，这个时候就需要给a标签添加一个属性“download”;</p>
-<p>实例如下：</p>
-<p>移到标签<code>&lt;a&gt;</code>标签上可以显示文件路径，根据路径提示进行文件路径的补全</p>
-<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span> 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span> 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span> 
-        &lt;metacharset="UTF-8"> 
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span> 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span> 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span> 
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>321.png<span class="token punctuation">"</span></span> <span class="token attr-name">download</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>test.png<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击下载<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>   
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span> 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
-<p>若需从网页上传的图片中进行下载，可能会用到以下方法：</p>
-<p>获取主机域名：<code>location.hostname</code></p>
-<p>获取端口号：<code>location.port</code></p>
-<p>2、使用按钮进行监听</p>
-<p>按钮监听又可以分为两种方法，一是<code>window.open()</code></p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> $eleBtn1 <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#btn1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token keyword">var</span> $eleBtn2 <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#btn2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
-<span class="token comment" spellcheck="true">//已知一个下载文件的后端接口：https://codeload.github.com/douban/douban-client/legacy.zip/master </span>
-
-<span class="token comment" spellcheck="true">//方法一：window.open() </span>
-$eleBtn1<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
-    window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"https://codeload.github.com/douban/douban-client/legacy.zip/master"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>二是表单提交</p>
-<pre class=" language-javascript"><code class="language-javascript">
-<span class="token comment" spellcheck="true">//方法二：通过form </span>
-
-$eleBtn2<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
-    <span class="token keyword">var</span>$eleForm <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"&lt;form method='get'>&lt;/form>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    $eleForm<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"action"</span><span class="token punctuation">,</span><span class="token string">"https://codeload.github.com/douban/douban-client/legacy.zip/master"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>$eleForm<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
-    <span class="token comment" spellcheck="true">//提交表单，实现下载 </span>
-    $eleForm<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+                <p>1、<code>npm run build</code>打包项目，生成dist文件夹；<br><img src="https://img-blog.csdnimg.cn/1ffd7b46fb8b40c3a35e9429fab9449b.png"><br>2、将dist文件夹复制，粘贴到服务器中；<br><img src="https://img-blog.csdnimg.cn/4d3b047dbc894a17b20104c8102ac2a5.png"></p>
 
                 
             </div>
@@ -496,7 +451,7 @@ $eleBtn2<span class="token punctuation">.</span><span class="token function">cli
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2022/01/18/html-download/">http://cjx-chen.github.io/2022/01/18/html-download/</a>
+                    <a href="http://cjx-chen.github.io/2022/01/18/vue3-build/">http://cjx-chen.github.io/2022/01/18/vue3-build/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -534,8 +489,8 @@ $eleBtn2<span class="token punctuation">.</span><span class="token function">cli
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/HTML/">
-                                    <span class="chip bg-color">HTML</span>
+                                <a href="/tags/Vue3/">
+                                    <span class="chip bg-color">Vue3</span>
                                 </a>
                             
                         </div>
@@ -973,9 +928,10 @@ $eleBtn2<span class="token punctuation">.</span><span class="token function">cli
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/01/18/vue3-build/">
                     <div class="card-image">
@@ -992,9 +948,9 @@ $eleBtn2<span class="token punctuation">.</span><span class="token function">cli
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1007,6 +963,7 @@ $eleBtn2<span class="token punctuation">.</span><span class="token function">cli
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1025,12 +982,12 @@ $eleBtn2<span class="token punctuation">.</span><span class="token function">cli
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/17/vite-ip/">
+                <a href="/2022/01/18/html-download/">
                     <div class="card-image">
                         
-                        <img src="https://pic3.zhimg.com/v2-3b97a39e6f2465dcc2b4718c9a6a8d36_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】vite 配置IP，解决“vite use `--host` to expose”">
+                        <img src="https://bkimg.cdn.bcebos.com/pic/fc1f4134970a304ed9002dcad3c8a786c9175ce4?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5/format,f_auto" class="responsive-img" alt="【HTML】点击直接下载文件">
                         
-                        <span class="card-title">【Vue3】vite 配置IP，解决“vite use `--host` to expose”</span>
+                        <span class="card-title">【HTML】点击直接下载文件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1041,17 +998,13 @@ $eleBtn2<span class="token punctuation">.</span><span class="token function">cli
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
-                                    安装配置步骤
-                                </a>
-                            
-                            <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/%E5%89%8D%E7%AB%AF/" class="post-category">
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
                                     前端
                                 </a>
                             
@@ -1062,12 +1015,8 @@ $eleBtn2<span class="token punctuation">.</span><span class="token function">cli
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue3/">
-                        <span class="chip bg-color">Vue3</span>
-                    </a>
-                    
-                    <a href="/tags/Vite/">
-                        <span class="chip bg-color">Vite</span>
+                    <a href="/tags/HTML/">
+                        <span class="chip bg-color">HTML</span>
                     </a>
                     
                 </div>
