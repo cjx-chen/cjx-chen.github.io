@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【Vue3】项目打包上线部署到服务器, Blog | Jessieeeeee">
+    <meta name="keywords" content="【Vue3】vite打包报错：块的大小超过限制，Some chunks are larger than 500kb after minification, Blog | Jessieeeeee">
     <meta name="description" content="好家伙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>【Vue3】项目打包上线部署到服务器 | Blog | Jessieeeeee</title>
+    <title>【Vue3】vite打包报错：块的大小超过限制，Some chunks are larger than 500kb after minification | Blog | Jessieeeeee</title>
     <link rel="icon" type="image/png" href="/egg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -257,12 +257,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic3.zhimg.com/v2-3b97a39e6f2465dcc2b4718c9a6a8d36_1440w.jpg?source=172ae18b')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Vue3】项目打包上线部署到服务器</h1>
+                    <h1 class="description center-align post-title">【Vue3】vite打包报错：块的大小超过限制，Some chunks are larger than 500kb after minification</h1>
                 </div>
             </div>
         </div>
@@ -382,6 +382,14 @@
                                 <span class="chip bg-color">Vue3</span>
                             </a>
                         
+                            <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                                <span class="chip bg-color">报错解决方法</span>
+                            </a>
+                        
+                            <a href="/tags/Vite/">
+                                <span class="chip bg-color">Vite</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -390,8 +398,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Vue3/" class="post-category">
-                                Vue3
+                            <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/" class="post-category">
+                                安装配置步骤
+                            </a>
+                        
+                            <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
                             </a>
                         
                     </div>
@@ -424,7 +436,55 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>1、<code>npm run build</code>打包项目，生成dist文件夹；<br><img src="https://img-blog.csdnimg.cn/1ffd7b46fb8b40c3a35e9429fab9449b.png"><br>2、将dist文件夹复制，粘贴到服务器中；<br><img src="https://img-blog.csdnimg.cn/4d3b047dbc894a17b20104c8102ac2a5.png"></p>
+                <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>vite打包报错：块的大小超过限制，Some chunks are larger than 500kb after minification：<br><img src="https://img-blog.csdnimg.cn/0ba63b47324e43738240156edb169ba6.png"></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li>加大限制的大小将500kb改成1000kb或者更大：</li>
+</ol>
+<pre class=" language-javascript"><code class="language-javascript">chunkSizeWarningLimit<span class="token punctuation">:</span><span class="token number">1500</span>
+</code></pre>
+<blockquote>
+<p>build.chunkSizeWarningLimit 类型： number<br>默认： 500<br>块大小警告的限制（以 kbs 为单位）</p>
+</blockquote>
+<ol start="2">
+<li>分解块，将大块分解成更小的块：</li>
+</ol>
+<pre class=" language-javascript"><code class="language-javascript">rollupOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        output<span class="token punctuation">:</span><span class="token punctuation">{</span>
+            <span class="token function">manualChunks</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">if</span> <span class="token punctuation">(</span>id<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'node_modules'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  <span class="token keyword">return</span> id<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'node_modules/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>build.rollupOptions<br>类型： RollupOptions<br>直接自定义底层 Rollup 包。这与可以从 Rollup 配置文件导出的选项相同，并将与 Vite 的内部 Rollup 选项合并。有关更多详细信息，请参阅汇总选项文档。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/318d4a479aba481a88916accd53bdd20.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zi75Zi755qE5aaZ5aaZ5bGL,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+<span class="token keyword">import</span> vue <span class="token keyword">from</span> <span class="token string">'@vitejs/plugin-vue'</span>
+<span class="token comment" spellcheck="true">// 按需加载</span>
+<span class="token keyword">import</span> styleImport <span class="token keyword">from</span> <span class="token string">'vite-plugin-style-import'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> resolve <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'path'</span>
+
+<span class="token comment" spellcheck="true">// https://vitejs.dev/config/</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  base<span class="token punctuation">:</span> <span class="token string">'/dist/'</span><span class="token punctuation">,</span>
+  build<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    chunkSizeWarningLimit<span class="token punctuation">:</span><span class="token number">1500</span><span class="token punctuation">,</span>
+    rollupOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        output<span class="token punctuation">:</span><span class="token punctuation">{</span>
+            <span class="token function">manualChunks</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">if</span> <span class="token punctuation">(</span>id<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'node_modules'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>              
+                  <span class="token keyword">return</span> id<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'node_modules/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 
                 
             </div>
@@ -451,7 +511,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cjx-chen.github.io/2022/01/18/vue3-build/">http://cjx-chen.github.io/2022/01/18/vue3-build/</a>
+                    <a href="http://cjx-chen.github.io/2022/01/18/vite-chunk/">http://cjx-chen.github.io/2022/01/18/vite-chunk/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -491,6 +551,14 @@
                             
                                 <a href="/tags/Vue3/">
                                     <span class="chip bg-color">Vue3</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                                    <span class="chip bg-color">报错解决方法</span>
+                                </a>
+                            
+                                <a href="/tags/Vite/">
+                                    <span class="chip bg-color">Vite</span>
                                 </a>
                             
                         </div>
@@ -928,9 +996,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/01/18/vite-chunk/">
                     <div class="card-image">
@@ -947,9 +1016,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -966,6 +1035,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -992,12 +1062,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/18/html-download/">
+                <a href="/2022/01/18/vue3-build/">
                     <div class="card-image">
                         
-                        <img src="https://bkimg.cdn.bcebos.com/pic/fc1f4134970a304ed9002dcad3c8a786c9175ce4?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5/format,f_auto" class="responsive-img" alt="【HTML】点击直接下载文件">
+                        <img src="https://pic2.zhimg.com/v2-b7df35f5df14059bbcce379a7d2bc494_1440w.jpg?source=172ae18b" class="responsive-img" alt="【Vue3】项目打包上线部署到服务器">
                         
-                        <span class="card-title">【HTML】点击直接下载文件</span>
+                        <span class="card-title">【Vue3】项目打包上线部署到服务器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1014,8 +1084,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
+                            <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
                                 </a>
                             
                             
@@ -1025,8 +1095,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/HTML/">
-                        <span class="chip bg-color">HTML</span>
+                    <a href="/tags/Vue3/">
+                        <span class="chip bg-color">Vue3</span>
                     </a>
                     
                 </div>
