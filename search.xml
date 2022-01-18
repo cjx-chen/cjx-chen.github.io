@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【HTML】点击直接下载文件</title>
+      <link href="/2022/01/18/html-download/"/>
+      <url>/2022/01/18/html-download/</url>
+      
+        <content type="html"><![CDATA[<p>1、使用<code>&lt;a&gt;</code>标签</p><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/user/test/xxxx.txt<span class="token punctuation">"</span></span> <span class="token attr-name">download</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>文件名.txt<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击下载<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre><p>这样当用户打开浏览器点击链接的时候就会直接下载文件。</p><p>但是有个情况，比如txt,png,jpg等这些浏览器支持直接打开的文件是不会执行下载任务的，而是会直接打开文件，这个时候就需要给a标签添加一个属性“download”;</p><p>实例如下：</p><p>移到标签<code>&lt;a&gt;</code>标签上可以显示文件路径，根据路径提示进行文件路径的补全</p><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>         &lt;metacharset="UTF-8">         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>321.png<span class="token punctuation">"</span></span> <span class="token attr-name">download</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>test.png<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击下载<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre><p>若需从网页上传的图片中进行下载，可能会用到以下方法：</p><p>获取主机域名：<code>location.hostname</code></p><p>获取端口号：<code>location.port</code></p><p>2、使用按钮进行监听</p><p>按钮监听又可以分为两种方法，一是<code>window.open()</code></p><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> $eleBtn1 <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#btn1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">var</span> $eleBtn2 <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#btn2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//已知一个下载文件的后端接口：https://codeload.github.com/douban/douban-client/legacy.zip/master </span><span class="token comment" spellcheck="true">//方法一：window.open() </span>$eleBtn1<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>     window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"https://codeload.github.com/douban/douban-client/legacy.zip/master"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>二是表单提交</p><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//方法二：通过form </span>$eleBtn2<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>     <span class="token keyword">var</span>$eleForm <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"&lt;form method='get'>&lt;/form>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    $eleForm<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"action"</span><span class="token punctuation">,</span><span class="token string">"https://codeload.github.com/douban/douban-client/legacy.zip/master"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>$eleForm<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//提交表单，实现下载 </span>    $eleForm<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Vue3】vite 配置IP，解决“vite use `--host` to expose”</title>
       <link href="/2022/01/17/vite-ip/"/>
       <url>/2022/01/17/vite-ip/</url>
@@ -460,11 +485,11 @@
       
         <tags>
             
-            <tag> Html </tag>
-            
             <tag> Jquery </tag>
             
             <tag> JavaScript </tag>
+            
+            <tag> Html </tag>
             
         </tags>
       
@@ -548,7 +573,7 @@
     
     
     <entry>
-      <title>【Html】解决 button 按钮点击后自动刷新页面的问题</title>
+      <title>【HTML】解决 button 按钮点击后自动刷新页面的问题</title>
       <link href="/2022/01/09/html-button/"/>
       <url>/2022/01/09/html-button/</url>
       
@@ -564,7 +589,7 @@
       
         <tags>
             
-            <tag> Html </tag>
+            <tag> HTML </tag>
             
         </tags>
       
